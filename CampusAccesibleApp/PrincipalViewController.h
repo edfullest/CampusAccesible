@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PrincipalViewController.h
 //  CampusAccesibleApp
 //
 //  Created by Eduardo Jesus Serna L on 10/17/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface PrincipalViewController : UIViewController
 
 @end
-
