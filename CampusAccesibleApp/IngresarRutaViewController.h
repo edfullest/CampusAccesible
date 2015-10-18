@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@import GoogleMaps;
 
 @interface IngresarRutaViewController : UIViewController
+@property (nonatomic,strong) GMSMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIView *vwMap;
+
 
 @end

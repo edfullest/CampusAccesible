@@ -7,21 +7,48 @@
 //
 
 #import "PrincipalViewController.h"
+#import "DetalleUbicacionTableViewController.h"
+@import GoogleMaps;
 
 @interface PrincipalViewController ()
 
 @end
 
-@implementation PrincipalViewController
+@implementation PrincipalViewController{
+     GMSMapView *mpvMapaTec;
+}
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    //Centro del tec: 25.651113, -100.290028
+    // Se posiciona la camara en el centro del Tec
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:25.651113
+                                                            longitude:-100.290028
+                                                                 zoom:17];
+    
+   
+    
+    mpvMapaTec = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    // http://stackoverflow.com/questions/23857744/google-maps-ios-sdk-get-tapped-overlay-coordinates
+    mpvMapaTec.myLocationEnabled = YES;
+    self.view = mpvMapaTec;
+    
+    mpvMapaTec.delegate = self;
+    
+
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)mapView:(GMSMapView *)mapView
+didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    NSLog(@"You tapped at %f,%f", coordinate.latitude, coordinate.longitude);
+    DetalleUbicacionTableViewController *detalleUbicacionTableViewController =
+    [self.storyboard instantiateViewControllerWithIdentifier:@"detalleUbicacionTableViewController"];
+    [self.navigationController pushViewController:detalleUbicacionTableViewController animated:YES];
 }
 
 /*
@@ -33,5 +60,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end
