@@ -12,6 +12,14 @@
 		4921B0C01BE5723800444B1F /* PESGraphEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921B0BC1BE5723800444B1F /* PESGraphEdge.m */; };
 		4921B0C11BE5723800444B1F /* PESGraphRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921B0BD1BE5723800444B1F /* PESGraphRoute.m */; };
 		4921B0C21BE5723800444B1F /* PESGraphRouteStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921B0BE1BE5723800444B1F /* PESGraphRouteStep.m */; };
+		A04F8A081BE5A4F700B8436C /* Bano.m in Sources */ = {isa = PBXBuildFile; fileRef = A04F89F91BE5A4F700B8436C /* Bano.m */; };
+		A04F8A091BE5A4F700B8436C /* Camino.m in Sources */ = {isa = PBXBuildFile; fileRef = A04F89FB1BE5A4F700B8436C /* Camino.m */; };
+		A04F8A0A1BE5A4F700B8436C /* Descriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = A04F89FD1BE5A4F700B8436C /* Descriptor.m */; };
+		A04F8A0B1BE5A4F700B8436C /* Edificio.m in Sources */ = {isa = PBXBuildFile; fileRef = A04F89FF1BE5A4F700B8436C /* Edificio.m */; };
+		A04F8A0C1BE5A4F700B8436C /* Mapa.m in Sources */ = {isa = PBXBuildFile; fileRef = A04F8A011BE5A4F700B8436C /* Mapa.m */; };
+		A04F8A0D1BE5A4F700B8436C /* PuntoClave.m in Sources */ = {isa = PBXBuildFile; fileRef = A04F8A031BE5A4F700B8436C /* PuntoClave.m */; };
+		A04F8A0E1BE5A4F700B8436C /* Salon.m in Sources */ = {isa = PBXBuildFile; fileRef = A04F8A051BE5A4F700B8436C /* Salon.m */; };
+		A04F8A0F1BE5A4F700B8436C /* Vertice.m in Sources */ = {isa = PBXBuildFile; fileRef = A04F8A071BE5A4F700B8436C /* Vertice.m */; };
 		A0D8A1CD1BD32ADB0016AE86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1CC1BD32ADB0016AE86 /* main.m */; };
 		A0D8A1D01BD32ADB0016AE86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1CF1BD32ADB0016AE86 /* AppDelegate.m */; };
 		A0D8A1D61BD32ADB0016AE86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D8A1D41BD32ADB0016AE86 /* Main.storyboard */; };
@@ -33,6 +41,22 @@
 		4921B0BE1BE5723800444B1F /* PESGraphRouteStep.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PESGraphRouteStep.m; path = CampusAccesibleApp/PESGraph/PESGraphRouteStep.m; sourceTree = "<group>"; };
 		4F55C2EA4CFB42E8B2152241 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "CampusAccesibleApp/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		562EBE69777865429395770B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A04F89F81BE5A4F700B8436C /* Bano.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bano.h; sourceTree = "<group>"; };
+		A04F89F91BE5A4F700B8436C /* Bano.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bano.m; sourceTree = "<group>"; };
+		A04F89FA1BE5A4F700B8436C /* Camino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camino.h; sourceTree = "<group>"; };
+		A04F89FB1BE5A4F700B8436C /* Camino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camino.m; sourceTree = "<group>"; };
+		A04F89FC1BE5A4F700B8436C /* Descriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Descriptor.h; sourceTree = "<group>"; };
+		A04F89FD1BE5A4F700B8436C /* Descriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptor.m; sourceTree = "<group>"; };
+		A04F89FE1BE5A4F700B8436C /* Edificio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edificio.h; sourceTree = "<group>"; };
+		A04F89FF1BE5A4F700B8436C /* Edificio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Edificio.m; sourceTree = "<group>"; };
+		A04F8A001BE5A4F700B8436C /* Mapa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mapa.h; sourceTree = "<group>"; };
+		A04F8A011BE5A4F700B8436C /* Mapa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mapa.m; sourceTree = "<group>"; };
+		A04F8A021BE5A4F700B8436C /* PuntoClave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuntoClave.h; sourceTree = "<group>"; };
+		A04F8A031BE5A4F700B8436C /* PuntoClave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuntoClave.m; sourceTree = "<group>"; };
+		A04F8A041BE5A4F700B8436C /* Salon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Salon.h; sourceTree = "<group>"; };
+		A04F8A051BE5A4F700B8436C /* Salon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Salon.m; sourceTree = "<group>"; };
+		A04F8A061BE5A4F700B8436C /* Vertice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertice.h; sourceTree = "<group>"; };
+		A04F8A071BE5A4F700B8436C /* Vertice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vertice.m; sourceTree = "<group>"; };
 		A0D8A1C81BD32ADB0016AE86 /* CampusAccesibleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampusAccesibleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D8A1CC1BD32ADB0016AE86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A0D8A1CE1BD32ADB0016AE86 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -73,13 +97,46 @@
 				4921B0BD1BE5723800444B1F /* PESGraphRoute.m */,
 				4921B0BE1BE5723800444B1F /* PESGraphRouteStep.m */,
 				4921B0B81BE5711300444B1F /* PESGraphNode.m */,
+				A04F89F61BE5A45700B8436C /* New Group */,
 			);
 			name = PESGraph;
+			sourceTree = "<group>";
+		};
+		A04F89F61BE5A45700B8436C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		A04F89F71BE5A4F700B8436C /* Clases */ = {
+			isa = PBXGroup;
+			children = (
+				A04F89F81BE5A4F700B8436C /* Bano.h */,
+				A04F89F91BE5A4F700B8436C /* Bano.m */,
+				A04F89FA1BE5A4F700B8436C /* Camino.h */,
+				A04F89FB1BE5A4F700B8436C /* Camino.m */,
+				A04F89FC1BE5A4F700B8436C /* Descriptor.h */,
+				A04F89FD1BE5A4F700B8436C /* Descriptor.m */,
+				A04F89FE1BE5A4F700B8436C /* Edificio.h */,
+				A04F89FF1BE5A4F700B8436C /* Edificio.m */,
+				A04F8A001BE5A4F700B8436C /* Mapa.h */,
+				A04F8A011BE5A4F700B8436C /* Mapa.m */,
+				A04F8A021BE5A4F700B8436C /* PuntoClave.h */,
+				A04F8A031BE5A4F700B8436C /* PuntoClave.m */,
+				A04F8A041BE5A4F700B8436C /* Salon.h */,
+				A04F8A051BE5A4F700B8436C /* Salon.m */,
+				A04F8A061BE5A4F700B8436C /* Vertice.h */,
+				A04F8A071BE5A4F700B8436C /* Vertice.m */,
+			);
+			name = Clases;
+			path = CampusAccesibleApp/Clases;
 			sourceTree = "<group>";
 		};
 		A0D8A1BF1BD32ADB0016AE86 = {
 			isa = PBXGroup;
 			children = (
+				A04F89F71BE5A4F700B8436C /* Clases */,
 				A04F89C31BE591B800B8436C /* PESGraph */,
 				A0D8A1CA1BD32ADB0016AE86 /* CampusAccesibleApp */,
 				A0D8A1C91BD32ADB0016AE86 /* Products */,
@@ -266,11 +323,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A04F8A0C1BE5A4F700B8436C /* Mapa.m in Sources */,
 				4921B0BF1BE5723800444B1F /* PESGraph.m in Sources */,
+				A04F8A081BE5A4F700B8436C /* Bano.m in Sources */,
+				A04F8A0A1BE5A4F700B8436C /* Descriptor.m in Sources */,
 				4921B0C01BE5723800444B1F /* PESGraphEdge.m in Sources */,
+				A04F8A0F1BE5A4F700B8436C /* Vertice.m in Sources */,
+				A04F8A0D1BE5A4F700B8436C /* PuntoClave.m in Sources */,
 				4921B0C11BE5723800444B1F /* PESGraphRoute.m in Sources */,
 				4921B0C21BE5723800444B1F /* PESGraphRouteStep.m in Sources */,
 				4921B0B91BE5711300444B1F /* PESGraphNode.m in Sources */,
+				A04F8A0E1BE5A4F700B8436C /* Salon.m in Sources */,
+				A04F8A091BE5A4F700B8436C /* Camino.m in Sources */,
+				A04F8A0B1BE5A4F700B8436C /* Edificio.m in Sources */,
 				A0D8A1D01BD32ADB0016AE86 /* AppDelegate.m in Sources */,
 				A0D8A1EF1BD33A130016AE86 /* IngresarRutaViewController.m in Sources */,
 				A0D8A1E61BD32EF10016AE86 /* PrincipalViewController.m in Sources */,
