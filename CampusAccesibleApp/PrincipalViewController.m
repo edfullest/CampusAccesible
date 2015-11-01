@@ -8,6 +8,12 @@
 
 #import "PrincipalViewController.h"
 #import "DetalleUbicacionTableViewController.h"
+#import "PESGraph/PESGraph.h"
+#import "PESGraph/PESGraphNode.h"
+#import "PESGraph/PESGraphEdge.h"
+#import "PESGraph/PESGraphRoute.h"
+#import "PESGraph/PESGraphRouteStep.h"
+
 @import GoogleMaps;
 
 @interface PrincipalViewController ()
@@ -33,6 +39,39 @@
     self.view = mpvMapaTec;
     
     mpvMapaTec.delegate = self;
+    
+    PESGraph *graph = [[PESGraph alloc] init];
+    PESGraphNode *aNode = [PESGraphNode nodeWithIdentifier:@"A"];
+    PESGraphNode *bNode = [PESGraphNode nodeWithIdentifier:@"B"];
+    PESGraphNode *cNode = [PESGraphNode nodeWithIdentifier:@"C"];
+    PESGraphNode *dNode = [PESGraphNode nodeWithIdentifier:@"D"];
+    PESGraphNode *eNode = [PESGraphNode nodeWithIdentifier:@"E"];
+    PESGraphNode *fNode = [PESGraphNode nodeWithIdentifier:@"F"];
+    
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"A <-> B" andWeight:[NSNumber numberWithInt:7]] fromNode:aNode toNode:bNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"A <-> C" andWeight:[NSNumber numberWithInt:9]] fromNode:aNode toNode:cNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"A <-> F" andWeight:[NSNumber numberWithInt:14]] fromNode:aNode toNode:fNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"B <-> C" andWeight:[NSNumber numberWithInt:10]] fromNode:bNode toNode:cNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"B <-> D" andWeight:[NSNumber numberWithInt:15]] fromNode:bNode toNode:dNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"C <-> F" andWeight:[NSNumber numberWithInt:2]] fromNode:cNode toNode:fNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"C <-> D" andWeight:[NSNumber numberWithInt:11]] fromNode:cNode toNode:dNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"D <-> E" andWeight:[NSNumber numberWithInt:6]] fromNode:dNode toNode:eNode];
+    [graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:@"E <-> F" andWeight:[NSNumber numberWithInt:9]] fromNode:eNode toNode:fNode];
+    
+    PESGraphRoute *route = [graph shortestRouteFromNode:aNode toNode:eNode];
+    
+    for (PESGraphRouteStep *aStep in route.steps) {
+        
+        if (aStep.edge) {
+            
+            NSLog([NSString stringWithFormat:@"\t%@ -> %@\n", aStep.node.identifier, aStep.edge]);
+            
+        } else {
+            NSLog([NSString stringWithFormat:@"\t%@ (End)", aStep.node.identifier]);
+            //[string appendFormat:@"\t%@ (End)", aStep.node.identifier];
+            
+        }
+    }
     
 
 }

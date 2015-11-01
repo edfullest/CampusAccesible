@@ -7,20 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4921B0B91BE5711300444B1F /* PESGraphNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921B0B81BE5711300444B1F /* PESGraphNode.m */; };
+		4921B0BF1BE5723800444B1F /* PESGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921B0BB1BE5723800444B1F /* PESGraph.m */; };
+		4921B0C01BE5723800444B1F /* PESGraphEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921B0BC1BE5723800444B1F /* PESGraphEdge.m */; };
+		4921B0C11BE5723800444B1F /* PESGraphRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921B0BD1BE5723800444B1F /* PESGraphRoute.m */; };
+		4921B0C21BE5723800444B1F /* PESGraphRouteStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921B0BE1BE5723800444B1F /* PESGraphRouteStep.m */; };
 		A0D8A1CD1BD32ADB0016AE86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1CC1BD32ADB0016AE86 /* main.m */; };
 		A0D8A1D01BD32ADB0016AE86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1CF1BD32ADB0016AE86 /* AppDelegate.m */; };
 		A0D8A1D61BD32ADB0016AE86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D8A1D41BD32ADB0016AE86 /* Main.storyboard */; };
 		A0D8A1D81BD32ADB0016AE86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D8A1D71BD32ADB0016AE86 /* Assets.xcassets */; };
 		A0D8A1DB1BD32ADB0016AE86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D8A1D91BD32ADB0016AE86 /* LaunchScreen.storyboard */; };
-		A0D8A1E31BD32BC80016AE86 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A0D8A1E21BD32BC80016AE86 /* Podfile */; settings = {ASSET_TAGS = (); }; };
-		A0D8A1E61BD32EF10016AE86 /* PrincipalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1E51BD32EF10016AE86 /* PrincipalViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A0D8A1EF1BD33A130016AE86 /* IngresarRutaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1EE1BD33A130016AE86 /* IngresarRutaViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A0D8A1F41BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1F31BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		A0D8A1F71BD354230016AE86 /* DetalleUbicacionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1F61BD354230016AE86 /* DetalleUbicacionTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A0D8A1E31BD32BC80016AE86 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A0D8A1E21BD32BC80016AE86 /* Podfile */; };
+		A0D8A1E61BD32EF10016AE86 /* PrincipalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1E51BD32EF10016AE86 /* PrincipalViewController.m */; };
+		A0D8A1EF1BD33A130016AE86 /* IngresarRutaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1EE1BD33A130016AE86 /* IngresarRutaViewController.m */; };
+		A0D8A1F41BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1F31BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m */; };
+		A0D8A1F71BD354230016AE86 /* DetalleUbicacionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1F61BD354230016AE86 /* DetalleUbicacionTableViewController.m */; };
 		D8AE06B7EC06DA08C58111C4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 562EBE69777865429395770B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4921B0B81BE5711300444B1F /* PESGraphNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PESGraphNode.m; path = CampusAccesibleApp/PESGraph/PESGraphNode.m; sourceTree = "<group>"; };
+		4921B0BB1BE5723800444B1F /* PESGraph.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PESGraph.m; path = CampusAccesibleApp/PESGraph/PESGraph.m; sourceTree = "<group>"; };
+		4921B0BC1BE5723800444B1F /* PESGraphEdge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PESGraphEdge.m; path = CampusAccesibleApp/PESGraph/PESGraphEdge.m; sourceTree = "<group>"; };
+		4921B0BD1BE5723800444B1F /* PESGraphRoute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PESGraphRoute.m; path = CampusAccesibleApp/PESGraph/PESGraphRoute.m; sourceTree = "<group>"; };
+		4921B0BE1BE5723800444B1F /* PESGraphRouteStep.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PESGraphRouteStep.m; path = CampusAccesibleApp/PESGraph/PESGraphRouteStep.m; sourceTree = "<group>"; };
 		4F55C2EA4CFB42E8B2152241 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "CampusAccesibleApp/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		562EBE69777865429395770B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D8A1C81BD32ADB0016AE86 /* CampusAccesibleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampusAccesibleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,9 +65,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4921B0C31BE5728300444B1F /* PESGraph */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PESGraph;
+			sourceTree = "<group>";
+		};
 		A0D8A1BF1BD32ADB0016AE86 = {
 			isa = PBXGroup;
 			children = (
+				4921B0BB1BE5723800444B1F /* PESGraph.m */,
+				4921B0C31BE5728300444B1F /* PESGraph */,
+				4921B0BC1BE5723800444B1F /* PESGraphEdge.m */,
+				4921B0BD1BE5723800444B1F /* PESGraphRoute.m */,
+				4921B0BE1BE5723800444B1F /* PESGraphRouteStep.m */,
+				4921B0B81BE5711300444B1F /* PESGraphNode.m */,
 				A0D8A1CA1BD32ADB0016AE86 /* CampusAccesibleApp */,
 				A0D8A1C91BD32ADB0016AE86 /* Products */,
 				BE961D2E81FFA8C9EFA81DC4 /* Pods */,
@@ -243,6 +266,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4921B0BF1BE5723800444B1F /* PESGraph.m in Sources */,
+				4921B0C01BE5723800444B1F /* PESGraphEdge.m in Sources */,
+				4921B0C11BE5723800444B1F /* PESGraphRoute.m in Sources */,
+				4921B0C21BE5723800444B1F /* PESGraphRouteStep.m in Sources */,
+				4921B0B91BE5711300444B1F /* PESGraphNode.m in Sources */,
 				A0D8A1D01BD32ADB0016AE86 /* AppDelegate.m in Sources */,
 				A0D8A1EF1BD33A130016AE86 /* IngresarRutaViewController.m in Sources */,
 				A0D8A1E61BD32EF10016AE86 /* PrincipalViewController.m in Sources */,
