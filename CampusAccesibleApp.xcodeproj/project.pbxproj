@@ -65,9 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4921B0C31BE5728300444B1F /* PESGraph */ = {
+		A04F89C31BE591B800B8436C /* PESGraph */ = {
 			isa = PBXGroup;
 			children = (
+				4921B0BB1BE5723800444B1F /* PESGraph.m */,
+				4921B0BC1BE5723800444B1F /* PESGraphEdge.m */,
+				4921B0BD1BE5723800444B1F /* PESGraphRoute.m */,
+				4921B0BE1BE5723800444B1F /* PESGraphRouteStep.m */,
+				4921B0B81BE5711300444B1F /* PESGraphNode.m */,
 			);
 			name = PESGraph;
 			sourceTree = "<group>";
@@ -75,12 +80,7 @@
 		A0D8A1BF1BD32ADB0016AE86 = {
 			isa = PBXGroup;
 			children = (
-				4921B0BB1BE5723800444B1F /* PESGraph.m */,
-				4921B0C31BE5728300444B1F /* PESGraph */,
-				4921B0BC1BE5723800444B1F /* PESGraphEdge.m */,
-				4921B0BD1BE5723800444B1F /* PESGraphRoute.m */,
-				4921B0BE1BE5723800444B1F /* PESGraphRouteStep.m */,
-				4921B0B81BE5711300444B1F /* PESGraphNode.m */,
+				A04F89C31BE591B800B8436C /* PESGraph */,
 				A0D8A1CA1BD32ADB0016AE86 /* CampusAccesibleApp */,
 				A0D8A1C91BD32ADB0016AE86 /* Products */,
 				BE961D2E81FFA8C9EFA81DC4 /* Pods */,
