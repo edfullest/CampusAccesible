@@ -10,6 +10,7 @@
 #import "PESGraphRouteStep.h"
 #import "PESGraphNode.h"
 #import "PESGraphEdge.h"
+@import GoogleMaps;
 
 @implementation PESGraphRoute
 
@@ -41,12 +42,14 @@
     NSMutableString *string = [NSMutableString string];
     
     [string appendString:@"Start: \n"];
+    GMSMutablePath *ruta = [GMSMutablePath path];
     
     for (PESGraphRouteStep *aStep in steps) {
         
         if (aStep.edge) {
 
             [string appendFormat:@"\t%@ -> %@\n", aStep.node.identifier, aStep.edge];
+//            [ruta addCoordinate:CLLocationCoordinate2DMake(@(25.650076).doubleValue,@(-100.290228).doubleValue)];
 
         } else {
             

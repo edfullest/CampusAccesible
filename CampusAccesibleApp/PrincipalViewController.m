@@ -72,7 +72,9 @@
             
         }
     }
-    
+     NSLog(@"what");
+    Database *database = [Database database];
+    [Database verticeInfo];
 
 }
 
