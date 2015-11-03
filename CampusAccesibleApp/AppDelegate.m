@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "Vertice.h"
+#import "Database.h"
 @import GoogleMaps;
 
 @interface AppDelegate ()
@@ -19,6 +21,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [GMSServices provideAPIKey:@"AIzaSyDKjSQ-p4PCLu0_3SL8M3gZP1GglQ3A6_A"];
+    
+    /* INICIO Probar que carga los datos de la DB
+    NSArray *failedBankInfos = [Database database].verticeInfo;
+    for (Vertice *info in failedBankInfos) {
+        NSLog(@"%d: ", info.idVertice);
+    }
+    // FIN Probar que carga los datos de la DB*/
+    
     return YES;
 }
 

@@ -11,12 +11,16 @@
 
 @implementation Vertice
 
-- (id) initWithLongitud: (CGFloat) fLongitud
-            withLatitud: (CGFloat) fLatitud{
+- (id) initWithIdVertice:(int) idVertice
+             withLongitud: (CGFloat) fLongitud
+              withLatitud: (CGFloat) fLatitud
+           withNombreMapa: (NSString *) sNombreMapa {
     self = [super init];
     if (self){
+        _idVertice = idVertice;
         _fLongitud = fLongitud;
         _fLatitud = fLatitud;
+        _sNombreMapa = sNombreMapa;
     }
     return self;
 }

@@ -11,11 +11,14 @@
 
 @interface Vertice : NSObject
 
+@property (nonatomic, assign) int idVertice;
 @property CGFloat fLongitud;
 @property CGFloat fLatitud;
+@property (nonatomic, strong) NSString *sNombreMapa;
 
-- (id) initWithLongitud: (CGFloat) fLongitud
-            withLatitud: (CGFloat) fLatitud;
-
+- (id) initWithIdVertice:(int) idVertice
+            withLongitud: (CGFloat) fLongitud
+            withLatitud: (CGFloat) fLatitud
+            withNombreMapa: (NSString *) sNombreMapa;
 
 @end
