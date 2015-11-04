@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@import GoogleMaps;
 @class PESGraphNode, PESGraphEdge;
 
 /**
@@ -60,6 +60,11 @@
  */
 - (PESGraphNode *)endingNode;
 
+/**
+    Returns the description of a route in a GMSMutablePath pointer
+ 
+ */
+- (GMSMutablePath *)routePath;
 /**
 	The total distance of the route, calculated by summing the weight between all the 
     steps in the route

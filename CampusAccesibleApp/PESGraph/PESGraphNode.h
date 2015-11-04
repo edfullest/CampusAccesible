@@ -29,18 +29,18 @@
     /**
         Optional further key-value pairs describing the node
      */
-    NSMutableDictionary *additionalData;
+    NSDictionary *additionalData;
 }
 
 @property (nonatomic, strong) NSString *identifier;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSMutableDictionary *additionalData;
+@property (nonatomic, strong) NSDictionary *additionalData;
 
 /**
 	Convenience method to return an initialized and un-retained node
 	@param anIdentifier a unique identifier for the node.  Must be unique for all nodes in a graph
     @returns an initialized and un-retained edge
  */
++ (PESGraphNode *)nodeWithIdentifier:(NSString *)anIdentifier nodeWithDictionary: (NSDictionary *)additionalData;
 + (PESGraphNode *)nodeWithIdentifier:(NSString *)anIdentifier;
-
 @end

@@ -12,6 +12,8 @@
 
 @interface PrincipalViewController : UIViewController <GMSMapViewDelegate>
 
-
+@property (nonatomic,strong) GMSMapView *mapView;
+@property (strong, nonatomic) NSArray *nodes;
+@property (strong, nonatomic) IBOutlet UIView *vwMap;
 
 @end

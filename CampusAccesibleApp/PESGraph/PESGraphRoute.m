@@ -42,14 +42,12 @@
     NSMutableString *string = [NSMutableString string];
     
     [string appendString:@"Start: \n"];
-    GMSMutablePath *ruta = [GMSMutablePath path];
     
     for (PESGraphRouteStep *aStep in steps) {
         
         if (aStep.edge) {
 
             [string appendFormat:@"\t%@ -> %@\n", aStep.node.identifier, aStep.edge];
-//            [ruta addCoordinate:CLLocationCoordinate2DMake(@(25.650076).doubleValue,@(-100.290228).doubleValue)];
 
         } else {
             
@@ -59,6 +57,20 @@
     }
 
     return string;
+}
+
+- (GMSMutablePath *)routePath
+{
+    
+    GMSMutablePath *gmpRuta = [GMSMutablePath path];
+    
+    for (PESGraphRouteStep *aStep in steps) {
+        CGFloat latitud = [[aStep.node.additionalData objectForKey:@"latitud"] floatValue];
+        CGFloat longitud = [[aStep.node.additionalData objectForKey:@"longitud"] floatValue];
+        [gmpRuta addCoordinate:CLLocationCoordinate2DMake(@(latitud).doubleValue,@(longitud).doubleValue)];
+    }
+    
+    return gmpRuta;
 }
 
 - (NSUInteger)count {
