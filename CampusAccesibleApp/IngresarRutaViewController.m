@@ -22,7 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //25.649956, -100.290231
-    GMSCameraPosition *cameraPosition=[GMSCameraPosition cameraWithLatitude:25.649956 longitude:-100.290231 zoom:18];
+    GMSCameraPosition *cameraPosition=[GMSCameraPosition cameraWithLatitude:[[_pgnPrincipioI.additionalData objectForKey:@"longitud"] floatValue]
+                                                          longitude:[[_pgnPrincipioI.additionalData objectForKey:@"latitud"] floatValue]
+                                                          zoom:18];
    //Se mandan los bounds del vwMap como el frame
     _mapView =[GMSMapView mapWithFrame:_vwMap.bounds camera:cameraPosition];
     _mapView.myLocationEnabled=YES;
@@ -30,26 +32,25 @@
     GMSMarker *mrkFinal=[[GMSMarker alloc]init];
    
     //Se posicionan los marcadores de la vista
-    mrkPrincipio.position=CLLocationCoordinate2DMake(25.649956, -100.290231);
+    mrkPrincipio.position=CLLocationCoordinate2DMake([[_pgnPrincipioI.additionalData objectForKey:@"longitud"] floatValue],
+                                                     [[_pgnPrincipioI.additionalData objectForKey:@"latitud"] floatValue]);
     mrkPrincipio.groundAnchor=CGPointMake(0.5,0.5);
     mrkPrincipio.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
     mrkPrincipio.map=_mapView;
-    mrkPrincipio.title = @"Aulas 3";
+    mrkPrincipio.title = @"Inicio";
     //mrkPrincipio = _mrkPrincipioI;
     [_mapView setSelectedMarker:mrkPrincipio];
-    mrkFinal.position=CLLocationCoordinate2DMake(25.651502, -100.289138);
+    mrkFinal.position=CLLocationCoordinate2DMake([[_pgnFinalI.additionalData objectForKey:@"longitud"] floatValue],
+                                                 [[_pgnFinalI.additionalData objectForKey:@"latitud"] floatValue]);
     mrkFinal.groundAnchor=CGPointMake(0.5,0.5);
     mrkFinal.icon = [GMSMarker markerImageWithColor:[UIColor purpleColor]];
     mrkFinal.map=_mapView;
-    mrkFinal.title = @"Cafeteria Centrales";
+    mrkFinal.title = @"Fin";
  
-    CLLocationCoordinate2D crdComienzo = mrkPrincipio.position;
-    CLLocationCoordinate2D crdFinal = mrkFinal.position;
-    
-    
+
     //Se llama al metodo que obtiene ruta mas corta
     //NSArray *rutas = [self coordenadaComienzo:crdComienzo coordenadaFinal:crdFinal];
-    NSArray *rutas = [self nodoComienzo:_mrkPrincipioI nodoFinal:_mrkFinalI];
+    NSArray *rutas = [self nodoComienzo:_pgnPrincipioI nodoFinal:_pgnFinalI];
     GMSMutablePath *rutaCorta = [rutas objectAtIndex:0];
     GMSMutablePath *rutaCortaAccesible = [rutas objectAtIndex:1];
     

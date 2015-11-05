@@ -14,7 +14,7 @@
 @property (nonatomic,strong) GMSMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIView *vwMap;
 @property (strong, nonatomic) PESGraph *graphI;
-@property (strong, nonatomic) PESGraphNode *mrkPrincipioI;
-@property (strong, nonatomic) PESGraphNode *mrkFinalI;
+@property (strong, nonatomic) PESGraphNode *pgnPrincipioI;
+@property (strong, nonatomic) PESGraphNode *pgnFinalI;
 
 @end

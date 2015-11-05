@@ -20,8 +20,8 @@
 
 @interface PrincipalViewController ()
 
-@property PESGraphNode *mrkPrincipio;
-@property PESGraphNode *mrkFinal;
+@property PESGraphNode *pgnPrincipio;
+@property PESGraphNode *pgnFinal;
 @property NSInteger numMarkerSelected;        // Max value 2
 
 @end
@@ -81,8 +81,8 @@
     _mapView =[GMSMapView mapWithFrame:_vwMap.bounds camera:cameraPosition];
     _mapView.myLocationEnabled=YES;
     _mapView.delegate = self;
-    _mrkPrincipio=[[PESGraphNode alloc]init];
-    _mrkFinal=[[PESGraphNode alloc]init];
+    _pgnPrincipio=[[PESGraphNode alloc]init];
+    _pgnFinal=[[PESGraphNode alloc]init];
     
     
     _graph = [[PESGraph alloc] init];
@@ -93,12 +93,11 @@
         PESGraphNode *pgnNode = [PESGraphNode nodeWithIdentifier:name nodeWithDictionary:node];
         [self.pesNodes addObject:pgnNode];
         GMSMarker *mark=[[GMSMarker alloc]init];
-        NSLog([[node objectForKey:@"longitud"] stringValue]);
         mark.position=CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue]);
         mark.groundAnchor=CGPointMake(0.5,0.5);
         mark.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
         mark.map = _mapView;
-        mark.title = @"wass";
+        mark.title = @"Nodo ";
         mark.userData  = @{@"Nodo":pgnNode};
         i++;
     }
@@ -204,12 +203,12 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     if(_numMarkerSelected == 0){
         marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
         _numMarkerSelected++;
-        _mrkPrincipio = marker.userData[@"Nodo"];
+        _pgnPrincipio = marker.userData[@"Nodo"];
     }
     else if (_numMarkerSelected == 1){
         marker.icon = [GMSMarker markerImageWithColor:[UIColor yellowColor]];
         _numMarkerSelected++;
-        _mrkFinal = marker.userData[@"Nodo"];
+        _pgnFinal = marker.userData[@"Nodo"];
     }
     return YES;
 }
@@ -218,9 +217,27 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [[segue destinationViewController] setMrkPrincipioI:_mrkPrincipio];
-    [[segue destinationViewController] setMrkFinalI:_mrkFinal];
+    _mapView.selectedMarker = nil;
+    [[segue destinationViewController] setPgnPrincipioI:_pgnPrincipio];
+    [[segue destinationViewController] setPgnFinalI:_pgnFinal];
     [[segue destinationViewController] setGraphI:_graph];
 }
 
+- (IBAction)limpiarMapa:(id)sender {
+    [self.mapView clear];
+    _numMarkerSelected = 0;
+    NSLog(@"Size %lu",(unsigned long)[self.pesNodes count]);
+    for (PESGraphNode* pgnNode in self.pesNodes) {
+        GMSMarker *mark=[[GMSMarker alloc]init];
+        mark.position=CLLocationCoordinate2DMake([[pgnNode.additionalData objectForKey:@"longitud"] floatValue], [[pgnNode.additionalData  objectForKey:@"latitud"] floatValue]);
+        mark.groundAnchor=CGPointMake(0.5,0.5);
+        mark.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
+        mark.map = _mapView;
+        mark.title = @"Nodo ";
+        mark.userData  = @{@"Nodo":pgnNode};
+
+        
+    }
+    
+}
 @end

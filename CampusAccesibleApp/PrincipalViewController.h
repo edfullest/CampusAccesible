@@ -19,5 +19,6 @@
 @property (strong, nonatomic) NSArray *edges;
 @property (strong, nonatomic) PESGraph *graph;
 @property (strong, nonatomic) NSMutableArray * pesNodes;
+- (IBAction)limpiarMapa:(id)sender;
 
 @end
