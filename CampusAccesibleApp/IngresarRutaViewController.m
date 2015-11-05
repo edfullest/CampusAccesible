@@ -35,6 +35,7 @@
     mrkPrincipio.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
     mrkPrincipio.map=_mapView;
     mrkPrincipio.title = @"Aulas 3";
+    //mrkPrincipio = _mrkPrincipioI;
     [_mapView setSelectedMarker:mrkPrincipio];
     mrkFinal.position=CLLocationCoordinate2DMake(25.651502, -100.289138);
     mrkFinal.groundAnchor=CGPointMake(0.5,0.5);
@@ -47,7 +48,8 @@
     
     
     //Se llama al metodo que obtiene ruta mas corta
-    NSArray *rutas = [self coordenadaComienzo:crdComienzo coordenadaFinal:crdFinal];
+    //NSArray *rutas = [self coordenadaComienzo:crdComienzo coordenadaFinal:crdFinal];
+    NSArray *rutas = [self nodoComienzo:_mrkPrincipioI nodoFinal:_mrkFinalI];
     GMSMutablePath *rutaCorta = [rutas objectAtIndex:0];
     GMSMutablePath *rutaCortaAccesible = [rutas objectAtIndex:1];
     
@@ -131,7 +133,7 @@
 - (NSArray *)nodoComienzo:(PESGraphNode *) comienzo nodoFinal:(PESGraphNode *) final    {
     
     // Ejecutar algoritmo de Dijkstra para ruta mas corta
-    PESGraphRoute *route = [_graph shortestRouteFromNode:comienzo toNode:final];
+    PESGraphRoute *route = [_graphI shortestRouteFromNode:comienzo toNode:final];
     
     // Crear GMSMutablePath con coordenadas
     GMSMutablePath *rutaCorta = [GMSMutablePath path];

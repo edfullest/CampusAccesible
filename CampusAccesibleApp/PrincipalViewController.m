@@ -20,8 +20,8 @@
 
 @interface PrincipalViewController ()
 
-@property GMSMarker *mrkPrincipio;
-@property GMSMarker *mrkFinal;
+@property PESGraphNode *mrkPrincipio;
+@property PESGraphNode *mrkFinal;
 @property NSInteger numMarkerSelected;        // Max value 2
 
 @end
@@ -68,6 +68,7 @@
     //Se cargan los datos de los nodos
     NSString *pathPlist = [ [NSBundle mainBundle] pathForResource: @"Property List" ofType: @"plist"];
     self.nodes = [[NSArray alloc] initWithContentsOfFile: pathPlist];
+    self.pesNodes = [[NSMutableArray alloc] init];
     
     pathPlist = [ [NSBundle mainBundle] pathForResource: @"ListaCaminos" ofType: @"plist"];
     self.edges = [[NSArray alloc] initWithContentsOfFile: pathPlist];
@@ -80,15 +81,16 @@
     _mapView =[GMSMapView mapWithFrame:_vwMap.bounds camera:cameraPosition];
     _mapView.myLocationEnabled=YES;
     _mapView.delegate = self;
-    _mrkPrincipio=[[GMSMarker alloc]init];
-    _mrkFinal=[[GMSMarker alloc]init];
+    _mrkPrincipio=[[PESGraphNode alloc]init];
+    _mrkFinal=[[PESGraphNode alloc]init];
     
     
-    PESGraph *graph = [[PESGraph alloc] init];
+    _graph = [[PESGraph alloc] init];
     //Se inicializan los nodos dentro del grafo
     int i = 0;
     for (NSDictionary* node in self.nodes) {
-        PESGraphNode *pgnNode = [PESGraphNode nodeWithIdentifier:[@(i) stringValue] nodeWithDictionary:node];
+        PESGraphNode *pgnNode = [PESGraphNode nodeWithIdentifier: [NSString stringWithFormat:@"Nodo %d", i] nodeWithDictionary:node];
+        [self.pesNodes addObject:pgnNode];
         GMSMarker *mark=[[GMSMarker alloc]init];
         NSLog([[node objectForKey:@"longitud"] stringValue]);
         mark.position=CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue]);
@@ -138,7 +140,6 @@
         }
         rectangle.strokeWidth = 2.f;
         rectangle.map = _mapView;
-        
     }
     
     [self.vwMap addSubview:_mapView];
@@ -217,6 +218,8 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [[segue destinationViewController] setMrkPrincipioI:_mrkPrincipio];
+    [[segue destinationViewController] setMrkFinalI:_mrkFinal];
+    [[segue destinationViewController] setGraphI:_graph];
 }
 
 @end
