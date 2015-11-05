@@ -7,6 +7,11 @@
 //
 
 #import "IngresarRutaViewController.h"
+#import "PESGraph/PESGraph.h"
+#import "PESGraph/PESGraphNode.h"
+#import "PESGraph/PESGraphEdge.h"
+#import "PESGraph/PESGraphRoute.h"
+#import "PESGraph/PESGraphRouteStep.h"
 
 @interface IngresarRutaViewController ()
 
@@ -116,6 +121,34 @@
     [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake(@(25.651556).doubleValue,@(-100.288683).doubleValue)];
     //Centrales: 25.651502, -100.289138
     [rutaCortaAccesible addCoordinate:final];
+    
+    NSArray *rutas = [NSArray array];
+    rutas = [[NSArray alloc] initWithObjects:rutaCorta,rutaCortaAccesible, nil];
+    return rutas;
+}
+
+//Metodo que obtiene la ruta mas corta y la ruta mas corta accesible, con base en una coordenada comienzo y una final
+- (NSArray *)nodoComienzo:(PESGraphNode *) comienzo nodoFinal:(PESGraphNode *) final    {
+    
+    // Ejecutar algoritmo de Dijkstra para ruta mas corta
+    PESGraphRoute *route = [_graph shortestRouteFromNode:comienzo toNode:final];
+    
+    // Crear GMSMutablePath con coordenadas
+    GMSMutablePath *rutaCorta = [GMSMutablePath path];
+    
+    // Inicializar GMSMutablePath con coordenadas de ruta mas corta
+    for (PESGraphRouteStep *aStep in route.steps) {
+        
+        NSDictionary * node = aStep.node.additionalData;
+        [rutaCorta addCoordinate:CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue])];
+        
+    }
+    
+    // El mismo procedimiento de arriba deberia hacerse para la ruta accesible.
+    // Como actualmente solo tenemos un unico grafo, diremos que tambien la ruta corta accesible
+    // es igual a la ruta corta
+    GMSMutablePath *rutaCortaAccesible = [GMSMutablePath path];
+    rutaCortaAccesible = rutaCorta;
     
     NSArray *rutas = [NSArray array];
     rutas = [[NSArray alloc] initWithObjects:rutaCorta,rutaCortaAccesible, nil];

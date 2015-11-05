@@ -31,6 +31,7 @@
 		A0D8A1EF1BD33A130016AE86 /* IngresarRutaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1EE1BD33A130016AE86 /* IngresarRutaViewController.m */; };
 		A0D8A1F41BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1F31BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m */; };
 		A0D8A1F71BD354230016AE86 /* DetalleUbicacionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1F61BD354230016AE86 /* DetalleUbicacionTableViewController.m */; };
+		A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */; };
 		A1E842E81BE848EB00BBEF6D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E842E61BE848EB00BBEF6D /* libsqlite3.0.tbd */; };
 		A1E842E91BE848EB00BBEF6D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E842E71BE848EB00BBEF6D /* libsqlite3.tbd */; };
 		A1E842EB1BE84A4100BBEF6D /* myData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A1E842EA1BE84A4100BBEF6D /* myData.sqlite */; };
@@ -80,6 +81,7 @@
 		A0D8A1F31BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalonesAccesiblesTableViewController.m; sourceTree = "<group>"; };
 		A0D8A1F51BD354230016AE86 /* DetalleUbicacionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetalleUbicacionTableViewController.h; sourceTree = "<group>"; };
 		A0D8A1F61BD354230016AE86 /* DetalleUbicacionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetalleUbicacionTableViewController.m; sourceTree = "<group>"; };
+		A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ListaCaminos.plist; sourceTree = "<group>"; };
 		A1E842E61BE848EB00BBEF6D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		A1E842E71BE848EB00BBEF6D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		A1E842EA1BE84A4100BBEF6D /* myData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = myData.sqlite; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				A1E842EC1BE84C8800BBEF6D /* Database.h */,
 				A1E842ED1BE84C8800BBEF6D /* Database.m */,
 				A0CA6E2B1BE88B47007E7497 /* Property List.plist */,
+				A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */,
 			);
 			path = CampusAccesibleApp;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				A0CA6E2C1BE88B47007E7497 /* Property List.plist in Resources */,
 				A0D8A1DB1BD32ADB0016AE86 /* LaunchScreen.storyboard in Resources */,
 				A0D8A1D81BD32ADB0016AE86 /* Assets.xcassets in Resources */,
+				A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */,
 				A1E842EB1BE84A4100BBEF6D /* myData.sqlite in Resources */,
 				A0D8A1E31BD32BC80016AE86 /* Podfile in Resources */,
 				A0D8A1D61BD32ADB0016AE86 /* Main.storyboard in Resources */,

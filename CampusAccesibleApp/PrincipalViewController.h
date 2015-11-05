@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Database.h"
+#import "PESGraph/PESGraph.h"
 @import GoogleMaps;
 
 @interface PrincipalViewController : UIViewController <GMSMapViewDelegate>
@@ -15,5 +16,8 @@
 @property (nonatomic,strong) GMSMapView *mapView;
 @property (strong, nonatomic) NSArray *nodes;
 @property (strong, nonatomic) IBOutlet UIView *vwMap;
+@property (strong, nonatomic) NSArray *edges;
+@property (strong, nonatomic) PESGraph *graph;
+@property (strong, nonatomic) NSMutableArray * pesNodes;
 
 @end

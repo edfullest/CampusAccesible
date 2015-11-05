@@ -13,10 +13,16 @@
 #import "PESGraph/PESGraphEdge.h"
 #import "PESGraph/PESGraphRoute.h"
 #import "PESGraph/PESGraphRouteStep.h"
+#import "Vertice.h"
+#import "IngresarRutaViewController.h"
 
 @import GoogleMaps;
 
 @interface PrincipalViewController ()
+
+@property GMSMarker *mrkPrincipio;
+@property GMSMarker *mrkFinal;
+@property NSInteger numMarkerSelected;        // Max value 2
 
 @end
 
@@ -58,18 +64,24 @@
 //    [self.vwMain addSubview:_mpvMapaTec];
     
     [super viewDidLoad];
+    _numMarkerSelected = 0;
     //Se cargan los datos de los nodos
     NSString *pathPlist = [ [NSBundle mainBundle] pathForResource: @"Property List" ofType: @"plist"];
     self.nodes = [[NSArray alloc] initWithContentsOfFile: pathPlist];
+    
+    pathPlist = [ [NSBundle mainBundle] pathForResource: @"ListaCaminos" ofType: @"plist"];
+    self.edges = [[NSArray alloc] initWithContentsOfFile: pathPlist];
    
     GMSCameraPosition *cameraPosition=[GMSCameraPosition cameraWithLatitude:25.651113
                                                                                                   longitude:-100.290028
                                                                                                        zoom:17];
+    
     //Se mandan los bounds del vwMap como el frame
     _mapView =[GMSMapView mapWithFrame:_vwMap.bounds camera:cameraPosition];
     _mapView.myLocationEnabled=YES;
-    GMSMarker *mrkPrincipio=[[GMSMarker alloc]init];
-    GMSMarker *mrkFinal=[[GMSMarker alloc]init];
+    _mapView.delegate = self;
+    _mrkPrincipio=[[GMSMarker alloc]init];
+    _mrkFinal=[[GMSMarker alloc]init];
     
     
     PESGraph *graph = [[PESGraph alloc] init];
@@ -82,12 +94,52 @@
         mark.position=CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue]);
         mark.groundAnchor=CGPointMake(0.5,0.5);
         mark.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
-        mark.map=_mapView;
+        mark.map = _mapView;
         mark.title = @"wass";
+        mark.userData  = @{@"Nodo":pgnNode};
         i++;
     }
-
     
+    // Se pintan edges en mapa
+    
+    for (NSDictionary* edge in self.edges) {
+        // Obten nodos del camino
+        NSInteger posNodo1 = [[edge objectForKey:@"punto1"] intValue];
+        NSInteger posNodo2 = [[edge objectForKey:@"punto2"] intValue];
+        NSDictionary * nodo1 = [self.nodes objectAtIndex: posNodo1-1];
+        NSDictionary * nodo2 = [self.nodes objectAtIndex: posNodo2-1];
+        
+        // Crear nodo de tipo PESGraphNode a partir de nodos
+        PESGraphNode *pgnNode1 = [self.pesNodes objectAtIndex:posNodo1-1];
+        PESGraphNode *pgnNode2 = [self.pesNodes objectAtIndex:posNodo2-1];
+        
+        // Calcular distancia entre nodos (coordenadas)
+        float deltaLongitud = [[nodo1 objectForKey:@"longitud"] floatValue] - [[nodo2 objectForKey:@"longitud"] floatValue];
+        float deltaLatitud = [[nodo1 objectForKey:@"latitud"] floatValue] - [[nodo2 objectForKey:@"latitud"] floatValue];
+        float distancia = sqrtf( powf(deltaLatitud, 2.0) + powf(deltaLongitud, 2.0) );
+        
+        // Agregar edge al grafo
+        [_graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:[NSString stringWithFormat:@"%ld<->%ld", (long)(posNodo1-1), (long)(posNodo2-1)] andWeight:[NSNumber numberWithFloat:distancia]] fromNode:pgnNode1 toNode:pgnNode2];
+        
+        GMSMutablePath *edgeEnMapa = [GMSMutablePath path];
+        // Agrega coordenada de nodo1
+        [edgeEnMapa addCoordinate:CLLocationCoordinate2DMake([[nodo1 objectForKey:@"longitud"] floatValue], [[nodo1 objectForKey:@"latitud"] floatValue])];
+        // Agrega coordenada de nodo2
+        [edgeEnMapa addCoordinate:CLLocationCoordinate2DMake([[nodo2 objectForKey:@"longitud"] floatValue], [[nodo2 objectForKey:@"latitud"] floatValue])];
+        
+        // Dibuja camino en el mapa
+        GMSPolyline *rectangle = [GMSPolyline polylineWithPath:edgeEnMapa];
+        
+        // Asigna color de edge dependiendo de accesibilidad
+        if ([[edge objectForKey:@"accesible"] boolValue] == YES) {
+            rectangle.strokeColor = [UIColor blueColor];
+        } else {
+            rectangle.strokeColor = [UIColor redColor];
+        }
+        rectangle.strokeWidth = 2.f;
+        rectangle.map = _mapView;
+        
+    }
     
     [self.vwMap addSubview:_mapView];
     
@@ -142,16 +194,29 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     [self.navigationController pushViewController:detalleUbicacionTableViewController animated:YES];
 }
 
-/*
+// Funcion que recibe el marker seleccionado
+// http://www.g8production.com/post/60435653126/google-maps-sdk-for-ios-move-marker-and-info
+- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
+{
+    mapView.selectedMarker = marker;
+    if(_numMarkerSelected == 0){
+        marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+        _numMarkerSelected++;
+        _mrkPrincipio = marker.userData;
+    }
+    else if (_numMarkerSelected == 1){
+        marker.icon = [GMSMarker markerImageWithColor:[UIColor yellowColor]];
+        _numMarkerSelected++;
+        _mrkFinal = marker.userData;
+    }
+    return YES;
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [[segue destinationViewController] setMrkPrincipioI:_mrkPrincipio];
 }
-*/
-
-
 
 @end
