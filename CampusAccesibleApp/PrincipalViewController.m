@@ -89,7 +89,8 @@
     //Se inicializan los nodos dentro del grafo
     int i = 0;
     for (NSDictionary* node in self.nodes) {
-        PESGraphNode *pgnNode = [PESGraphNode nodeWithIdentifier: [NSString stringWithFormat:@"Nodo %d", i] nodeWithDictionary:node];
+        NSString *name = [[NSString alloc] initWithFormat:@"Nodo%d",i];
+        PESGraphNode *pgnNode = [PESGraphNode nodeWithIdentifier:name nodeWithDictionary:node];
         [self.pesNodes addObject:pgnNode];
         GMSMarker *mark=[[GMSMarker alloc]init];
         NSLog([[node objectForKey:@"longitud"] stringValue]);
@@ -203,12 +204,12 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     if(_numMarkerSelected == 0){
         marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
         _numMarkerSelected++;
-        _mrkPrincipio = marker.userData;
+        _mrkPrincipio = marker.userData[@"Nodo"];
     }
     else if (_numMarkerSelected == 1){
         marker.icon = [GMSMarker markerImageWithColor:[UIColor yellowColor]];
         _numMarkerSelected++;
-        _mrkFinal = marker.userData;
+        _mrkFinal = marker.userData[@"Nodo"];
     }
     return YES;
 }
