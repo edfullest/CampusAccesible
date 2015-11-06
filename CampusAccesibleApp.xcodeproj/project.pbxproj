@@ -20,6 +20,7 @@
 		A04F8A0D1BE5A4F700B8436C /* PuntoClave.m in Sources */ = {isa = PBXBuildFile; fileRef = A04F8A031BE5A4F700B8436C /* PuntoClave.m */; };
 		A04F8A0E1BE5A4F700B8436C /* Salon.m in Sources */ = {isa = PBXBuildFile; fileRef = A04F8A051BE5A4F700B8436C /* Salon.m */; };
 		A04F8A0F1BE5A4F700B8436C /* Vertice.m in Sources */ = {isa = PBXBuildFile; fileRef = A04F8A071BE5A4F700B8436C /* Vertice.m */; };
+		A07B7BBD1BED3316009B00A3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A07B7BBB1BED3316009B00A3 /* Model.xcdatamodeld */; };
 		A0CA6E2C1BE88B47007E7497 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0CA6E2B1BE88B47007E7497 /* Property List.plist */; };
 		A0D8A1CD1BD32ADB0016AE86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1CC1BD32ADB0016AE86 /* main.m */; };
 		A0D8A1D01BD32ADB0016AE86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1CF1BD32ADB0016AE86 /* AppDelegate.m */; };
@@ -34,8 +35,6 @@
 		A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */; };
 		A1E842E81BE848EB00BBEF6D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E842E61BE848EB00BBEF6D /* libsqlite3.0.tbd */; };
 		A1E842E91BE848EB00BBEF6D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E842E71BE848EB00BBEF6D /* libsqlite3.tbd */; };
-		A1E842EB1BE84A4100BBEF6D /* myData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A1E842EA1BE84A4100BBEF6D /* myData.sqlite */; };
-		A1E842EE1BE84C8800BBEF6D /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E842ED1BE84C8800BBEF6D /* Database.m */; };
 		D8AE06B7EC06DA08C58111C4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 562EBE69777865429395770B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +62,7 @@
 		A04F8A051BE5A4F700B8436C /* Salon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Salon.m; sourceTree = "<group>"; };
 		A04F8A061BE5A4F700B8436C /* Vertice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertice.h; sourceTree = "<group>"; };
 		A04F8A071BE5A4F700B8436C /* Vertice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vertice.m; sourceTree = "<group>"; };
+		A07B7BBC1BED3316009B00A3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A0CA6E2B1BE88B47007E7497 /* Property List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
 		A0D8A1C81BD32ADB0016AE86 /* CampusAccesibleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampusAccesibleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D8A1CC1BD32ADB0016AE86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -84,9 +84,6 @@
 		A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ListaCaminos.plist; sourceTree = "<group>"; };
 		A1E842E61BE848EB00BBEF6D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		A1E842E71BE848EB00BBEF6D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		A1E842EA1BE84A4100BBEF6D /* myData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = myData.sqlite; sourceTree = "<group>"; };
-		A1E842EC1BE84C8800BBEF6D /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
-		A1E842ED1BE84C8800BBEF6D /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		BD66B4A3F1AF30D333570849 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "CampusAccesibleApp/Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +137,61 @@
 			path = CampusAccesibleApp/Clases;
 			sourceTree = "<group>";
 		};
+		A07B7BBE1BED33D8009B00A3 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				A0D8A1CE1BD32ADB0016AE86 /* AppDelegate.h */,
+				A0D8A1CF1BD32ADB0016AE86 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		A07B7BBF1BED33ED009B00A3 /* SalonesAccesiblesVWC */ = {
+			isa = PBXGroup;
+			children = (
+				A0D8A1F21BD3527D0016AE86 /* SalonesAccesiblesTableViewController.h */,
+				A0D8A1F31BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m */,
+			);
+			name = SalonesAccesiblesVWC;
+			sourceTree = "<group>";
+		};
+		A07B7BC01BED342B009B00A3 /* Property Lists */ = {
+			isa = PBXGroup;
+			children = (
+				A0D8A1DC1BD32ADB0016AE86 /* Info.plist */,
+				A0CA6E2B1BE88B47007E7497 /* Property List.plist */,
+				A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */,
+			);
+			name = "Property Lists";
+			sourceTree = "<group>";
+		};
+		A07B7BC11BED343F009B00A3 /* PrincipalVWC */ = {
+			isa = PBXGroup;
+			children = (
+				A0D8A1E41BD32EF10016AE86 /* PrincipalViewController.h */,
+				A0D8A1E51BD32EF10016AE86 /* PrincipalViewController.m */,
+			);
+			name = PrincipalVWC;
+			sourceTree = "<group>";
+		};
+		A07B7BC21BED3454009B00A3 /* DetalleUbicacionVWC */ = {
+			isa = PBXGroup;
+			children = (
+				A0D8A1F51BD354230016AE86 /* DetalleUbicacionTableViewController.h */,
+				A0D8A1F61BD354230016AE86 /* DetalleUbicacionTableViewController.m */,
+			);
+			name = DetalleUbicacionVWC;
+			sourceTree = "<group>";
+		};
+		A07B7BC31BED345F009B00A3 /* IngresarRutaVWC */ = {
+			isa = PBXGroup;
+			children = (
+				A0D8A1ED1BD33A130016AE86 /* IngresarRutaViewController.h */,
+				A0D8A1EE1BD33A130016AE86 /* IngresarRutaViewController.m */,
+			);
+			name = IngresarRutaVWC;
+			sourceTree = "<group>";
+		};
 		A0D8A1BF1BD32ADB0016AE86 = {
 			isa = PBXGroup;
 			children = (
@@ -163,27 +215,18 @@
 		A0D8A1CA1BD32ADB0016AE86 /* CampusAccesibleApp */ = {
 			isa = PBXGroup;
 			children = (
-				A1E842EA1BE84A4100BBEF6D /* myData.sqlite */,
-				A0D8A1CE1BD32ADB0016AE86 /* AppDelegate.h */,
-				A0D8A1CF1BD32ADB0016AE86 /* AppDelegate.m */,
+				A07B7BBE1BED33D8009B00A3 /* AppDelegate */,
 				A0D8A1D41BD32ADB0016AE86 /* Main.storyboard */,
-				A0D8A1F21BD3527D0016AE86 /* SalonesAccesiblesTableViewController.h */,
-				A0D8A1F31BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m */,
+				A07B7BBF1BED33ED009B00A3 /* SalonesAccesiblesVWC */,
 				A0D8A1E21BD32BC80016AE86 /* Podfile */,
 				A0D8A1D71BD32ADB0016AE86 /* Assets.xcassets */,
 				A0D8A1D91BD32ADB0016AE86 /* LaunchScreen.storyboard */,
-				A0D8A1DC1BD32ADB0016AE86 /* Info.plist */,
+				A07B7BC01BED342B009B00A3 /* Property Lists */,
 				A0D8A1CB1BD32ADB0016AE86 /* Supporting Files */,
-				A0D8A1E41BD32EF10016AE86 /* PrincipalViewController.h */,
-				A0D8A1E51BD32EF10016AE86 /* PrincipalViewController.m */,
-				A0D8A1F51BD354230016AE86 /* DetalleUbicacionTableViewController.h */,
-				A0D8A1F61BD354230016AE86 /* DetalleUbicacionTableViewController.m */,
-				A0D8A1ED1BD33A130016AE86 /* IngresarRutaViewController.h */,
-				A0D8A1EE1BD33A130016AE86 /* IngresarRutaViewController.m */,
-				A1E842EC1BE84C8800BBEF6D /* Database.h */,
-				A1E842ED1BE84C8800BBEF6D /* Database.m */,
-				A0CA6E2B1BE88B47007E7497 /* Property List.plist */,
-				A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */,
+				A07B7BC11BED343F009B00A3 /* PrincipalVWC */,
+				A07B7BC21BED3454009B00A3 /* DetalleUbicacionVWC */,
+				A07B7BC31BED345F009B00A3 /* IngresarRutaVWC */,
+				A07B7BBB1BED3316009B00A3 /* Model.xcdatamodeld */,
 			);
 			path = CampusAccesibleApp;
 			sourceTree = "<group>";
@@ -249,6 +292,7 @@
 				TargetAttributes = {
 					A0D8A1C71BD32ADB0016AE86 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 7ZQ2323276;
 					};
 				};
 			};
@@ -279,7 +323,6 @@
 				A0D8A1DB1BD32ADB0016AE86 /* LaunchScreen.storyboard in Resources */,
 				A0D8A1D81BD32ADB0016AE86 /* Assets.xcassets in Resources */,
 				A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */,
-				A1E842EB1BE84A4100BBEF6D /* myData.sqlite in Resources */,
 				A0D8A1E31BD32BC80016AE86 /* Podfile in Resources */,
 				A0D8A1D61BD32ADB0016AE86 /* Main.storyboard in Resources */,
 			);
@@ -346,7 +389,6 @@
 				A04F8A0A1BE5A4F700B8436C /* Descriptor.m in Sources */,
 				4921B0C01BE5723800444B1F /* PESGraphEdge.m in Sources */,
 				A04F8A0F1BE5A4F700B8436C /* Vertice.m in Sources */,
-				A1E842EE1BE84C8800BBEF6D /* Database.m in Sources */,
 				A04F8A0D1BE5A4F700B8436C /* PuntoClave.m in Sources */,
 				4921B0C11BE5723800444B1F /* PESGraphRoute.m in Sources */,
 				4921B0C21BE5723800444B1F /* PESGraphRouteStep.m in Sources */,
@@ -357,6 +399,7 @@
 				A0D8A1D01BD32ADB0016AE86 /* AppDelegate.m in Sources */,
 				A0D8A1EF1BD33A130016AE86 /* IngresarRutaViewController.m in Sources */,
 				A0D8A1E61BD32EF10016AE86 /* PrincipalViewController.m in Sources */,
+				A07B7BBD1BED3316009B00A3 /* Model.xcdatamodeld in Sources */,
 				A0D8A1F71BD354230016AE86 /* DetalleUbicacionTableViewController.m in Sources */,
 				A0D8A1CD1BD32ADB0016AE86 /* main.m in Sources */,
 				A0D8A1F41BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m in Sources */,
@@ -405,6 +448,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -449,6 +493,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -472,10 +517,13 @@
 			baseConfigurationReference = 4F55C2EA4CFB42E8B2152241 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CampusAccesibleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ITESM.CampusAccesibleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -484,10 +532,13 @@
 			baseConfigurationReference = BD66B4A3F1AF30D333570849 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CampusAccesibleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ITESM.CampusAccesibleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -513,6 +564,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A07B7BBB1BED3316009B00A3 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A07B7BBC1BED3316009B00A3 /* Model.xcdatamodel */,
+			);
+			currentVersion = A07B7BBC1BED3316009B00A3 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A0D8A1C01BD32ADB0016AE86 /* Project object */;
 }

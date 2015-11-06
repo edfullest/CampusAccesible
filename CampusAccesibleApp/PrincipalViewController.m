@@ -142,7 +142,7 @@
         rectangle.map = _mapView;
     }
     
-    [self.vwMap addSubview:_mapView];
+    [self.vwMap insertSubview:_mapView atIndex:0];
     
 //
     
