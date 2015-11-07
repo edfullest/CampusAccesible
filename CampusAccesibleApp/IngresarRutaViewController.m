@@ -21,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //25.649956, -100.290231
     GMSCameraPosition *cameraPosition=[GMSCameraPosition cameraWithLatitude:[[_pgnPrincipioI.additionalData objectForKey:@"longitud"] floatValue]
                                                           longitude:[[_pgnPrincipioI.additionalData objectForKey:@"latitud"] floatValue]
                                                           zoom:18];
@@ -49,7 +48,7 @@
  
 
     //Se llama al metodo que obtiene ruta mas corta
-    //NSArray *rutas = [self coordenadaComienzo:crdComienzo coordenadaFinal:crdFinal];
+    //Rutas es un arreglo que tiene la ruta más corta y la más corta y accesible
     NSArray *rutas = [self nodoComienzo:_pgnPrincipioI nodoFinal:_pgnFinalI];
     GMSMutablePath *rutaCorta = [rutas objectAtIndex:0];
     GMSMutablePath *rutaCortaAccesible = [rutas objectAtIndex:1];
@@ -80,55 +79,6 @@
 }
 
 
-//Metodo que obtiene la ruta mas corta y la ruta mas corta accesible, en base a una coordenada comienzo y una final
-- (NSArray *)coordenadaComienzo:(CLLocationCoordinate2D) comienzo coordenadaFinal:(CLLocationCoordinate2D) final    {
-    //Se traza una ruta manualmente, empezando desde Aulas 3
-    GMSMutablePath *rutaCorta = [GMSMutablePath path];
-    [rutaCorta addCoordinate:comienzo];
-    //25.650076, -100.290228
-    [rutaCorta addCoordinate:CLLocationCoordinate2DMake(@(25.650076).doubleValue,@(-100.290228).doubleValue)];
-    //25.650080, -100.290573
-    [rutaCorta addCoordinate:CLLocationCoordinate2DMake(@(25.650080).doubleValue,@(-100.290573).doubleValue)];
-    //25.650773, -100.290585
-    [rutaCorta addCoordinate:CLLocationCoordinate2DMake(@(25.650773).doubleValue,@(-100.290585).doubleValue)];
-    //25.650777, -100.290237
-    [rutaCorta addCoordinate:CLLocationCoordinate2DMake(@(25.650777).doubleValue,@(-100.290237).doubleValue)];
-    //25.651123, -100.290234
-    [rutaCorta addCoordinate:CLLocationCoordinate2DMake(@(25.651123).doubleValue,@(-100.290234).doubleValue)];
-    //25.651113, -100.289148
-    [rutaCorta addCoordinate:CLLocationCoordinate2DMake(@(25.651113).doubleValue,@(-100.289148).doubleValue)];
-    //Centrales: 25.651502, -100.289138
-    [rutaCorta addCoordinate:final];
-    
-    GMSMutablePath *rutaCortaAccesible = [GMSMutablePath path];
-    [rutaCortaAccesible addCoordinate:comienzo];
-    //25.650076, -100.290228
-    [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake(@(25.650076).doubleValue,@(-100.290228).doubleValue)];
-    //25.650078, -100.289343
-    [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake(@(25.650078).doubleValue,@(-100.289343).doubleValue)];
-    //25.650219, -100.289193
-    [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake(@(25.650219).doubleValue,@(-100.289193).doubleValue)];
-    //25.650752, -100.289158
-    [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake(@(25.650752).doubleValue,@(-100.289158).doubleValue)];
-    //25.650821, -100.288937
-    [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake(@(25.650821).doubleValue,@(-100.288937).doubleValue)];
-    //25.650922, -100.288882
-    [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake(@(25.650922).doubleValue,@(-100.288882).doubleValue)];
-    //25.651009, -100.288769
-    [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake(@(25.651009).doubleValue,@(-100.288769).doubleValue)];
-    //25.651113, -100.288765
-    [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake(@(25.651113).doubleValue,@(-100.288765).doubleValue)];
-    //25.651120, -100.288686
-    [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake(@(25.651120).doubleValue,@(-100.288686).doubleValue)];
-    //25.651556, -100.288683
-    [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake(@(25.651556).doubleValue,@(-100.288683).doubleValue)];
-    //Centrales: 25.651502, -100.289138
-    [rutaCortaAccesible addCoordinate:final];
-    
-    NSArray *rutas = [NSArray array];
-    rutas = [[NSArray alloc] initWithObjects:rutaCorta,rutaCortaAccesible, nil];
-    return rutas;
-}
 
 //Metodo que obtiene la ruta mas corta y la ruta mas corta accesible, con base en una coordenada comienzo y una final
 - (NSArray *)nodoComienzo:(PESGraphNode *) comienzo nodoFinal:(PESGraphNode *) final    {
