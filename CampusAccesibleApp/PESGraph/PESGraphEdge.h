@@ -21,10 +21,12 @@
         the airline flight its represents, etc.
      */
     NSString *__unsafe_unretained name;
+    BOOL accesible;
 }
 
 @property (nonatomic, strong) NSNumber *weight;
 @property (nonatomic, unsafe_unretained) NSString *name;
+@property BOOL accesible;
 
 /**
 	Convenience initializer that allows for setting the edge's name and number in 
@@ -34,7 +36,7 @@
 	@param aNumber the weight to assign to this edge
 	@returns an initialized and un-retained edge
  */
-+ (PESGraphEdge *)edgeWithName:(NSString *)aName andWeight:(NSNumber *)aNumber;
++ (PESGraphEdge *)edgeWithName:(NSString *)aName andWeight:(NSNumber *)aNumber andAccesible:(BOOL)aBool;
 
 /**
     Convenience initializer that allows for setting the edge's name at initilization

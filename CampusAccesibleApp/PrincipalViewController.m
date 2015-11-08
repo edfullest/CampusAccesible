@@ -115,13 +115,16 @@
         PESGraphNode *pgnNode1 = [self.pesNodes objectAtIndex:posNodo1-1];
         PESGraphNode *pgnNode2 = [self.pesNodes objectAtIndex:posNodo2-1];
         
+        // Obtener tipo de edge
+        BOOL esAccesible = [[edge objectForKey:@"accesible"] boolValue];
+        
         // Calcular distancia entre nodos (coordenadas)
         float deltaLongitud = [[nodo1 objectForKey:@"longitud"] floatValue] - [[nodo2 objectForKey:@"longitud"] floatValue];
         float deltaLatitud = [[nodo1 objectForKey:@"latitud"] floatValue] - [[nodo2 objectForKey:@"latitud"] floatValue];
         float distancia = sqrtf( powf(deltaLatitud, 2.0) + powf(deltaLongitud, 2.0) );
         
         // Agregar edge al grafo
-        [_graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:[NSString stringWithFormat:@"%ld<->%ld", (long)(posNodo1-1), (long)(posNodo2-1)] andWeight:[NSNumber numberWithFloat:distancia]] fromNode:pgnNode1 toNode:pgnNode2];
+        [_graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:[NSString stringWithFormat:@"%ld<->%ld", (long)(posNodo1-1), (long)(posNodo2-1)] andWeight:[NSNumber numberWithFloat:distancia] andAccesible:esAccesible] fromNode:pgnNode1 toNode:pgnNode2];
         
         GMSMutablePath *edgeEnMapa = [GMSMutablePath path];
         // Agrega coordenada de nodo1

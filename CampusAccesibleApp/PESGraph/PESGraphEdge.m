@@ -12,16 +12,18 @@
 
 @synthesize name;
 @synthesize weight;
+@synthesize accesible;
 
 #pragma mark -
 #pragma mark Class Methods
 
-+ (PESGraphEdge *)edgeWithName:(NSString *)aName andWeight:(NSNumber *)aNumber {
++ (PESGraphEdge *)edgeWithName:(NSString *)aName andWeight:(NSNumber *)aNumber andAccesible:(BOOL)aBool {
     
     PESGraphEdge *anEdge = [[PESGraphEdge alloc] init];
 
     anEdge.weight = aNumber;
     anEdge.name = aName;
+    anEdge.accesible = aBool;
     
     return anEdge;
 }
@@ -31,6 +33,8 @@
     PESGraphEdge *anEdge = [[PESGraphEdge alloc] init];
     
     anEdge.name = aName;
+    
+    anEdge.accesible = YES;
     
     return anEdge;
 }

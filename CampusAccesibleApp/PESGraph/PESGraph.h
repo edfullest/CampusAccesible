@@ -64,7 +64,7 @@
 	@param destinationNode the node to check the weight to
 	@returns either nil, or a number object describing the weight from one node to the other
  */
-- (NSNumber *)weightFromNode:(PESGraphNode *)sourceNode toNeighboringNode:(PESGraphNode *)destinationNode;
+- (NSNumber *)weightFromNode:(PESGraphNode *)sourceNode toNeighboringNode:(PESGraphNode *)destinationNode andAccesible:(BOOL)accesible;
 
 /**
 	Returns an unordered collection of all nodes that receive edges from the given node.
@@ -127,7 +127,7 @@
 	@param endNode a node in graph to calculate a route to
 	@returns either a PESGraphRoute object or nil, if no route is possible
  */
-- (PESGraphRoute *)shortestRouteFromNode:(PESGraphNode *)startNode toNode:(PESGraphNode *)endNode;
+- (PESGraphRoute *)shortestRouteFromNode:(PESGraphNode *)startNode toNode:(PESGraphNode *)endNode andAccesible:(BOOL)accesible;
 
 
 #pragma mark -
