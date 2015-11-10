@@ -54,16 +54,30 @@
     GMSMutablePath *rutaCortaAccesible = [rutas objectAtIndex:1];
     
     //Se dibujan las lineas
-    GMSPolyline *rectangle = [GMSPolyline polylineWithPath:rutaCorta];
+    
+    /*GMSPolyline *rectangle = [GMSPolyline polylineWithPath:rutaCorta];
     rectangle.strokeColor = [UIColor blueColor];
-    rectangle.strokeWidth = 2.f;
+    rectangle.strokeWidth = 4.f;
+    rectangle.map = _mapView;*/
+    
+    // Dibujar ruta accesible
+    
+    GMSPolyline *rectangle = [GMSPolyline polylineWithPath:rutaCortaAccesible];
+    rectangle.strokeColor = [UIColor blueColor];
+    rectangle.strokeWidth = 4.f;
     rectangle.map = _mapView;
     
-    GMSPolyline *rectangle2 = [GMSPolyline polylineWithPath:rutaCortaAccesible];
-    rectangle2.strokeColor = [UIColor redColor];
-    rectangle2.strokeWidth = 2.f;
-    rectangle2.map = _mapView;
+    // Dibujar ruta no accesible
     
+    for (int i = 0; i < [rutaCorta count] - 1; i ++) {
+        CLLocationCoordinate2D co1 = [rutaCorta coordinateAtIndex:i];
+        CLLocationCoordinate2D co2 = [rutaCorta coordinateAtIndex:i+1];
+        
+        CLLocation *lo1 = [[CLLocation alloc] initWithLatitude:co1.latitude longitude:co1.longitude];
+        CLLocation *lo2 = [[CLLocation alloc] initWithLatitude:co2.latitude longitude:co2.longitude];
+        
+        [self drawDashedLineOnMapBetweenOrigin:lo1 destination:lo2];
+    }
     
     [self.vwMap addSubview:_mapView];
 }
@@ -84,7 +98,7 @@
 - (NSArray *)nodoComienzo:(PESGraphNode *) comienzo nodoFinal:(PESGraphNode *) final    {
     
     // Ejecutar algoritmo de Dijkstra para ruta mas corta
-    PESGraphRoute *route = [_graphI shortestRouteFromNode:comienzo toNode:final];
+    PESGraphRoute *route = [_graphI shortestRouteFromNode:comienzo toNode:final andAccesible:NO];
     
     // Crear GMSMutablePath con coordenadas
     GMSMutablePath *rutaCorta = [GMSMutablePath path];
@@ -100,8 +114,19 @@
     // El mismo procedimiento de arriba deberia hacerse para la ruta accesible.
     // Como actualmente solo tenemos un unico grafo, diremos que tambien la ruta corta accesible
     // es igual a la ruta corta
+    // Ejecutar algoritmo de Dijkstra para ruta mas corta
+    PESGraphRoute *accesibleRoute = [_graphI shortestRouteFromNode:comienzo toNode:final andAccesible:YES];
+    
+    // Crear GMSMutablePath con coordenadas
     GMSMutablePath *rutaCortaAccesible = [GMSMutablePath path];
-    rutaCortaAccesible = rutaCorta;
+    
+    // Inicializar GMSMutablePath con coordenadas de ruta mas corta
+    for (PESGraphRouteStep *aStep in accesibleRoute.steps) {
+        
+        NSDictionary * node = aStep.node.additionalData;
+        [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue])];
+        
+    }
     
     NSArray *rutas = [NSArray array];
     rutas = [[NSArray alloc] initWithObjects:rutaCorta,rutaCortaAccesible, nil];
@@ -117,5 +142,50 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)drawDashedLineOnMapBetweenOrigin:(CLLocation *)originLocation destination:(CLLocation *)destinationLocation {
+    //[self.mapView clear];
+    
+    CGFloat distance = [originLocation distanceFromLocation:destinationLocation];
+    if (distance < 5.0f) return;
+    
+    // works for segmentLength 22 at zoom level 16; to have different length,
+    // calculate the new lengthFactor as 1/(24^2 * newLength)
+    CGFloat lengthFactor = 4.7093020352450285e-09;
+    CGFloat zoomFactor = pow(2, self.mapView.camera.zoom + 8);
+    CGFloat segmentLength = 1.f / (lengthFactor * zoomFactor);
+    CGFloat dashes = floor(distance / segmentLength);
+    CGFloat dashLatitudeStep = (destinationLocation.coordinate.latitude - originLocation.coordinate.latitude) / dashes;
+    CGFloat dashLongitudeStep = (destinationLocation.coordinate.longitude - originLocation.coordinate.longitude) / dashes;
+    
+    CLLocationCoordinate2D (^offsetCoord)(CLLocationCoordinate2D coord, CGFloat latOffset, CGFloat lngOffset) =
+    ^CLLocationCoordinate2D(CLLocationCoordinate2D coord, CGFloat latOffset, CGFloat lngOffset) {
+        return (CLLocationCoordinate2D) { .latitude = coord.latitude + latOffset,
+            .longitude = coord.longitude + lngOffset };
+    };
+    
+    GMSMutablePath *path = GMSMutablePath.path;
+    NSMutableArray *spans = NSMutableArray.array;
+    CLLocation *currentLocation = originLocation;
+    [path addCoordinate:currentLocation.coordinate];
+    
+    while ([currentLocation distanceFromLocation:destinationLocation] > segmentLength) {
+        CLLocationCoordinate2D dashEnd = offsetCoord(currentLocation.coordinate, dashLatitudeStep, dashLongitudeStep);
+        [path addCoordinate:dashEnd];
+        [spans addObject:[GMSStyleSpan spanWithColor:UIColor.redColor]];
+        
+        CLLocationCoordinate2D newLocationCoord = offsetCoord(dashEnd, dashLatitudeStep / 2.f, dashLongitudeStep / 2.f);
+        [path addCoordinate:newLocationCoord];
+        [spans addObject:[GMSStyleSpan spanWithColor:UIColor.clearColor]];
+        
+        currentLocation = [[CLLocation alloc] initWithLatitude:newLocationCoord.latitude
+                                                     longitude:newLocationCoord.longitude];
+    }
+    
+    GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
+    polyline.map = self.mapView;
+    polyline.spans = spans;
+    polyline.strokeWidth = 4.f;
+}
 
 @end

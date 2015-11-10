@@ -48,11 +48,14 @@
     }
 }
 
-- (NSNumber *)weightFromNode:(PESGraphNode *)sourceNode toNeighboringNode:(PESGraphNode *)destinationNode
+- (NSNumber *)weightFromNode:(PESGraphNode *)sourceNode toNeighboringNode:(PESGraphNode *)destinationNode andAccesible:(BOOL)accesible
 {
     PESGraphEdge *graphEdge = [self edgeFromNode:sourceNode toNeighboringNode:destinationNode];
-
+    if (accesible && !graphEdge.accesible) {
+        return [NSNumber numberWithFloat:999999.0f];
+    }
     return (graphEdge) ? graphEdge.weight : nil;
+    
 }
 
 - (NSInteger)edgeCount
@@ -165,7 +168,7 @@
 
 // Returns the quickest possible path between two nodes, using Dijkstra's algorithm
 // http://en.wikipedia.org/wiki/Dijkstra's_algorithm
-- (PESGraphRoute *)shortestRouteFromNode:(PESGraphNode *)startNode toNode:(PESGraphNode *)endNode
+- (PESGraphRoute *)shortestRouteFromNode:(PESGraphNode *)startNode toNode:(PESGraphNode *)endNode andAccesible:(BOOL)accesible
 {
     NSMutableDictionary *unexaminedNodes = [NSMutableDictionary dictionaryWithDictionary:self.nodes];
 
@@ -236,7 +239,7 @@
                     // The distance of going from the neighbor node to the origin, going through the node we're about to eliminate
                     NSNumber *alt = [NSNumber numberWithFloat:
                                      [[distancesFromSource objectForKey:identifierOfSmallestDist] floatValue] +
-                                     [[self weightFromNode:nodeMostRecentlyExamined toNeighboringNode:neighboringNode] floatValue]];
+                                     [[self weightFromNode:nodeMostRecentlyExamined toNeighboringNode:neighboringNode andAccesible:accesible] floatValue]];
                     
                     NSNumber *distanceFromNeighborToOrigin = [distancesFromSource objectForKey:neighboringNode.identifier];
 
