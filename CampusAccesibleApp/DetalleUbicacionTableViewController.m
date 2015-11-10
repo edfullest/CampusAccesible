@@ -7,21 +7,38 @@
 //
 
 #import "DetalleUbicacionTableViewController.h"
+#import "SWRevealViewController.h"
+#import "SalonesAccesiblesTableViewController.h"
+#import "BanosAccesiblesTableViewController.h"
+
 
 @interface DetalleUbicacionTableViewController ()
 
 @end
 
-@implementation DetalleUbicacionTableViewController
+@implementation DetalleUbicacionTableViewController{
+    NSArray *menuItems;
+}
+
+#pragma mark - Managing the edificio
+
+- (void)setEdificio:(id)newEdificio {
+    if (_edificio != newEdificio) {
+        _edificio = newEdificio;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // Sidebar
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.sidebarButton setTarget: self.revealViewController];
+        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+    menuItems = @[@"edificio", @"imagen", @"elevadores", @"salones", @"banos"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,67 +49,64 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return menuItems.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    NSString *CellIdentifier = [menuItems objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 1"]){
+        // Crea imagen para asignarla
+        UIImage *originalImage = [UIImage imageNamed:@"aulas1.jpg"];
+        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
+        cell.imageView.image = resizedImage;
+    }
+    if ([CellIdentifier isEqualToString:@"edificio"]) {
+        NSDictionary *object = self.edificio;
+        cell.textLabel.text = [[object valueForKey:@"nombre"] description];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    }
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row == 1)
+        return 400;
+    else
+        return 44;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"salones"]) {
+        NSDictionary *object1 = self.edificio;
+        UINavigationController *navController = segue.destinationViewController;
+        SalonesAccesiblesTableViewController *detalleController = [navController childViewControllers].firstObject;
+        detalleController.edificio1 = object1;
+    }
+    else if ([[segue identifier] isEqualToString:@"banos"]) {
+        NSDictionary *object1 = self.edificio;
+        UINavigationController *navController = segue.destinationViewController;
+        BanosAccesiblesTableViewController *detalleController = [navController childViewControllers].firstObject;
+        detalleController.edificio1 = object1;
+    }
 }
-*/
 
 @end

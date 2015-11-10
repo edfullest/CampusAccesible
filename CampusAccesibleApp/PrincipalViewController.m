@@ -15,6 +15,7 @@
 #import "PESGraph/PESGraphRouteStep.h"
 #import "Vertice.h"
 #import "IngresarRutaViewController.h"
+#import "SWRevealViewController.h"
 
 @import GoogleMaps;
 
@@ -178,7 +179,14 @@
 //        }
 //    }
 
-
+    // Sidebar Navigation Menu
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if (revealViewController)
+    {
+        [self.sidebarButton setTarget: self.revealViewController];
+        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
 }
 
 
