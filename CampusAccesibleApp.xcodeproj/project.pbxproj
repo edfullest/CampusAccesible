@@ -32,6 +32,13 @@
 		A0D8A1EF1BD33A130016AE86 /* IngresarRutaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1EE1BD33A130016AE86 /* IngresarRutaViewController.m */; };
 		A0D8A1F41BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1F31BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m */; };
 		A0D8A1F71BD354230016AE86 /* DetalleUbicacionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D8A1F61BD354230016AE86 /* DetalleUbicacionTableViewController.m */; };
+		A1CC79811BEEB1B700094037 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CC79801BEEB1B700094037 /* SWRevealViewController.m */; };
+		A1CC79841BEEB42700094037 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CC79831BEEB42700094037 /* SidebarViewController.m */; };
+		A1CC79861BEEBB5900094037 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79851BEEBB5900094037 /* menu.png */; };
+		A1CC79881BEEBB5F00094037 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79871BEEBB5F00094037 /* menu@2x.png */; };
+		A1CC79981BEF809000094037 /* Edificio List.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79971BEF809000094037 /* Edificio List.plist */; };
+		A1CC799A1BEF8DE800094037 /* aulas1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79991BEF8DE800094037 /* aulas1.jpg */; };
+		A1CC79A11BF1735A00094037 /* BanosAccesiblesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CC79A01BF1735A00094037 /* BanosAccesiblesTableViewController.m */; };
 		A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */; };
 		A1E842E81BE848EB00BBEF6D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E842E61BE848EB00BBEF6D /* libsqlite3.0.tbd */; };
 		A1E842E91BE848EB00BBEF6D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E842E71BE848EB00BBEF6D /* libsqlite3.tbd */; };
@@ -81,6 +88,16 @@
 		A0D8A1F31BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalonesAccesiblesTableViewController.m; sourceTree = "<group>"; };
 		A0D8A1F51BD354230016AE86 /* DetalleUbicacionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetalleUbicacionTableViewController.h; sourceTree = "<group>"; };
 		A0D8A1F61BD354230016AE86 /* DetalleUbicacionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetalleUbicacionTableViewController.m; sourceTree = "<group>"; };
+		A1CC797F1BEEB1AF00094037 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		A1CC79801BEEB1B700094037 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		A1CC79821BEEB41F00094037 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
+		A1CC79831BEEB42700094037 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
+		A1CC79851BEEBB5900094037 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		A1CC79871BEEBB5F00094037 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		A1CC79971BEF809000094037 /* Edificio List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Edificio List.plist"; sourceTree = "<group>"; };
+		A1CC79991BEF8DE800094037 /* aulas1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas1.jpg; sourceTree = "<group>"; };
+		A1CC799F1BF1735A00094037 /* BanosAccesiblesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BanosAccesiblesTableViewController.h; sourceTree = "<group>"; };
+		A1CC79A01BF1735A00094037 /* BanosAccesiblesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BanosAccesiblesTableViewController.m; sourceTree = "<group>"; };
 		A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ListaCaminos.plist; sourceTree = "<group>"; };
 		A1E842E61BE848EB00BBEF6D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		A1E842E71BE848EB00BBEF6D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -161,6 +178,7 @@
 				A0D8A1DC1BD32ADB0016AE86 /* Info.plist */,
 				A0CA6E2B1BE88B47007E7497 /* Property List.plist */,
 				A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */,
+				A1CC79971BEF809000094037 /* Edificio List.plist */,
 			);
 			name = "Property Lists";
 			sourceTree = "<group>";
@@ -215,6 +233,9 @@
 		A0D8A1CA1BD32ADB0016AE86 /* CampusAccesibleApp */ = {
 			isa = PBXGroup;
 			children = (
+				A1EBF5E41BF1964D00E8E95F /* Images */,
+				A1CC799E1BF172AC00094037 /* BanosAccesiblesVWC */,
+				A1CC797E1BEEB19100094037 /* SWRevealViewController */,
 				A07B7BBE1BED33D8009B00A3 /* AppDelegate */,
 				A0D8A1D41BD32ADB0016AE86 /* Main.storyboard */,
 				A07B7BBF1BED33ED009B00A3 /* SalonesAccesiblesVWC */,
@@ -237,6 +258,36 @@
 				A0D8A1CC1BD32ADB0016AE86 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A1CC797E1BEEB19100094037 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A1CC797F1BEEB1AF00094037 /* SWRevealViewController.h */,
+				A1CC79801BEEB1B700094037 /* SWRevealViewController.m */,
+				A1CC79821BEEB41F00094037 /* SidebarViewController.h */,
+				A1CC79831BEEB42700094037 /* SidebarViewController.m */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		A1CC799E1BF172AC00094037 /* BanosAccesiblesVWC */ = {
+			isa = PBXGroup;
+			children = (
+				A1CC799F1BF1735A00094037 /* BanosAccesiblesTableViewController.h */,
+				A1CC79A01BF1735A00094037 /* BanosAccesiblesTableViewController.m */,
+			);
+			name = BanosAccesiblesVWC;
+			sourceTree = "<group>";
+		};
+		A1EBF5E41BF1964D00E8E95F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A1CC79991BEF8DE800094037 /* aulas1.jpg */,
+				A1CC79851BEEBB5900094037 /* menu.png */,
+				A1CC79871BEEBB5F00094037 /* menu@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		BE961D2E81FFA8C9EFA81DC4 /* Pods */ = {
@@ -322,8 +373,12 @@
 				A0CA6E2C1BE88B47007E7497 /* Property List.plist in Resources */,
 				A0D8A1DB1BD32ADB0016AE86 /* LaunchScreen.storyboard in Resources */,
 				A0D8A1D81BD32ADB0016AE86 /* Assets.xcassets in Resources */,
+				A1CC79981BEF809000094037 /* Edificio List.plist in Resources */,
 				A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */,
+				A1CC79861BEEBB5900094037 /* menu.png in Resources */,
+				A1CC79881BEEBB5F00094037 /* menu@2x.png in Resources */,
 				A0D8A1E31BD32BC80016AE86 /* Podfile in Resources */,
+				A1CC799A1BEF8DE800094037 /* aulas1.jpg in Resources */,
 				A0D8A1D61BD32ADB0016AE86 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,12 +452,15 @@
 				A04F8A091BE5A4F700B8436C /* Camino.m in Sources */,
 				A04F8A0B1BE5A4F700B8436C /* Edificio.m in Sources */,
 				A0D8A1D01BD32ADB0016AE86 /* AppDelegate.m in Sources */,
+				A1CC79811BEEB1B700094037 /* SWRevealViewController.m in Sources */,
 				A0D8A1EF1BD33A130016AE86 /* IngresarRutaViewController.m in Sources */,
 				A0D8A1E61BD32EF10016AE86 /* PrincipalViewController.m in Sources */,
 				A07B7BBD1BED3316009B00A3 /* Model.xcdatamodeld in Sources */,
 				A0D8A1F71BD354230016AE86 /* DetalleUbicacionTableViewController.m in Sources */,
 				A0D8A1CD1BD32ADB0016AE86 /* main.m in Sources */,
 				A0D8A1F41BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m in Sources */,
+				A1CC79841BEEB42700094037 /* SidebarViewController.m in Sources */,
+				A1CC79A11BF1735A00094037 /* BanosAccesiblesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +493,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -480,7 +538,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;

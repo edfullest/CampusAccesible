@@ -10,5 +10,8 @@
 @import CoreData;
 
 @interface DetalleUbicacionTableViewController : UITableViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+
+@property (strong, nonatomic) id edificio;
 
 @end

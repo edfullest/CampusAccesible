@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>nombre</key>
+		<string>Aulas 1</string>
+		<key>elevador</key>
+		<false/>
+		<key>salones</key>
+		<array>
+			<string>A111</string>
+			<string>A222</string>
+		</array>
+		<key>banos</key>
+		<array>
+			<string>A333</string>
+			<string>A444</string>
+		</array>
+	</dict>
+	<dict>
+		<key>nombre</key>
+		<string>Aulas 2</string>
+		<key>elevador</key>
+		<true/>
+		<key>salones</key>
+		<array>
+			<string>A111</string>
+			<string>A222</string>
+		</array>
+		<key>banos</key>
+		<array>
+			<string>A333</string>
+			<string>A444</string>
+		</array>
+	</dict>
+</array>
+</plist>

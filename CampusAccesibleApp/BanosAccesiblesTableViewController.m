@@ -1,18 +1,19 @@
 //
-//  SalonesAccesiblesTableViewController.m
+//  BanosAccesiblesTableViewController.m
 //  CampusAccesibleApp
 //
-//  Created by Eduardo Jesus Serna L on 10/17/15.
+//  Created by Ana on 11/9/15.
 //  Copyright © 2015 ITESM. All rights reserved.
 //
 
-#import "SalonesAccesiblesTableViewController.h"
+#import "BanosAccesiblesTableViewController.h"
+#import "DetalleUbicacionTableViewController.h"
 
-@interface SalonesAccesiblesTableViewController ()
+@interface BanosAccesiblesTableViewController ()
 
 @end
 
-@implementation SalonesAccesiblesTableViewController
+@implementation BanosAccesiblesTableViewController
 
 #pragma mark - Managing the edificio
 
@@ -34,19 +35,17 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return [[self.edificio1 valueForKey:@"salones"]count];
+    return [[self.edificio1 valueForKey:@"banos"]count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.textLabel.text = [self.edificio1 valueForKey:@"salones"][indexPath.row];
+    cell.textLabel.text = [self.edificio1 valueForKey:@"banos"][indexPath.row];
     return cell;
 }
 
@@ -60,4 +59,11 @@
 }
 */
 
+- (IBAction)atras:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    DetalleUbicacionTableViewController *detalleUbicacionTableViewController =
+    [self.storyboard instantiateViewControllerWithIdentifier:@"detalleUbicacionTableViewController"];
+    [detalleUbicacionTableViewController setEdificio:self.edificio1];
+    [self.navigationController pushViewController:detalleUbicacionTableViewController animated:YES];
+}
 @end

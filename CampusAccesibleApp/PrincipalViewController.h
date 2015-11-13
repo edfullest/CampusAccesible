@@ -19,5 +19,6 @@
 @property (strong, nonatomic) PESGraph *graph;
 @property (strong, nonatomic) NSMutableArray * pesNodes;
 - (IBAction)limpiarMapa:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 @end

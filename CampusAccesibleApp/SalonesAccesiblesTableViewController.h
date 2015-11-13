@@ -10,4 +10,6 @@
 
 @interface SalonesAccesiblesTableViewController : UITableViewController
 
+@property (strong, nonatomic) id edificio1;
+
 @end
