@@ -10,11 +10,18 @@
 #import "PESGraph/PESGraph.h"
 @import GoogleMaps;
 
-@interface IngresarRutaViewController : UIViewController
+@interface IngresarRutaViewController : UIViewController <GMSMapViewDelegate>
 @property (nonatomic,strong) GMSMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIView *vwMap;
 @property (strong, nonatomic) PESGraph *graphI;
 @property (strong, nonatomic) PESGraphNode *pgnPrincipioI;
 @property (strong, nonatomic) PESGraphNode *pgnFinalI;
+
+
+@property (strong, nonatomic) NSArray *nodes;
+@property (strong, nonatomic) NSArray *edges;
+@property (strong, nonatomic) NSMutableArray * pesNodes;
+
+
 
 @end

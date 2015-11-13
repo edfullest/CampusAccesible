@@ -13,7 +13,13 @@
 #import "PESGraph/PESGraphRoute.h"
 #import "PESGraph/PESGraphRouteStep.h"
 
+@import GoogleMaps;
+
 @interface IngresarRutaViewController ()
+
+@property NSInteger numMarkerSelected;
+@property PESGraphNode *pgnPrincipio;
+@property PESGraphNode *pgnFinal;
 
 @end
 
@@ -21,62 +27,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    GMSCameraPosition *cameraPosition=[GMSCameraPosition cameraWithLatitude:[[_pgnPrincipioI.additionalData objectForKey:@"longitud"] floatValue]
-                                                          longitude:[[_pgnPrincipioI.additionalData objectForKey:@"latitud"] floatValue]
-                                                          zoom:18];
+    _numMarkerSelected = 0;
+    GMSCameraPosition *cameraPosition=[GMSCameraPosition cameraWithLatitude:25.651113
+                                                                  longitude:-100.290028
+                                                                       zoom:17];
    //Se mandan los bounds del vwMap como el frame
     _mapView =[GMSMapView mapWithFrame:_vwMap.bounds camera:cameraPosition];
     _mapView.myLocationEnabled=YES;
+    _mapView.delegate = self;
     GMSMarker *mrkPrincipio=[[GMSMarker alloc]init];
     GMSMarker *mrkFinal=[[GMSMarker alloc]init];
    
-    //Se posicionan los marcadores de la vista
-    mrkPrincipio.position=CLLocationCoordinate2DMake([[_pgnPrincipioI.additionalData objectForKey:@"longitud"] floatValue],
-                                                     [[_pgnPrincipioI.additionalData objectForKey:@"latitud"] floatValue]);
-    mrkPrincipio.groundAnchor=CGPointMake(0.5,0.5);
-    mrkPrincipio.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
-    mrkPrincipio.map=_mapView;
-    mrkPrincipio.title = @"Inicio";
-    //mrkPrincipio = _mrkPrincipioI;
-    [_mapView setSelectedMarker:mrkPrincipio];
-    mrkFinal.position=CLLocationCoordinate2DMake([[_pgnFinalI.additionalData objectForKey:@"longitud"] floatValue],
-                                                 [[_pgnFinalI.additionalData objectForKey:@"latitud"] floatValue]);
-    mrkFinal.groundAnchor=CGPointMake(0.5,0.5);
-    mrkFinal.icon = [GMSMarker markerImageWithColor:[UIColor purpleColor]];
-    mrkFinal.map=_mapView;
-    mrkFinal.title = @"Fin";
- 
-
-    //Se llama al metodo que obtiene ruta mas corta
-    //Rutas es un arreglo que tiene la ruta más corta y la más corta y accesible
-    NSArray *rutas = [self nodoComienzo:_pgnPrincipioI nodoFinal:_pgnFinalI];
-    GMSMutablePath *rutaCorta = [rutas objectAtIndex:0];
-    GMSMutablePath *rutaCortaAccesible = [rutas objectAtIndex:1];
-    
-    //Se dibujan las lineas
-    
-    /*GMSPolyline *rectangle = [GMSPolyline polylineWithPath:rutaCorta];
-    rectangle.strokeColor = [UIColor blueColor];
-    rectangle.strokeWidth = 4.f;
-    rectangle.map = _mapView;*/
-    
-    // Dibujar ruta accesible
-    
-    GMSPolyline *rectangle = [GMSPolyline polylineWithPath:rutaCortaAccesible];
-    rectangle.strokeColor = [UIColor blueColor];
-    rectangle.strokeWidth = 4.f;
-    rectangle.map = _mapView;
-    
-    // Dibujar ruta no accesible
-    
-    for (int i = 0; i < [rutaCorta count] - 1; i ++) {
-        CLLocationCoordinate2D co1 = [rutaCorta coordinateAtIndex:i];
-        CLLocationCoordinate2D co2 = [rutaCorta coordinateAtIndex:i+1];
-        
-        CLLocation *lo1 = [[CLLocation alloc] initWithLatitude:co1.latitude longitude:co1.longitude];
-        CLLocation *lo2 = [[CLLocation alloc] initWithLatitude:co2.latitude longitude:co2.longitude];
-        
-        [self drawDashedLineOnMapBetweenOrigin:lo1 destination:lo2];
+    int i = 0;
+    for (NSDictionary* node in self.nodes) {
+        NSString *name = [[NSString alloc] initWithFormat:@"Nodo%d",i];
+        PESGraphNode *pgnNode = [PESGraphNode nodeWithIdentifier:name nodeWithDictionary:node];
+        [self.pesNodes addObject:pgnNode];
+        GMSMarker *mark=[[GMSMarker alloc]init];
+        mark.position=CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue]);
+        mark.groundAnchor=CGPointMake(0.5,0.5);
+        mark.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
+        mark.map = _mapView;
+        mark.title = @"Nodo ";
+        mark.userData  = @{@"Nodo":pgnNode};
+        i++;
     }
     
     [self.vwMap addSubview:_mapView];
@@ -186,6 +160,85 @@
     polyline.map = self.mapView;
     polyline.spans = spans;
     polyline.strokeWidth = 4.f;
+}
+
+// Funcion que recibe el marker seleccionado
+// http://www.g8production.com/post/60435653126/google-maps-sdk-for-ios-move-marker-and-info
+- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
+{
+    NSLog(@"DIFICUL");
+    mapView.selectedMarker = marker;
+    if(_numMarkerSelected == 0){
+        marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+        _numMarkerSelected++;
+        _pgnPrincipio = marker.userData[@"Nodo"];
+    }
+    else if (_numMarkerSelected == 1){
+        [self.mapView clear];
+        //marker.icon = [GMSMarker markerImageWithColor:[UIColor yellowColor]];
+        _numMarkerSelected++;
+        _pgnFinal = marker.userData[@"Nodo"];
+        
+        GMSMarker *mrkPrincipio=[[GMSMarker alloc]init];
+        GMSMarker *mrkFinal=[[GMSMarker alloc]init];
+        
+        mrkPrincipio.position=CLLocationCoordinate2DMake([[_pgnPrincipio.additionalData objectForKey:@"longitud"] floatValue],
+                                                         [[_pgnPrincipio.additionalData objectForKey:@"latitud"] floatValue]);
+        mrkPrincipio.groundAnchor=CGPointMake(0.5,0.5);
+        mrkPrincipio.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
+        mrkPrincipio.map=_mapView;
+        mrkPrincipio.title = @"Inicio";
+        //mrkPrincipio = _mrkPrincipioI;
+        [_mapView setSelectedMarker:mrkPrincipio];
+        mrkFinal.position=CLLocationCoordinate2DMake([[_pgnFinal.additionalData objectForKey:@"longitud"] floatValue],
+                                                     [[_pgnFinal.additionalData objectForKey:@"latitud"] floatValue]);
+        mrkFinal.groundAnchor=CGPointMake(0.5,0.5);
+        mrkFinal.icon = [GMSMarker markerImageWithColor:[UIColor purpleColor]];
+        mrkFinal.map=_mapView;
+        mrkFinal.title = @"Fin";
+        
+        
+        //Se llama al metodo que obtiene ruta mas corta
+        //Rutas es un arreglo que tiene la ruta más corta y la más corta y accesible
+        NSArray *rutas = [self nodoComienzo:_pgnPrincipio nodoFinal:_pgnFinal];
+        GMSMutablePath *rutaCorta = [rutas objectAtIndex:0];
+        GMSMutablePath *rutaCortaAccesible = [rutas objectAtIndex:1];
+        
+        //Se dibujan las lineas
+        
+        /*GMSPolyline *rectangle = [GMSPolyline polylineWithPath:rutaCorta];
+         rectangle.strokeColor = [UIColor blueColor];
+         rectangle.strokeWidth = 4.f;
+         rectangle.map = _mapView;*/
+        
+        // Dibujar ruta accesible
+        
+        GMSPolyline *rectangle = [GMSPolyline polylineWithPath:rutaCortaAccesible];
+        rectangle.strokeColor = [UIColor blueColor];
+        rectangle.strokeWidth = 4.f;
+        rectangle.map = _mapView;
+        
+        // Dibujar ruta no accesible
+        
+        for (int i = 0; i < [rutaCorta count] - 1; i ++) {
+            CLLocationCoordinate2D co1 = [rutaCorta coordinateAtIndex:i];
+            CLLocationCoordinate2D co2 = [rutaCorta coordinateAtIndex:i+1];
+            
+            CLLocation *lo1 = [[CLLocation alloc] initWithLatitude:co1.latitude longitude:co1.longitude];
+            CLLocation *lo2 = [[CLLocation alloc] initWithLatitude:co2.latitude longitude:co2.longitude];
+            
+            [self drawDashedLineOnMapBetweenOrigin:lo1 destination:lo2];
+        }
+
+        
+        
+    }
+    return YES;
+}
+
+- (void)mapView:(GMSMapView *)mapView
+didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    NSLog(@"You tapped at %f,%f", coordinate.latitude, coordinate.longitude);
 }
 
 @end

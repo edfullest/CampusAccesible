@@ -92,13 +92,6 @@
         NSString *name = [[NSString alloc] initWithFormat:@"Nodo%d",i];
         PESGraphNode *pgnNode = [PESGraphNode nodeWithIdentifier:name nodeWithDictionary:node];
         [self.pesNodes addObject:pgnNode];
-        GMSMarker *mark=[[GMSMarker alloc]init];
-        mark.position=CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue]);
-        mark.groundAnchor=CGPointMake(0.5,0.5);
-        mark.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
-        mark.map = _mapView;
-        mark.title = @"Nodo ";
-        mark.userData  = @{@"Nodo":pgnNode};
         i++;
     }
     
@@ -125,24 +118,6 @@
         
         // Agregar edge al grafo
         [_graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:[NSString stringWithFormat:@"%ld<->%ld", (long)(posNodo1-1), (long)(posNodo2-1)] andWeight:[NSNumber numberWithFloat:distancia] andAccesible:esAccesible] fromNode:pgnNode1 toNode:pgnNode2];
-        
-        GMSMutablePath *edgeEnMapa = [GMSMutablePath path];
-        // Agrega coordenada de nodo1
-        [edgeEnMapa addCoordinate:CLLocationCoordinate2DMake([[nodo1 objectForKey:@"longitud"] floatValue], [[nodo1 objectForKey:@"latitud"] floatValue])];
-        // Agrega coordenada de nodo2
-        [edgeEnMapa addCoordinate:CLLocationCoordinate2DMake([[nodo2 objectForKey:@"longitud"] floatValue], [[nodo2 objectForKey:@"latitud"] floatValue])];
-        
-        // Dibuja camino en el mapa
-        GMSPolyline *rectangle = [GMSPolyline polylineWithPath:edgeEnMapa];
-        
-        // Asigna color de edge dependiendo de accesibilidad
-        if ([[edge objectForKey:@"accesible"] boolValue] == YES) {
-            rectangle.strokeColor = [UIColor blueColor];
-        } else {
-            rectangle.strokeColor = [UIColor redColor];
-        }
-        rectangle.strokeWidth = 2.f;
-        rectangle.map = _mapView;
     }
     
     [self.vwMap insertSubview:_mapView atIndex:0];
@@ -200,7 +175,7 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
 
 // Funcion que recibe el marker seleccionado
 // http://www.g8production.com/post/60435653126/google-maps-sdk-for-ios-move-marker-and-info
-- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
+/*- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
 {
     mapView.selectedMarker = marker;
     if(_numMarkerSelected == 0){
@@ -214,33 +189,20 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
         _pgnFinal = marker.userData[@"Nodo"];
     }
     return YES;
-}
+}*/
 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    _mapView.selectedMarker = nil;
-    [[segue destinationViewController] setPgnPrincipioI:_pgnPrincipio];
-    [[segue destinationViewController] setPgnFinalI:_pgnFinal];
     [[segue destinationViewController] setGraphI:_graph];
+    [[segue destinationViewController] setNodes:_nodes];
+    [[segue destinationViewController] setPesNodes:_pesNodes];
 }
 
 - (IBAction)limpiarMapa:(id)sender {
     [self.mapView clear];
-    _numMarkerSelected = 0;
-    NSLog(@"Size %lu",(unsigned long)[self.pesNodes count]);
-    for (PESGraphNode* pgnNode in self.pesNodes) {
-        GMSMarker *mark=[[GMSMarker alloc]init];
-        mark.position=CLLocationCoordinate2DMake([[pgnNode.additionalData objectForKey:@"longitud"] floatValue], [[pgnNode.additionalData  objectForKey:@"latitud"] floatValue]);
-        mark.groundAnchor=CGPointMake(0.5,0.5);
-        mark.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
-        mark.map = _mapView;
-        mark.title = @"Nodo ";
-        mark.userData  = @{@"Nodo":pgnNode};
-
-        
-    }
-    
 }
+
+
 @end
