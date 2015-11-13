@@ -12,6 +12,10 @@
 #import "PESGraph/PESGraphEdge.h"
 #import "PESGraph/PESGraphRoute.h"
 #import "PESGraph/PESGraphRouteStep.h"
+#import "AppDelegate.h"
+#import "PuntoClave.h"
+#import "Descriptor.h"
+#import "Camino.h"
 
 @import GoogleMaps;
 
@@ -53,6 +57,12 @@
         i++;
     }
     
+    NSString *puntosClavePlist = [ [NSBundle mainBundle] pathForResource: @"PuntosClave" ofType: @"plist"];
+    NSArray *arrPuntosClave = [[NSArray alloc] initWithContentsOfFile: puntosClavePlist];
+    
+    _puntos =[self alimentarDB:arrPuntosClave];
+    _puntosClaveDeRutaCorta = [[NSMutableArray alloc] init];
+    _puntosClaveDeRutaCortaAccesible = [[NSMutableArray alloc] init];
     [self.vwMap addSubview:_mapView];
 }
 
@@ -74,13 +84,23 @@
     // Ejecutar algoritmo de Dijkstra para ruta mas corta
     PESGraphRoute *route = [_graphI shortestRouteFromNode:comienzo toNode:final andAccesible:NO];
     
+    
+    //[route descripcion];
+    //Este arreglo se ocupa para obtener los edges o caminos de la ruta mas corta
+    NSMutableArray *caminosRutaCorta = [[NSMutableArray alloc] init];
+    NSMutableArray *caminosRutaCortaAccesible = [[NSMutableArray alloc] init];
     // Crear GMSMutablePath con coordenadas
     GMSMutablePath *rutaCorta = [GMSMutablePath path];
+    
     
     // Inicializar GMSMutablePath con coordenadas de ruta mas corta
     for (PESGraphRouteStep *aStep in route.steps) {
         
         NSDictionary * node = aStep.node.additionalData;
+        if (aStep.edge){
+            [caminosRutaCorta addObject:aStep.edge];
+        }
+        
         [rutaCorta addCoordinate:CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue])];
         
     }
@@ -97,13 +117,18 @@
     // Inicializar GMSMutablePath con coordenadas de ruta mas corta
     for (PESGraphRouteStep *aStep in accesibleRoute.steps) {
         
+        if (aStep.edge){
+            
+            [caminosRutaCortaAccesible addObject:aStep.edge];
+        }
+        
         NSDictionary * node = aStep.node.additionalData;
         [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue])];
         
     }
     
     NSArray *rutas = [NSArray array];
-    rutas = [[NSArray alloc] initWithObjects:rutaCorta,rutaCortaAccesible, nil];
+    rutas = [[NSArray alloc] initWithObjects:rutaCorta,rutaCortaAccesible,caminosRutaCorta,caminosRutaCortaAccesible, nil];
     return rutas;
 }
 
@@ -166,7 +191,6 @@
 // http://www.g8production.com/post/60435653126/google-maps-sdk-for-ios-move-marker-and-info
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
 {
-    NSLog(@"DIFICUL");
     mapView.selectedMarker = marker;
     if(_numMarkerSelected == 0){
         marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
@@ -203,7 +227,27 @@
         NSArray *rutas = [self nodoComienzo:_pgnPrincipio nodoFinal:_pgnFinal];
         GMSMutablePath *rutaCorta = [rutas objectAtIndex:0];
         GMSMutablePath *rutaCortaAccesible = [rutas objectAtIndex:1];
+        NSArray *caminosDeRutaCorta  = [rutas objectAtIndex:2];
+        NSArray *caminosDeRutaCortaAccesible = [rutas objectAtIndex:3];
         
+        for (PESGraphEdge *camino in caminosDeRutaCorta){
+           
+            NSArray *puntosClaveDeCamino = [self camino:camino.name];
+            NSLog(@"Puntos claves regresados %ld",[puntosClaveDeCamino count]);
+            for (PuntoClave *punto in puntosClaveDeCamino){
+                NSLog(@"Punto %@",punto.idPuntoClave);
+                [_puntosClaveDeRutaCorta addObject:punto];
+                NSLog(@"Tamano %ld",[_puntosClaveDeRutaCorta count]);
+            }
+        }
+        
+        for (PESGraphEdge *camino in caminosDeRutaCortaAccesible){
+            NSArray *puntosClaveDeCamino = [self camino:camino.name];
+            
+            for (PuntoClave *punto in puntosClaveDeCamino){
+                [_puntosClaveDeRutaCortaAccesible addObject:punto];
+            }
+        }
         //Se dibujan las lineas
         
         /*GMSPolyline *rectangle = [GMSPolyline polylineWithPath:rutaCorta];
@@ -239,6 +283,172 @@
 - (void)mapView:(GMSMapView *)mapView
 didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     NSLog(@"You tapped at %f,%f", coordinate.latitude, coordinate.longitude);
+}
+
+
+
+- (NSArray <PuntoClave *> *) camino: (NSString *) camino{
+    NSLog(@"Camino recibido:%@",camino);
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *contexto = [appDelegate managedObjectContext];
+    
+    NSEntityDescription *entidad = [NSEntityDescription entityForName:@"Camino" inManagedObjectContext:contexto];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity: entidad];
+    
+    
+    
+    NSPredicate *predicado = [NSPredicate predicateWithFormat:@" (idCamino = %@)", camino];
+    
+    [request setPredicate: predicado];
+    NSError *error;
+    //ejecuto el request
+    NSArray *objetosMatch = [contexto executeFetchRequest: request error: &error];
+    
+    if (objetosMatch.count == 0){
+        NSLog(@"Nada");
+        return nil;
+    }
+    else{
+        NSLog(@"Match");
+        Camino *registroMatch = objetosMatch[0];
+        
+        NSArray *arrPuntos = registroMatch.tieneMuchosPuntosClave.allObjects;
+        
+        NSLog(@"%ld",[arrPuntos count]);
+        return arrPuntos;
+        
+//        PuntoClave *puntoClave = [arrPuntos objectAtIndex:1];
+//        [todosPuntos addObject:<#(nonnull id)#>]
+        
+//        NSLog(@"%@",puntoClave.latitud);
+//        NSLog(@"%@",puntoClave.longitud);
+//        NSArray *arrDescriptores = puntoClave.tieneMuchosDescriptores.allObjects;
+//        NSLog(@"%ld",arrPuntos.count);
+//        NSLog(@"%ld",arrDescriptores.count);
+        
+        
+    }
+
+    
+    
+    
+}
+
+- (NSMutableArray <PuntoClave *>  *) alimentarDB: (NSArray *) caminos{
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *contexto = [appDelegate managedObjectContext];
+    NSMutableArray *todosPuntos = [[NSMutableArray alloc] init];
+    
+    for(NSDictionary *camino in caminos){
+        NSString *idCamino = [camino valueForKey:@"idCamino"];
+        NSArray *puntos = [camino objectForKey:@"puntosClave"];
+        Camino *nuevoCamino = [NSEntityDescription insertNewObjectForEntityForName:@"Camino" inManagedObjectContext:contexto];
+        [nuevoCamino setValue:idCamino forKey:@"idCamino"];
+        
+        
+        for(NSDictionary *punto in puntos){
+            
+            NSString *idPuntoClave = [punto valueForKey:@"idPuntoClave"];
+            NSNumber *latitud = [punto valueForKey:@"latitud"];
+            NSNumber *longitud = [punto valueForKey:@"longitud"];
+            NSNumber *tipo = [punto valueForKey:@"tipo"];
+            NSArray *descriptores = [punto objectForKey:@"descriptores"];
+            
+            PuntoClave *nuevoPunto = [NSEntityDescription insertNewObjectForEntityForName:@"PuntoClave" inManagedObjectContext:contexto];
+            [nuevoPunto setValue:idPuntoClave forKey:@"idPuntoClave"];
+            [nuevoPunto setValue:longitud forKey:@"longitud"];
+            [nuevoPunto setValue:latitud forKey:@"latitud"];
+            [nuevoPunto setValue:tipo forKey:@"tipo"];
+            
+            for (NSDictionary *descriptor in descriptores){
+                Descriptor *nuevoDescriptor = [NSEntityDescription insertNewObjectForEntityForName:@"Descriptor" inManagedObjectContext:contexto];
+                NSString *nombre = [descriptor valueForKey:@"nombre"];
+                [nuevoDescriptor setValue:nombre forKey:@"nombre"];
+                NSString *valor = [descriptor valueForKey:@"valor"];
+                [nuevoDescriptor setValue:valor forKey:@"valor"];
+                [nuevoPunto addTieneMuchosDescriptoresObject:nuevoDescriptor ];
+            }
+            
+            [nuevoCamino addTieneMuchosPuntosClaveObject:nuevoPunto];
+            [todosPuntos addObject:nuevoPunto];
+            
+        }
+    }
+    
+    
+    NSEntityDescription *entidad = [NSEntityDescription entityForName:@"Camino" inManagedObjectContext:contexto];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity: entidad];
+    
+    NSPredicate *predicado = [NSPredicate predicateWithFormat:@" (idCamino = %@)", @"83<->84"];
+    
+    [request setPredicate: predicado];
+    NSError *error;
+    //ejecuto el request
+    NSArray *objetosMatch = [contexto executeFetchRequest: request error: &error];
+    
+    if (objetosMatch.count == 0){
+        
+    }
+    else{
+        NSLog(@"%ld",objetosMatch.count);
+        Camino *registroMatch = objetosMatch[0];
+        
+        NSArray *arrPuntos = registroMatch.tieneMuchosPuntosClave.allObjects;
+        PuntoClave *puntoClave = [arrPuntos objectAtIndex:1];
+        NSLog(@"%@",puntoClave.latitud);
+        NSLog(@"%@",puntoClave.longitud);
+        NSArray *arrDescriptores = puntoClave.tieneMuchosDescriptores.allObjects;
+        NSLog(@"%ld",arrPuntos.count);
+        NSLog(@"%ld",arrDescriptores.count);
+        
+        
+    }
+    
+    return todosPuntos;
+}
+
+- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position{
+    
+   
+    NSLog(@"%ld",[_puntosClaveDeRutaCorta count]);
+    if (position.zoom >= 18 && ([_puntosClaveDeRutaCorta count] != 0 || [_puntosClaveDeRutaCortaAccesible count] != 0)){
+        
+        
+         NSLog(@"%ld",[_puntosClaveDeRutaCorta count]);
+        UIImage *image = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+        for (PuntoClave * punto in _puntosClaveDeRutaCorta){
+            GMSMarker *mark=[[GMSMarker alloc]init];
+            mark.position=CLLocationCoordinate2DMake([punto.latitud floatValue],[punto.longitud floatValue]);
+            mark.groundAnchor=CGPointMake(0.5,0.5);
+            mark.icon = image;
+            mark.map = _mapView;
+            mark.title = punto.tipo;
+            
+            
+        }
+        
+        for (PuntoClave * punto in _puntosClaveDeRutaCortaAccesible){
+            GMSMarker *mark=[[GMSMarker alloc]init];
+            mark.position=CLLocationCoordinate2DMake([punto.latitud floatValue],[punto.longitud floatValue]);
+            mark.groundAnchor=CGPointMake(0.5,0.5);
+            mark.icon = image;
+            mark.map = _mapView;
+            mark.title = punto.tipo;
+            
+            
+        }
+
+
+    }
+    else{
+//        [mapView clear];
+    }
+    
 }
 
 @end
