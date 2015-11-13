@@ -13,7 +13,6 @@
 #import "PESGraph/PESGraphEdge.h"
 #import "PESGraph/PESGraphRoute.h"
 #import "PESGraph/PESGraphRouteStep.h"
-#import "Vertice.h"
 #import "IngresarRutaViewController.h"
 #import "SWRevealViewController.h"
 
@@ -173,13 +172,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)mapView:(GMSMapView *)mapView
-didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
-    NSLog(@"You tapped at %f,%f", coordinate.latitude, coordinate.longitude);
-    DetalleUbicacionTableViewController *detalleUbicacionTableViewController =
-    [self.storyboard instantiateViewControllerWithIdentifier:@"detalleUbicacionTableViewController"];
-    [self.navigationController pushViewController:detalleUbicacionTableViewController animated:YES];
-}
+//- (void)mapView:(GMSMapView *)mapView
+//didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
+//    NSLog(@"You tapped at %f,%f", coordinate.latitude, coordinate.longitude);
+//    DetalleUbicacionTableViewController *detalleUbicacionTableViewController =
+//    [self.storyboard instantiateViewControllerWithIdentifier:@"detalleUbicacionTableViewController"];
+//    [self.navigationController pushViewController:detalleUbicacionTableViewController animated:YES];
+//}
 
 // Funcion que recibe el marker seleccionado
 // http://www.g8production.com/post/60435653126/google-maps-sdk-for-ios-move-marker-and-info

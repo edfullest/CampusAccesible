@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "Vertice.h"
 #import <CoreData/CoreData.h>
 @import GoogleMaps;
 

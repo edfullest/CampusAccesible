@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
-    <entity name="Camino" syncable="YES"/>
-    <entity name="PuntoClave" syncable="YES"/>
+    <entity name="Camino" representedClassName="Camino" syncable="YES">
+        <attribute name="idCamino" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tieneMuchosPuntosClave" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PuntoClave" inverseName="tieneUnCamino" inverseEntity="PuntoClave" syncable="YES"/>
+    </entity>
+    <entity name="Descriptor" representedClassName="Descriptor" syncable="YES">
+        <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valor" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tieneUnPuntoClave" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PuntoClave" inverseName="tieneMuchosDescriptores" inverseEntity="PuntoClave" syncable="YES"/>
+    </entity>
+    <entity name="PuntoClave" representedClassName="PuntoClave" syncable="YES">
+        <attribute name="idPuntoClave" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitud" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitud" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="tipo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tieneMuchosDescriptores" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Descriptor" inverseName="tieneUnPuntoClave" inverseEntity="Descriptor" syncable="YES"/>
+        <relationship name="tieneUnCamino" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Camino" inverseName="tieneMuchosPuntosClave" inverseEntity="Camino" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Camino" positionX="-63" positionY="-18" width="128" height="45"/>
-        <element name="PuntoClave" positionX="-54" positionY="-9" width="128" height="45"/>
+        <element name="Camino" positionX="-324" positionY="18" width="171" height="75"/>
+        <element name="Descriptor" positionX="115" positionY="-0" width="218" height="90"/>
+        <element name="PuntoClave" positionX="-99" positionY="-81" width="180" height="133"/>
     </elements>
 </model>
