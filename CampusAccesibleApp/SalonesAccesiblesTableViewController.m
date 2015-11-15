@@ -7,6 +7,7 @@
 //
 
 #import "SalonesAccesiblesTableViewController.h"
+#import "DetalleUbicacionTableViewController.h"
 
 @interface SalonesAccesiblesTableViewController ()
 
@@ -24,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Cambiar el titulo del botón back
+    self.lbAtras.title = [NSString stringWithFormat:@"< %@ ", [self.edificio1 valueForKey:@"nombre"]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,12 +37,10 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     return [[self.edificio1 valueForKey:@"salones"]count];
 }
 
@@ -60,4 +61,11 @@
 }
 */
 
+- (IBAction)atras:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    DetalleUbicacionTableViewController *detalleUbicacionTableViewController =
+    [self.storyboard instantiateViewControllerWithIdentifier:@"detalleUbicacionTableViewController"];
+    [detalleUbicacionTableViewController setEdificio:self.edificio1];
+    [self.navigationController pushViewController:detalleUbicacionTableViewController animated:YES];
+}
 @end

@@ -36,7 +36,7 @@
 		A1CC79841BEEB42700094037 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CC79831BEEB42700094037 /* SidebarViewController.m */; };
 		A1CC79861BEEBB5900094037 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79851BEEBB5900094037 /* menu.png */; };
 		A1CC79881BEEBB5F00094037 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79871BEEBB5F00094037 /* menu@2x.png */; };
-		A1CC79981BEF809000094037 /* Edificio List.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79971BEF809000094037 /* Edificio List.plist */; };
+		A1CC79981BEF809000094037 /* ListaEdificios.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79971BEF809000094037 /* ListaEdificios.plist */; };
 		A1CC799A1BEF8DE800094037 /* aulas1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79991BEF8DE800094037 /* aulas1.jpg */; };
 		A1CC79A11BF1735A00094037 /* BanosAccesiblesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CC79A01BF1735A00094037 /* BanosAccesiblesTableViewController.m */; };
 		A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */; };
@@ -93,7 +93,7 @@
 		A1CC79831BEEB42700094037 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		A1CC79851BEEBB5900094037 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		A1CC79871BEEBB5F00094037 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
-		A1CC79971BEF809000094037 /* Edificio List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Edificio List.plist"; sourceTree = "<group>"; };
+		A1CC79971BEF809000094037 /* ListaEdificios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ListaEdificios.plist; sourceTree = "<group>"; };
 		A1CC79991BEF8DE800094037 /* aulas1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas1.jpg; sourceTree = "<group>"; };
 		A1CC799F1BF1735A00094037 /* BanosAccesiblesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BanosAccesiblesTableViewController.h; sourceTree = "<group>"; };
 		A1CC79A01BF1735A00094037 /* BanosAccesiblesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BanosAccesiblesTableViewController.m; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 				A085A4531BF566BF00F29D68 /* PuntosClave.plist */,
 				A0CA6E2B1BE88B47007E7497 /* Property List.plist */,
 				A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */,
-				A1CC79971BEF809000094037 /* Edificio List.plist */,
+				A1CC79971BEF809000094037 /* ListaEdificios.plist */,
 			);
 			name = "Property Lists";
 			sourceTree = "<group>";
@@ -379,7 +379,7 @@
 				A0CA6E2C1BE88B47007E7497 /* Property List.plist in Resources */,
 				A0D8A1DB1BD32ADB0016AE86 /* LaunchScreen.storyboard in Resources */,
 				A0D8A1D81BD32ADB0016AE86 /* Assets.xcassets in Resources */,
-				A1CC79981BEF809000094037 /* Edificio List.plist in Resources */,
+				A1CC79981BEF809000094037 /* ListaEdificios.plist in Resources */,
 				A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */,
 				A1CC79861BEEBB5900094037 /* menu.png in Resources */,
 				A1CC79881BEEBB5F00094037 /* menu@2x.png in Resources */,

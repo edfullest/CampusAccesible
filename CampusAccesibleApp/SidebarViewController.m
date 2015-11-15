@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     // Agregar: cargar informacion del archivo plist
-    NSString *pathPlist = [[NSBundle mainBundle] pathForResource: @"Edificio List" ofType:@"plist"];
+    NSString *pathPlist = [[NSBundle mainBundle] pathForResource: @"ListaEdificios" ofType:@"plist"];
     self.objects = [[NSArray alloc] initWithContentsOfFile:pathPlist];
 }
 
@@ -59,14 +59,15 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+    UITableViewCell *cell;
     if(indexPath.row == 0){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Inicio" forIndexPath:indexPath];
         cell.textLabel.text = @"Inicio";
     }
     else{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         NSDictionary *object = self.objects[indexPath.row - 1];
-        // Agregar: Accesar diccionario
+        // Despliega el nombre del aula, obtenida de la Plist
         cell.textLabel.text = [object valueForKey:@"nombre"];
     }
     return cell;
@@ -87,9 +88,6 @@
             UINavigationController *navController = segue.destinationViewController;
             DetalleUbicacionTableViewController *detalleController = [navController childViewControllers].firstObject;
             detalleController.edificio = object;
-        }
-        else{
-            // Cuando es inicio
         }
     }
 }

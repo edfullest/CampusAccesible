@@ -25,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Cambiar el titulo del botón back
+    self.lbAtras.title = [NSString stringWithFormat:@"< %@ ", [self.edificio1 valueForKey:@"nombre"]];
 }
 
 - (void)didReceiveMemoryWarning {

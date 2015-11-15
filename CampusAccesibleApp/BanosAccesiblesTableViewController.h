@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) id edificio1;
 - (IBAction)atras:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *lbAtras;
 
 @end
