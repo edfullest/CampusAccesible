@@ -17,6 +17,8 @@
 @property (strong, nonatomic) PESGraphNode *pgnPrincipioI;
 @property (strong, nonatomic) PESGraphNode *pgnFinalI;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnRutaAccesible;
+@property (weak, nonatomic) IBOutlet UIButton *btnRutaNoAccesible;
 
 @property (strong, nonatomic) NSArray *nodes;
 @property (strong, nonatomic) NSArray *edges;
@@ -24,7 +26,6 @@
 @property (strong, nonatomic) NSMutableArray *puntos;
 @property (strong, nonatomic) NSMutableArray *puntosClaveDeRutaCorta;
 @property (strong, nonatomic) NSMutableArray *puntosClaveDeRutaCortaAccesible;
-
 
 
 @end

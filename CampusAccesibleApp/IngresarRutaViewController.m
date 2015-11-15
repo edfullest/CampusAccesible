@@ -7,6 +7,7 @@
 //
 
 #import "IngresarRutaViewController.h"
+#import "PrincipalViewController.h"
 #import "PESGraph/PESGraph.h"
 #import "PESGraph/PESGraphNode.h"
 #import "PESGraph/PESGraphEdge.h"
@@ -16,6 +17,7 @@
 #import "PuntoClave.h"
 #import "Descriptor.h"
 #import "Camino.h"
+#import "InfoWindowPunto.h"
 
 @import GoogleMaps;
 
@@ -24,6 +26,10 @@
 @property NSInteger numMarkerSelected;
 @property PESGraphNode *pgnPrincipio;
 @property PESGraphNode *pgnFinal;
+@property GMSMutablePath *rutaCorta;
+@property GMSMutablePath *rutaCortaAccesible;
+@property GMSMarker * mrkPrincipio;
+@property GMSMarker * mrkFinal;
 
 @end
 
@@ -90,7 +96,7 @@
     NSMutableArray *caminosRutaCorta = [[NSMutableArray alloc] init];
     NSMutableArray *caminosRutaCortaAccesible = [[NSMutableArray alloc] init];
     // Crear GMSMutablePath con coordenadas
-    GMSMutablePath *rutaCorta = [GMSMutablePath path];
+    _rutaCorta = [GMSMutablePath path];
     
     
     // Inicializar GMSMutablePath con coordenadas de ruta mas corta
@@ -101,7 +107,7 @@
             [caminosRutaCorta addObject:aStep.edge];
         }
         
-        [rutaCorta addCoordinate:CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue])];
+        [_rutaCorta addCoordinate:CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue])];
         
     }
     
@@ -112,7 +118,7 @@
     PESGraphRoute *accesibleRoute = [_graphI shortestRouteFromNode:comienzo toNode:final andAccesible:YES];
     
     // Crear GMSMutablePath con coordenadas
-    GMSMutablePath *rutaCortaAccesible = [GMSMutablePath path];
+    _rutaCortaAccesible = [GMSMutablePath path];
     
     // Inicializar GMSMutablePath con coordenadas de ruta mas corta
     for (PESGraphRouteStep *aStep in accesibleRoute.steps) {
@@ -123,24 +129,39 @@
         }
         
         NSDictionary * node = aStep.node.additionalData;
-        [rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue])];
+        [_rutaCortaAccesible addCoordinate:CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue])];
         
     }
     
     NSArray *rutas = [NSArray array];
-    rutas = [[NSArray alloc] initWithObjects:rutaCorta,rutaCortaAccesible,caminosRutaCorta,caminosRutaCortaAccesible, nil];
+    rutas = [[NSArray alloc] initWithObjects:_rutaCorta,_rutaCortaAccesible,caminosRutaCorta,caminosRutaCortaAccesible, nil];
     return rutas;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+
+    if (sender == self.btnRutaAccesible){
+        PrincipalViewController *controlador = segue.destinationViewController;
+        [controlador setRuta:_rutaCortaAccesible];
+        [controlador setMrkPrincipio:_mrkPrincipio];
+        [controlador setMrkFinal:_mrkFinal];
+        [controlador setLimpiaMapa:YES];
+    }
+    else if (sender == self.btnRutaNoAccesible){
+        PrincipalViewController *controlador = segue.destinationViewController;
+        [controlador setRuta:_rutaCorta];
+        [controlador setMrkPrincipio:_mrkPrincipio];
+        [controlador setMrkFinal:_mrkFinal];
+        [controlador setLimpiaMapa:YES];
+    }
 }
-*/
+
 
 - (void)drawDashedLineOnMapBetweenOrigin:(CLLocation *)originLocation destination:(CLLocation *)destinationLocation {
     //[self.mapView clear];
@@ -203,23 +224,23 @@
         _numMarkerSelected++;
         _pgnFinal = marker.userData[@"Nodo"];
         
-        GMSMarker *mrkPrincipio=[[GMSMarker alloc]init];
-        GMSMarker *mrkFinal=[[GMSMarker alloc]init];
+        _mrkPrincipio=[[GMSMarker alloc]init];
+        _mrkFinal=[[GMSMarker alloc]init];
         
-        mrkPrincipio.position=CLLocationCoordinate2DMake([[_pgnPrincipio.additionalData objectForKey:@"longitud"] floatValue],
+        _mrkPrincipio.position=CLLocationCoordinate2DMake([[_pgnPrincipio.additionalData objectForKey:@"longitud"] floatValue],
                                                          [[_pgnPrincipio.additionalData objectForKey:@"latitud"] floatValue]);
-        mrkPrincipio.groundAnchor=CGPointMake(0.5,0.5);
-        mrkPrincipio.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
-        mrkPrincipio.map=_mapView;
-        mrkPrincipio.title = @"Inicio";
+        _mrkPrincipio.groundAnchor=CGPointMake(0.5,0.5);
+        _mrkPrincipio.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
+        _mrkPrincipio.map=_mapView;
+        _mrkPrincipio.title = @"Inicio";
         //mrkPrincipio = _mrkPrincipioI;
-        [_mapView setSelectedMarker:mrkPrincipio];
-        mrkFinal.position=CLLocationCoordinate2DMake([[_pgnFinal.additionalData objectForKey:@"longitud"] floatValue],
+        [_mapView setSelectedMarker:_mrkPrincipio];
+        _mrkFinal.position=CLLocationCoordinate2DMake([[_pgnFinal.additionalData objectForKey:@"longitud"] floatValue],
                                                      [[_pgnFinal.additionalData objectForKey:@"latitud"] floatValue]);
-        mrkFinal.groundAnchor=CGPointMake(0.5,0.5);
-        mrkFinal.icon = [GMSMarker markerImageWithColor:[UIColor purpleColor]];
-        mrkFinal.map=_mapView;
-        mrkFinal.title = @"Fin";
+        _mrkFinal.groundAnchor=CGPointMake(0.5,0.5);
+        _mrkFinal.icon = [GMSMarker markerImageWithColor:[UIColor purpleColor]];
+        _mrkFinal.map=_mapView;
+        _mrkFinal.title = @"Fin";
         
         
         //Se llama al metodo que obtiene ruta mas corta
@@ -428,7 +449,27 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
             mark.icon = image;
             mark.map = _mapView;
             mark.title = punto.tipo;
+            //mark.userData  = @{@"puntoClave":@YES};
+            NSString * descriptores;
             
+            int cont = 0;
+            
+            NSArray *arrDescriptores = punto.tieneMuchosDescriptores.allObjects;
+            
+            for (Descriptor * desc in arrDescriptores) {
+            
+                if (cont == 0) {
+                    descriptores = desc.nombre;
+                    descriptores = [descriptores stringByAppendingString:desc.valor];
+                } else {
+                    descriptores = [descriptores stringByAppendingString:@"\n"];
+                    descriptores = [descriptores stringByAppendingString:desc.nombre];
+                    descriptores = [descriptores stringByAppendingString:desc.valor];
+                }
+                cont ++;
+            }
+            
+            mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores};
             
         }
         
@@ -439,7 +480,28 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
             mark.icon = image;
             mark.map = _mapView;
             mark.title = punto.tipo;
+            //mark.userData  = @{@"puntoClave":@YES};
             
+            NSString * descriptores;
+            
+            int cont = 0;
+            NSArray *arrDescriptores = punto.tieneMuchosDescriptores.allObjects;
+            
+            for (Descriptor * desc in arrDescriptores) {
+                
+                if (cont == 0) {
+                    descriptores = desc.nombre;
+                    descriptores = [descriptores stringByAppendingString:desc.valor];
+                } else {
+                    descriptores = [descriptores stringByAppendingString:@"\n"];
+                    descriptores = [descriptores stringByAppendingString:desc.nombre];
+                    descriptores = [descriptores stringByAppendingString:desc.valor];
+                }
+                cont ++;
+            }
+
+            
+            mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores};
             
         }
 
@@ -450,5 +512,25 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     }
     
 }
+
+- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+    
+    if ( marker.userData[@"puntoClave"] ) {
+        InfoWindowPunto *view =  [[[NSBundle mainBundle] loadNibNamed:@"InfoWindowPunto" owner:self options:nil] objectAtIndex:0];
+        
+        view.lblDescripcion.lineBreakMode = NSLineBreakByWordWrapping;
+        view.lblDescripcion.numberOfLines = 0;
+        view.lblDescripcion.text=marker.userData[@"descripcion"];
+        
+        view.lblTitulo.text=marker.title;
+        return view;
+    } else {
+        return nil;
+    }
+    
+
+    
+}
+
 
 @end

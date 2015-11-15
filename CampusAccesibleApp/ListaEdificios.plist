@@ -9,30 +9,113 @@
 		<false/>
 		<key>salones</key>
 		<array>
-			<string>A111</string>
-			<string>A222</string>
+			<string>A1-101</string>
+			<string>A1-102</string>
+			<string>A1-103</string>
+			<string>A1-104</string>
+			<string>A1-105</string>
+			<string>A1-106</string>
+			<string>A1-113</string>
+			<string>A1-114</string>
+			<string>A1-115</string>
+			<string>A1-116</string>
+			<string>A1-117</string>
+			<string>A1-118</string>
+			<string>A1-121</string>
 		</array>
 		<key>banos</key>
 		<array>
-			<string>A333</string>
-			<string>A444</string>
+			<string>A1-107 (Damas)</string>
+			<string>A1-107-1 (Caballero)</string>
 		</array>
 	</dict>
 	<dict>
 		<key>nombre</key>
 		<string>Aulas 2</string>
 		<key>elevador</key>
-		<true/>
+		<false/>
 		<key>salones</key>
 		<array>
-			<string>A111</string>
-			<string>A222</string>
+			<string>A2-132</string>
+			<string>Servicios de Biblioteca</string>
 		</array>
 		<key>banos</key>
 		<array>
-			<string>A333</string>
-			<string>A444</string>
+			<string>A2-127-1 (Damas)</string>
+			<string>A2-127 (Caballeros)</string>
 		</array>
+	</dict>
+	<dict>
+		<key>nombre</key>
+		<string>Aulas 3</string>
+		<key>elevador</key>
+		<false/>
+		<key>salones</key>
+		<array>
+			<string>A3-101</string>
+			<string>A3-102</string>
+			<string>A3-103</string>
+			<string>A3-104</string>
+			<string>A3-109</string>
+			<string>A3-110</string>
+			<string>A3-111</string>
+			<string>A3-112</string>
+		</array>
+		<key>banos</key>
+		<array>
+			<string>A3-105 (Damas)</string>
+			<string>A3-107 (Caballeros)</string>
+		</array>
+	</dict>
+	<dict>
+		<key>nombre</key>
+		<string>Aulas 6</string>
+		<key>elevador</key>
+		<false/>
+		<key>salones</key>
+		<array>
+			<string>A6-101</string>
+			<string>A6-102</string>
+			<string>A6-103</string>
+			<string>A6-104</string>
+			<string>A6-105</string>
+			<string>A6-106</string>
+		</array>
+		<key>banos</key>
+		<array>
+			<string>A6-118 (Damas)</string>
+			<string>A6-120 (Caballeros)</string>
+		</array>
+	</dict>
+	<dict>
+		<key>nombre</key>
+		<string>Centro de Biotecnología</string>
+		<key>elevador</key>
+		<true/>
+		<key>salones</key>
+		<array>
+			<string>CB- 104</string>
+			<string>A5-101-G</string>
+			<string>CB-102-A</string>
+			<string>CB-102</string>
+			<string>CB-102-B</string>
+			<string>CB-103</string>
+		</array>
+		<key>banos</key>
+		<array>
+			<string>A5-115 (Damas)</string>
+			<string>A5-117 (Caballeros)</string>
+		</array>
+	</dict>
+	<dict>
+		<key>nombre</key>
+		<string>CIAP</string>
+		<key>elevador</key>
+		<true/>
+		<key>salones</key>
+		<array/>
+		<key>banos</key>
+		<array/>
 	</dict>
 </array>
 </plist>

@@ -18,6 +18,12 @@
 @property (strong, nonatomic) NSArray *edges;
 @property (strong, nonatomic) PESGraph *graph;
 @property (strong, nonatomic) NSMutableArray * pesNodes;
+
+@property BOOL limpiaMapa;
+
+@property (strong, nonatomic) GMSMarker *mrkPrincipio;
+@property (strong, nonatomic) GMSMarker *mrkFinal;
+@property (strong, nonatomic) GMSMutablePath *ruta;
 - (IBAction)limpiarMapa:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 

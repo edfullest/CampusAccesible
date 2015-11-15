@@ -62,6 +62,7 @@
 //        i++;
 //    }
 //    [self.vwMain addSubview:_mpvMapaTec];
+    _limpiaMapa = NO;
     
     [super viewDidLoad];
     _numMarkerSelected = 0;
@@ -209,6 +210,16 @@
 
 - (IBAction)limpiarMapa:(id)sender {
     [self.mapView clear];
+}
+
+- (IBAction)unwindRuta:(UIStoryboardSegue *) segue {
+    [self.mapView clear];
+    GMSPolyline *rectangle = [GMSPolyline polylineWithPath:_ruta];
+    rectangle.strokeColor = [UIColor blueColor];
+    rectangle.strokeWidth = 4.f;
+    rectangle.map = _mapView;
+    _mrkFinal.map = _mapView;
+    _mrkPrincipio.map = _mapView;
 }
 
 

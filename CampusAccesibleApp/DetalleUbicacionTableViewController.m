@@ -70,6 +70,19 @@
         cell.textLabel.text = [[object valueForKey:@"nombre"] description];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
     }
+    if ([CellIdentifier isEqualToString:@"elevadores"]){
+        // Crea imagen para asignarla
+        UIImage *originalImage;
+        if([[self.edificio valueForKey:@"elevador"] boolValue])
+        {
+            originalImage = [UIImage imageNamed:@"checked.png"];
+        }
+        else{
+            originalImage = [UIImage imageNamed:@"unchecked.png"];
+        }
+        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(30,30)];
+        cell.imageView.image = resizedImage;
+    }
     return cell;
 }
 

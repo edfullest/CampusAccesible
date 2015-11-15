@@ -42,6 +42,10 @@
 		A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */; };
 		A1E842E81BE848EB00BBEF6D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E842E61BE848EB00BBEF6D /* libsqlite3.0.tbd */; };
 		A1E842E91BE848EB00BBEF6D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E842E71BE848EB00BBEF6D /* libsqlite3.tbd */; };
+		A1EBE9CF1BF8F5640043E215 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9CE1BF8F5640043E215 /* unchecked.png */; };
+		A1EBE9D11BF8F56A0043E215 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9D01BF8F56A0043E215 /* checked.png */; };
+		A1EBE9D31BF913430043E215 /* InfoWindowPunto.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9D21BF913430043E215 /* InfoWindowPunto.xib */; };
+		A1EBE9D61BF913D20043E215 /* InfoWindowPunto.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EBE9D51BF913D20043E215 /* InfoWindowPunto.m */; };
 		D8AE06B7EC06DA08C58111C4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 562EBE69777865429395770B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +104,11 @@
 		A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ListaCaminos.plist; sourceTree = "<group>"; };
 		A1E842E61BE848EB00BBEF6D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		A1E842E71BE848EB00BBEF6D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A1EBE9CE1BF8F5640043E215 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		A1EBE9D01BF8F56A0043E215 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		A1EBE9D21BF913430043E215 /* InfoWindowPunto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindowPunto.xib; sourceTree = "<group>"; };
+		A1EBE9D41BF913D20043E215 /* InfoWindowPunto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoWindowPunto.h; sourceTree = "<group>"; };
+		A1EBE9D51BF913D20043E215 /* InfoWindowPunto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoWindowPunto.m; sourceTree = "<group>"; };
 		BD66B4A3F1AF30D333570849 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "CampusAccesibleApp/Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,6 +263,9 @@
 				A07B7BC21BED3454009B00A3 /* DetalleUbicacionVWC */,
 				A07B7BC31BED345F009B00A3 /* IngresarRutaVWC */,
 				A07B7BBB1BED3316009B00A3 /* Model.xcdatamodeld */,
+				A1EBE9D21BF913430043E215 /* InfoWindowPunto.xib */,
+				A1EBE9D41BF913D20043E215 /* InfoWindowPunto.h */,
+				A1EBE9D51BF913D20043E215 /* InfoWindowPunto.m */,
 			);
 			path = CampusAccesibleApp;
 			sourceTree = "<group>";
@@ -292,6 +304,8 @@
 				A1CC79991BEF8DE800094037 /* aulas1.jpg */,
 				A1CC79851BEEBB5900094037 /* menu.png */,
 				A1CC79871BEEBB5F00094037 /* menu@2x.png */,
+				A1EBE9CE1BF8F5640043E215 /* unchecked.png */,
+				A1EBE9D01BF8F56A0043E215 /* checked.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -378,7 +392,9 @@
 			files = (
 				A0CA6E2C1BE88B47007E7497 /* Property List.plist in Resources */,
 				A0D8A1DB1BD32ADB0016AE86 /* LaunchScreen.storyboard in Resources */,
+				A1EBE9D31BF913430043E215 /* InfoWindowPunto.xib in Resources */,
 				A0D8A1D81BD32ADB0016AE86 /* Assets.xcassets in Resources */,
+				A1EBE9D11BF8F56A0043E215 /* checked.png in Resources */,
 				A1CC79981BEF809000094037 /* ListaEdificios.plist in Resources */,
 				A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */,
 				A1CC79861BEEBB5900094037 /* menu.png in Resources */,
@@ -386,6 +402,7 @@
 				A0D8A1E31BD32BC80016AE86 /* Podfile in Resources */,
 				A1CC799A1BEF8DE800094037 /* aulas1.jpg in Resources */,
 				A085A4541BF566BF00F29D68 /* PuntosClave.plist in Resources */,
+				A1EBE9CF1BF8F5640043E215 /* unchecked.png in Resources */,
 				A0D8A1D61BD32ADB0016AE86 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +481,7 @@
 				A085A44C1BF5642300F29D68 /* Descriptor.m in Sources */,
 				A0D8A1CD1BD32ADB0016AE86 /* main.m in Sources */,
 				A0D8A1F41BD3527D0016AE86 /* SalonesAccesiblesTableViewController.m in Sources */,
+				A1EBE9D61BF913D20043E215 /* InfoWindowPunto.m in Sources */,
 				A085A44B1BF5642300F29D68 /* Camino+CoreDataProperties.m in Sources */,
 				A1CC79841BEEB42700094037 /* SidebarViewController.m in Sources */,
 				A1CC79A11BF1735A00094037 /* BanosAccesiblesTableViewController.m in Sources */,
