@@ -49,6 +49,8 @@
     GMSMarker *mrkFinal=[[GMSMarker alloc]init];
    
     int i = 0;
+    CGSize cgsTamano = CGSizeMake(28.0f, 28.0f);
+    UIImage *imgPin = [self image:[UIImage imageNamed:@"pin100.png"] scaledToSize:cgsTamano];
     for (NSDictionary* node in self.nodes) {
         NSString *name = [[NSString alloc] initWithFormat:@"Nodo%d",i];
         PESGraphNode *pgnNode = [PESGraphNode nodeWithIdentifier:name nodeWithDictionary:node];
@@ -56,9 +58,9 @@
         GMSMarker *mark=[[GMSMarker alloc]init];
         mark.position=CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue]);
         mark.groundAnchor=CGPointMake(0.5,0.5);
-        mark.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
+        mark.icon = imgPin;
         mark.map = _mapView;
-        mark.title = @"Nodo ";
+        mark.title = @"Inicio";
         mark.userData  = @{@"Nodo":pgnNode};
         i++;
     }
@@ -220,8 +222,11 @@
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
 {
     mapView.selectedMarker = marker;
+    CGSize cgsTamano = CGSizeMake(28.0f, 28.0f);
+    UIImage *imgGoal = [self image:[UIImage imageNamed:@"goal100.png"] scaledToSize:cgsTamano];
+    UIImage *imgPin = [self image:[UIImage imageNamed:@"pin100.png"] scaledToSize:cgsTamano];
     if(_numMarkerSelected == 0){
-        marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+        marker.icon = imgGoal;
         _numMarkerSelected++;
         _pgnPrincipio = marker.userData[@"Nodo"];
     }
@@ -237,7 +242,7 @@
         _mrkPrincipio.position=CLLocationCoordinate2DMake([[_pgnPrincipio.additionalData objectForKey:@"longitud"] floatValue],
                                                          [[_pgnPrincipio.additionalData objectForKey:@"latitud"] floatValue]);
         _mrkPrincipio.groundAnchor=CGPointMake(0.5,0.5);
-        _mrkPrincipio.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
+        _mrkPrincipio.icon = imgGoal;
         _mrkPrincipio.map=_mapView;
         _mrkPrincipio.title = @"Inicio";
         //mrkPrincipio = _mrkPrincipioI;
@@ -245,7 +250,7 @@
         _mrkFinal.position=CLLocationCoordinate2DMake([[_pgnFinal.additionalData objectForKey:@"longitud"] floatValue],
                                                      [[_pgnFinal.additionalData objectForKey:@"latitud"] floatValue]);
         _mrkFinal.groundAnchor=CGPointMake(0.5,0.5);
-        _mrkFinal.icon = [GMSMarker markerImageWithColor:[UIColor purpleColor]];
+        _mrkFinal.icon = imgGoal;
         _mrkFinal.map=_mapView;
         _mrkFinal.title = @"Fin";
         
@@ -441,187 +446,208 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     return todosPuntos;
 }
 
-- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position{
-    
-   
-    NSLog(@"%ld",[_puntosClaveDeRutaCorta count]);
-    if (position.zoom >= 18 && ([_puntosClaveDeRutaCorta count] != 0 || [_puntosClaveDeRutaCortaAccesible count] != 0)){
-        
-        
-         NSLog(@"%ld",[_puntosClaveDeRutaCorta count]);
-        UIImage *image = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-        for (PuntoClave * punto in _puntosClaveDeRutaCorta){
-            
-            NSMutableArray * arrRangosBold = [[NSMutableArray alloc] init];
-            
-            GMSMarker *mark=[[GMSMarker alloc]init];
-            mark.position=CLLocationCoordinate2DMake([punto.latitud floatValue],[punto.longitud floatValue]);
-            mark.groundAnchor=CGPointMake(0.5,0.5);
-            mark.icon = image;
-            mark.map = _mapView;
-            mark.title = punto.tipo;
-            //mark.userData  = @{@"puntoClave":@YES};
-            NSString * descriptores;
-            
-            int cont = 0;
-            
-            NSArray *arrDescriptores = punto.tieneMuchosDescriptores.allObjects;
-            
-            for (Descriptor * desc in arrDescriptores) {
-            
-                if (cont == 0) {
-                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
-                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
-                    
-                    descriptores = desc.nombre;
-                    descriptores = [descriptores stringByAppendingString:@": "];
-                    descriptores = [descriptores stringByAppendingString:desc.valor];
-                } else {
-                    descriptores = [descriptores stringByAppendingString:@"\n"];
-                    
-                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
-                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
+//- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position{
+//    
+//   
+//    NSLog(@"%ld",[_puntosClaveDeRutaCorta count]);
+//    if (position.zoom >= 18 && ([_puntosClaveDeRutaCorta count] != 0 || [_puntosClaveDeRutaCortaAccesible count] != 0)){
+//        
+//        
+//         NSLog(@"%ld",[_puntosClaveDeRutaCorta count]);
+//        UIImage *image = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+//        for (PuntoClave * punto in _puntosClaveDeRutaCorta){
+//            
+//            NSMutableArray * arrRangosBold = [[NSMutableArray alloc] init];
+//            
+//            GMSMarker *mark=[[GMSMarker alloc]init];
+//            mark.position=CLLocationCoordinate2DMake([punto.latitud floatValue],[punto.longitud floatValue]);
+//            mark.groundAnchor=CGPointMake(0.5,0.5);
+//            mark.icon = image;
+//            mark.map = _mapView;
+//            mark.title = punto.tipo;
+//            //mark.userData  = @{@"puntoClave":@YES};
+//            NSString * descriptores;
+//            
+//            int cont = 0;
+//            
+//            NSArray *arrDescriptores = punto.tieneMuchosDescriptores.allObjects;
+//            
+//            for (Descriptor * desc in arrDescriptores) {
+//            
+//                if (cont == 0) {
+//                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
+//                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
+//                    
+//                    descriptores = desc.nombre;
+//                    descriptores = [descriptores stringByAppendingString:@": "];
+//                    descriptores = [descriptores stringByAppendingString:desc.valor];
+//                } else {
+//                    descriptores = [descriptores stringByAppendingString:@"\n"];
+//                    
+//                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
+//                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
+//
+//                    descriptores = [descriptores stringByAppendingString:desc.nombre];
+//                    descriptores = [descriptores stringByAppendingString:@": "];
+//                    descriptores = [descriptores stringByAppendingString:desc.valor];
+//                }
+//                cont ++;
+//            }
+//            
+//            mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores, @"rangosBold":arrRangosBold};
+//            
+//        }
+//        
+//        for (PuntoClave * punto in _puntosClaveDeRutaCortaAccesible){
+//            GMSMarker *mark=[[GMSMarker alloc]init];
+//            mark.position=CLLocationCoordinate2DMake([punto.latitud floatValue],[punto.longitud floatValue]);
+//            mark.groundAnchor=CGPointMake(0.5,0.5);
+//            mark.icon = image;
+//            mark.map = _mapView;
+//            mark.title = punto.tipo;
+//            //mark.userData  = @{@"puntoClave":@YES};
+//            
+//            NSString * descriptores;
+//            
+//            int cont = 0;
+//            NSArray *arrDescriptores = punto.tieneMuchosDescriptores.allObjects;
+//            
+//            NSMutableArray * arrRangosBold = [[NSMutableArray alloc] init];
+//            
+//            for (Descriptor * desc in arrDescriptores) {
+//                
+//                if (cont == 0) {
+//                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
+//                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
+//
+//                    descriptores = desc.nombre;
+//                    descriptores = [descriptores stringByAppendingString:@": "];
+//                    descriptores = [descriptores stringByAppendingString:desc.valor];
+//                } else {
+//                    descriptores = [descriptores stringByAppendingString:@"\n"];
+//                    
+//                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
+//                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
+//
+//                    
+//                    descriptores = [descriptores stringByAppendingString:desc.nombre];
+//                    descriptores = [descriptores stringByAppendingString:@": "];
+//                    descriptores = [descriptores stringByAppendingString:desc.valor];
+//                }
+//                cont ++;
+//            }
+//
+//            mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores, @"rangosBold":arrRangosBold};
+//            
+//        }
+//
+//
+//    }
+//    else{
+////        [mapView clear];
+//    }
+//    
+//}
+//
+//- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+//    
+//    if ( marker.userData[@"puntoClave"] ) {
+//        InfoWindowPunto *view =  [[[NSBundle mainBundle] loadNibNamed:@"InfoWindowPunto" owner:self options:nil] objectAtIndex:0];
+//        
+//        view.lblDescripcion.lineBreakMode = NSLineBreakByWordWrapping;
+//        view.lblDescripcion.numberOfLines = 0;
+//        
+//        //view.lblDescripcion.text=marker.userData[@"descripcion"];
+//        
+//        view.lblTitulo.text=marker.title;
+//        
+//        
+//        
+//        view.imgImagen.image = [UIImage imageNamed:@"aulas1.jpg"];
+//        
+//        
+//        /*CGRect frame = view.lblDescripcion.frame;
+//        frame.size.height = view.bounds.size.height;
+//        view.lblDescripcion.frame = frame;*/
+//        
+//        //Calculate the expected size based on the font and linebreak mode of your label
+//        // FLT_MAX here simply means no constraint in height
+//        /*
+//        CGSize maximumLabelSize = CGSizeMake(216, FLT_MAX);
+//        
+//        CGSize expectedLabelSize = [view.lblDescripcion.text sizeWithFont:view.lblDescripcion.font constrainedToSize:maximumLabelSize lineBreakMode:view.lblDescripcion.lineBreakMode];
+//        
+//        CGRect newFrame = view.lblDescripcion.frame;
+//        newFrame.size.height = expectedLabelSize.height;
+//        view.lblDescripcion.frame = newFrame;*/
+//        
+//        NSInteger strLength = [marker.userData[@"descripcion"] length];
+//        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+//        [style setLineHeightMultiple:1.3];
+//        
+//        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:marker.userData[@"descripcion"]];
+//        
+//        
+//        [attrString addAttribute:NSParagraphStyleAttributeName
+//                          value:style
+//                          range:NSMakeRange(0, strLength)];
+//        // Bold style
+//        
+//        NSMutableArray * arrRangosBold = marker.userData[@"rangosBold"];
+//        NSRange rango2 = [ [arrRangosBold objectAtIndex:0]   rangeValue];
+//        
+//        for (int i = 0; i < [arrRangosBold count]; i ++) {
+//            NSRange rango = [ [arrRangosBold objectAtIndex:i]   rangeValue];
+//            [attrString addAttribute:NSFontAttributeName value: [UIFont fontWithName:@"Helvetica-Bold" size:14.0f] range:rango];
+//        }
+//        
+//        /*for (NSObject * ranAux in arrRangosBold) {
+//            NSRange rango = [ranAux  rangeValue];
+//            [attrString addAttribute:NSFontAttributeName value:[ [UIFont fontWithName:view.lblDescripcion.font.fontName size:view.lblDescripcion.font.pointSize] fontName] range:rango];
+//        }*/
+//        
+//        view.lblDescripcion.attributedText = attrString;
+//        
+//        [view.lblDescripcion sizeToFit];
+//        
+//        CGFloat totalHeight = 0.0f;
+//        for (UIView *vi in view.subviews)
+//            if (totalHeight < vi.frame.origin.y + vi.frame.size.height) totalHeight = vi.frame.origin.y + vi.frame.size.height;
+//        
+//        [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y - (totalHeight-view.bounds.size.height), view.bounds.size.width, totalHeight+15.0f)];
+//        
+//        view.layer.cornerRadius = 17;
+//        view.layer.borderWidth = 3;
+//        view.layer.borderColor = [[UIColor blackColor] CGColor];
+//        
+//        return view;
+//    } else {
+//        return nil;
+//    }
+//    
+//
+//    
+//}
 
-                    descriptores = [descriptores stringByAppendingString:desc.nombre];
-                    descriptores = [descriptores stringByAppendingString:@": "];
-                    descriptores = [descriptores stringByAppendingString:desc.valor];
-                }
-                cont ++;
-            }
-            
-            mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores, @"rangosBold":arrRangosBold};
-            
-        }
-        
-        for (PuntoClave * punto in _puntosClaveDeRutaCortaAccesible){
-            GMSMarker *mark=[[GMSMarker alloc]init];
-            mark.position=CLLocationCoordinate2DMake([punto.latitud floatValue],[punto.longitud floatValue]);
-            mark.groundAnchor=CGPointMake(0.5,0.5);
-            mark.icon = image;
-            mark.map = _mapView;
-            mark.title = punto.tipo;
-            //mark.userData  = @{@"puntoClave":@YES};
-            
-            NSString * descriptores;
-            
-            int cont = 0;
-            NSArray *arrDescriptores = punto.tieneMuchosDescriptores.allObjects;
-            
-            NSMutableArray * arrRangosBold = [[NSMutableArray alloc] init];
-            
-            for (Descriptor * desc in arrDescriptores) {
-                
-                if (cont == 0) {
-                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
-                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
-
-                    descriptores = desc.nombre;
-                    descriptores = [descriptores stringByAppendingString:@": "];
-                    descriptores = [descriptores stringByAppendingString:desc.valor];
-                } else {
-                    descriptores = [descriptores stringByAppendingString:@"\n"];
-                    
-                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
-                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
-
-                    
-                    descriptores = [descriptores stringByAppendingString:desc.nombre];
-                    descriptores = [descriptores stringByAppendingString:@": "];
-                    descriptores = [descriptores stringByAppendingString:desc.valor];
-                }
-                cont ++;
-            }
-
-            mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores, @"rangosBold":arrRangosBold};
-            
-        }
-
-
+- (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size
+{
+    //avoid redundant drawing
+    if (CGSizeEqualToSize(originalImage.size, size)){
+        return originalImage;
     }
-    else{
-//        [mapView clear];
-    }
     
-}
-
-- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+    //create drawing context
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
     
-    if ( marker.userData[@"puntoClave"] ) {
-        InfoWindowPunto *view =  [[[NSBundle mainBundle] loadNibNamed:@"InfoWindowPunto" owner:self options:nil] objectAtIndex:0];
-        
-        view.lblDescripcion.lineBreakMode = NSLineBreakByWordWrapping;
-        view.lblDescripcion.numberOfLines = 0;
-        
-        //view.lblDescripcion.text=marker.userData[@"descripcion"];
-        
-        view.lblTitulo.text=marker.title;
-        
-        
-        
-        view.imgImagen.image = [UIImage imageNamed:@"aulas1.jpg"];
-        
-        
-        /*CGRect frame = view.lblDescripcion.frame;
-        frame.size.height = view.bounds.size.height;
-        view.lblDescripcion.frame = frame;*/
-        
-        //Calculate the expected size based on the font and linebreak mode of your label
-        // FLT_MAX here simply means no constraint in height
-        /*
-        CGSize maximumLabelSize = CGSizeMake(216, FLT_MAX);
-        
-        CGSize expectedLabelSize = [view.lblDescripcion.text sizeWithFont:view.lblDescripcion.font constrainedToSize:maximumLabelSize lineBreakMode:view.lblDescripcion.lineBreakMode];
-        
-        CGRect newFrame = view.lblDescripcion.frame;
-        newFrame.size.height = expectedLabelSize.height;
-        view.lblDescripcion.frame = newFrame;*/
-        
-        NSInteger strLength = [marker.userData[@"descripcion"] length];
-        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-        [style setLineHeightMultiple:1.3];
-        
-        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:marker.userData[@"descripcion"]];
-        
-        
-        [attrString addAttribute:NSParagraphStyleAttributeName
-                          value:style
-                          range:NSMakeRange(0, strLength)];
-        // Bold style
-        
-        NSMutableArray * arrRangosBold = marker.userData[@"rangosBold"];
-        NSRange rango2 = [ [arrRangosBold objectAtIndex:0]   rangeValue];
-        
-        for (int i = 0; i < [arrRangosBold count]; i ++) {
-            NSRange rango = [ [arrRangosBold objectAtIndex:i]   rangeValue];
-            [attrString addAttribute:NSFontAttributeName value: [UIFont fontWithName:@"Helvetica-Bold" size:14.0f] range:rango];
-        }
-        
-        /*for (NSObject * ranAux in arrRangosBold) {
-            NSRange rango = [ranAux  rangeValue];
-            [attrString addAttribute:NSFontAttributeName value:[ [UIFont fontWithName:view.lblDescripcion.font.fontName size:view.lblDescripcion.font.pointSize] fontName] range:rango];
-        }*/
-        
-        view.lblDescripcion.attributedText = attrString;
-        
-        [view.lblDescripcion sizeToFit];
-        
-        CGFloat totalHeight = 0.0f;
-        for (UIView *vi in view.subviews)
-            if (totalHeight < vi.frame.origin.y + vi.frame.size.height) totalHeight = vi.frame.origin.y + vi.frame.size.height;
-        
-        [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y - (totalHeight-view.bounds.size.height), view.bounds.size.width, totalHeight+15.0f)];
-        
-        view.layer.cornerRadius = 17;
-        view.layer.borderWidth = 3;
-        view.layer.borderColor = [[UIColor blackColor] CGColor];
-        
-        return view;
-    } else {
-        return nil;
-    }
+    //draw
+    [originalImage drawInRect:CGRectMake(0.0f, 0.0f, size.width, size.height)];
     
-
+    //capture resultant image
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     
+    //return image
+    return image;
 }
 
 

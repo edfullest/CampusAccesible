@@ -19,10 +19,10 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sJE-qV-jxO">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMP-kt-px7">
-                                        <rect key="frame" x="286" y="524" width="51" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMP-kt-px7">
+                                        <rect key="frame" x="294" y="527" width="54" height="55"/>
                                         <animations/>
-                                        <state key="normal" title="Limpiar"/>
+                                        <state key="normal" title="Limpiar" image="limpiar100.png"/>
                                         <connections>
                                             <action selector="limpiarMapa:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fRb-HP-vId"/>
                                         </connections>
@@ -546,6 +546,7 @@
         <image name="classroom2.png" width="25" height="25"/>
         <image name="home.png" width="25" height="25"/>
         <image name="library.png" width="25" height="25"/>
+        <image name="limpiar100.png" width="445" height="421"/>
         <image name="menu.png" width="28" height="20"/>
         <image name="toilet.png" width="25" height="25"/>
         <image name="walking32.png" width="32" height="32"/>
