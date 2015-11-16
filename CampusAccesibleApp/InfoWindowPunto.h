@@ -11,5 +11,6 @@
 @interface InfoWindowPunto : UIView
 @property (weak, nonatomic) IBOutlet UILabel *lblTitulo;
 @property (weak, nonatomic) IBOutlet UILabel *lblDescripcion;
+@property (weak, nonatomic) IBOutlet UIImageView *imgImagen;
 
 @end

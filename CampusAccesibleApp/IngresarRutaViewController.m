@@ -370,6 +370,7 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
         [nuevoCamino setValue:idCamino forKey:@"idCamino"];
         
         
+        
         for(NSDictionary *punto in puntos){
             
             NSString *idPuntoClave = [punto valueForKey:@"idPuntoClave"];
@@ -443,6 +444,9 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
          NSLog(@"%ld",[_puntosClaveDeRutaCorta count]);
         UIImage *image = [GMSMarker markerImageWithColor:[UIColor blueColor]];
         for (PuntoClave * punto in _puntosClaveDeRutaCorta){
+            
+            NSMutableArray * arrRangosBold = [[NSMutableArray alloc] init];
+            
             GMSMarker *mark=[[GMSMarker alloc]init];
             mark.position=CLLocationCoordinate2DMake([punto.latitud floatValue],[punto.longitud floatValue]);
             mark.groundAnchor=CGPointMake(0.5,0.5);
@@ -459,17 +463,26 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
             for (Descriptor * desc in arrDescriptores) {
             
                 if (cont == 0) {
+                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
+                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
+                    
                     descriptores = desc.nombre;
+                    descriptores = [descriptores stringByAppendingString:@": "];
                     descriptores = [descriptores stringByAppendingString:desc.valor];
                 } else {
                     descriptores = [descriptores stringByAppendingString:@"\n"];
+                    
+                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
+                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
+
                     descriptores = [descriptores stringByAppendingString:desc.nombre];
+                    descriptores = [descriptores stringByAppendingString:@": "];
                     descriptores = [descriptores stringByAppendingString:desc.valor];
                 }
                 cont ++;
             }
             
-            mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores};
+            mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores, @"rangosBold":arrRangosBold};
             
         }
         
@@ -487,21 +500,32 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
             int cont = 0;
             NSArray *arrDescriptores = punto.tieneMuchosDescriptores.allObjects;
             
+            NSMutableArray * arrRangosBold = [[NSMutableArray alloc] init];
+            
             for (Descriptor * desc in arrDescriptores) {
                 
                 if (cont == 0) {
+                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
+                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
+
                     descriptores = desc.nombre;
+                    descriptores = [descriptores stringByAppendingString:@": "];
                     descriptores = [descriptores stringByAppendingString:desc.valor];
                 } else {
                     descriptores = [descriptores stringByAppendingString:@"\n"];
+                    
+                    NSRange aux = NSMakeRange([descriptores length], [desc.nombre length]);
+                    [arrRangosBold addObject:[NSValue valueWithRange:aux] ];
+
+                    
                     descriptores = [descriptores stringByAppendingString:desc.nombre];
+                    descriptores = [descriptores stringByAppendingString:@": "];
                     descriptores = [descriptores stringByAppendingString:desc.valor];
                 }
                 cont ++;
             }
 
-            
-            mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores};
+            mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores, @"rangosBold":arrRangosBold};
             
         }
 
@@ -520,9 +544,70 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
         
         view.lblDescripcion.lineBreakMode = NSLineBreakByWordWrapping;
         view.lblDescripcion.numberOfLines = 0;
-        view.lblDescripcion.text=marker.userData[@"descripcion"];
+        
+        //view.lblDescripcion.text=marker.userData[@"descripcion"];
         
         view.lblTitulo.text=marker.title;
+        
+        
+        
+        view.imgImagen.image = [UIImage imageNamed:@"aulas1.jpg"];
+        
+        
+        /*CGRect frame = view.lblDescripcion.frame;
+        frame.size.height = view.bounds.size.height;
+        view.lblDescripcion.frame = frame;*/
+        
+        //Calculate the expected size based on the font and linebreak mode of your label
+        // FLT_MAX here simply means no constraint in height
+        /*
+        CGSize maximumLabelSize = CGSizeMake(216, FLT_MAX);
+        
+        CGSize expectedLabelSize = [view.lblDescripcion.text sizeWithFont:view.lblDescripcion.font constrainedToSize:maximumLabelSize lineBreakMode:view.lblDescripcion.lineBreakMode];
+        
+        CGRect newFrame = view.lblDescripcion.frame;
+        newFrame.size.height = expectedLabelSize.height;
+        view.lblDescripcion.frame = newFrame;*/
+        
+        NSInteger strLength = [marker.userData[@"descripcion"] length];
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        [style setLineHeightMultiple:1.3];
+        
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:marker.userData[@"descripcion"]];
+        
+        
+        [attrString addAttribute:NSParagraphStyleAttributeName
+                          value:style
+                          range:NSMakeRange(0, strLength)];
+        // Bold style
+        
+        NSMutableArray * arrRangosBold = marker.userData[@"rangosBold"];
+        NSRange rango2 = [ [arrRangosBold objectAtIndex:0]   rangeValue];
+        
+        for (int i = 0; i < [arrRangosBold count]; i ++) {
+            NSRange rango = [ [arrRangosBold objectAtIndex:i]   rangeValue];
+            [attrString addAttribute:NSFontAttributeName value: [UIFont fontWithName:@"Helvetica-Bold" size:14.0f] range:rango];
+        }
+        
+        /*for (NSObject * ranAux in arrRangosBold) {
+            NSRange rango = [ranAux  rangeValue];
+            [attrString addAttribute:NSFontAttributeName value:[ [UIFont fontWithName:view.lblDescripcion.font.fontName size:view.lblDescripcion.font.pointSize] fontName] range:rango];
+        }*/
+        
+        view.lblDescripcion.attributedText = attrString;
+        
+        [view.lblDescripcion sizeToFit];
+        
+        CGFloat totalHeight = 0.0f;
+        for (UIView *vi in view.subviews)
+            if (totalHeight < vi.frame.origin.y + vi.frame.size.height) totalHeight = vi.frame.origin.y + vi.frame.size.height;
+        
+        [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y - (totalHeight-view.bounds.size.height), view.bounds.size.width, totalHeight+15.0f)];
+        
+        view.layer.cornerRadius = 17;
+        view.layer.borderWidth = 3;
+        view.layer.borderColor = [[UIColor blackColor] CGColor];
+        
         return view;
     } else {
         return nil;
