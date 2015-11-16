@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSArray *edges;
 @property (strong, nonatomic) PESGraph *graph;
 @property (strong, nonatomic) NSMutableArray * pesNodes;
+@property (strong, nonatomic) NSMutableArray * puntosClaveDeRuta;
 
 @property BOOL limpiaMapa;
 

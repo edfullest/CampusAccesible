@@ -20,7 +20,7 @@
         An optional description of this edge, such as the road it depicts or
         the airline flight its represents, etc.
      */
-    NSString * name;
+    NSString *name;
     BOOL accesible;
 }
 

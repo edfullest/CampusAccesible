@@ -11,6 +11,7 @@
 #import "PuntoClave.h"
 #import "Descriptor.h"
 #import "Camino.h"
+#import "InfoWindowPunto.h"
 
 @interface PruebaViewController ()
 
@@ -148,6 +149,22 @@
         [mapView clear];
     }
     
+}
+
+- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+    
+    if ( marker.userData[@"puntoClave"] ) {
+        InfoWindowPunto *view =  [[[NSBundle mainBundle] loadNibNamed:@"InfoWindowPunto" owner:self options:nil] objectAtIndex:0];
+        
+        view.lblDescripcion.lineBreakMode = NSLineBreakByWordWrapping;
+        view.lblDescripcion.numberOfLines = 0;
+        view.lblDescripcion.text=marker.userData[@"descripcion"];
+        
+        view.lblTitulo.text=marker.title;
+        return view;
+    } else {
+        return nil;
+    }
 }
 
 

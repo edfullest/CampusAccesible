@@ -151,6 +151,9 @@
         [controlador setRuta:_rutaCortaAccesible];
         [controlador setMrkPrincipio:_mrkPrincipio];
         [controlador setMrkFinal:_mrkFinal];
+        if ([_puntosClaveDeRutaCorta count]!=0){
+            [controlador setPuntosClaveDeRuta:_puntosClaveDeRutaCortaAccesible];
+        }
         [controlador setLimpiaMapa:YES];
     }
     else if (sender == self.btnRutaNoAccesible){
@@ -158,6 +161,10 @@
         [controlador setRuta:_rutaCorta];
         [controlador setMrkPrincipio:_mrkPrincipio];
         [controlador setMrkFinal:_mrkFinal];
+        if ([_puntosClaveDeRutaCortaAccesible count]!=0){
+            [controlador setPuntosClaveDeRuta:_puntosClaveDeRutaCorta];
+        }
+        
         [controlador setLimpiaMapa:YES];
     }
 }
