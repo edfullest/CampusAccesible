@@ -85,9 +85,12 @@
         BOOL esAccesible = [[edge objectForKey:@"accesible"] boolValue];
         
         // Calcular distancia entre nodos (coordenadas)
-        float deltaLongitud = [[nodo1 objectForKey:@"longitud"] floatValue] - [[nodo2 objectForKey:@"longitud"] floatValue];
-        float deltaLatitud = [[nodo1 objectForKey:@"latitud"] floatValue] - [[nodo2 objectForKey:@"latitud"] floatValue];
-        float distancia = sqrtf( powf(deltaLatitud, 2.0) + powf(deltaLongitud, 2.0) );
+        CLLocation *loc1 = [[CLLocation alloc]initWithLatitude:[[nodo1 objectForKey:@"latitud"] floatValue] longitude:[[nodo1 objectForKey:@"longitud"] floatValue]];
+        CLLocation *loc2 = [[CLLocation alloc]initWithLatitude:[[nodo2 objectForKey:@"latitud"] floatValue] longitude:[[nodo2 objectForKey:@"longitud"] floatValue]];
+        
+        CLLocationDistance dist = [loc1 distanceFromLocation:loc2];
+        
+        float distancia = dist;
         
         // Agregar edge al grafo
         [_graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:[NSString stringWithFormat:@"%ld<->%ld", (long)(posNodo1-1), (long)(posNodo2-1)] andWeight:[NSNumber numberWithFloat:distancia] andAccesible:esAccesible] fromNode:pgnNode1 toNode:pgnNode2];
