@@ -69,7 +69,36 @@
         NSDictionary *object = self.objects[indexPath.row - 1];
         // Despliega el nombre del aula, obtenida de la Plist
         cell.textLabel.text = [object valueForKey:@"nombre"];
+        
+        // Cambiar icono a gimnasio, centrales, cetec, biotecnología y rectoría
+        if ([[[object valueForKey:@"nombre"] description] isEqualToString:@"Gimnasio"]){
+            // Crea imagen para asignarla
+            UIImage *imagen = [UIImage imageNamed:@"sports.png"];
+            cell.imageView.image = imagen;
+        }
+        else if ([[[object valueForKey:@"nombre"] description] isEqualToString:@"Centrales"]){
+            // Crea imagen para asignarla
+            UIImage *imagen = [UIImage imageNamed:@"diningRoom.png"];
+            cell.imageView.image = imagen;
+        }
+        else if ([[[object valueForKey:@"nombre"] description] isEqualToString:@"Rectoría"]){
+            // Crea imagen para asignarla
+            UIImage *imagen = [UIImage imageNamed:@"statue.png"];
+            cell.imageView.image = imagen;
+        }
+        else if ([[[object valueForKey:@"nombre"] description] isEqualToString:@"Centro de Biotecnología"]){
+            // Crea imagen para asignarla
+            UIImage *imagen = [UIImage imageNamed:@"biotech.png"];
+            cell.imageView.image = imagen;
+        }
+        else if ([[[object valueForKey:@"nombre"] description] isEqualToString:@"CETEC"]){
+            // Crea imagen para asignarla
+            UIImage *imagen = [UIImage imageNamed:@"workstation.png"];
+            cell.imageView.image = imagen;
+        }
     }
+    
+    
     return cell;
 }
 

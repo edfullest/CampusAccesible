@@ -65,22 +65,68 @@
         UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
         cell.imageView.image = resizedImage;
     }
+    else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 2"]){
+        // Crea imagen para asignarla
+        UIImage *originalImage = [UIImage imageNamed:@"aulas2.jpg"];
+        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
+        cell.imageView.image = resizedImage;
+    }
+    else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 6"]){
+        // Crea imagen para asignarla
+        UIImage *originalImage = [UIImage imageNamed:@"aulas6.jpg"];
+        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
+        cell.imageView.image = resizedImage;
+    }
+    else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Centro de Biotecnología"]){
+        // Crea imagen para asignarla
+        UIImage *originalImage = [UIImage imageNamed:@"centroBiotecnologia.jpg"];
+        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
+        cell.imageView.image = resizedImage;
+    }
+    else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Centrales"]){
+        // Crea imagen para asignarla
+        UIImage *originalImage = [UIImage imageNamed:@"centrales.jpg"];
+        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
+        cell.imageView.image = resizedImage;
+    }
+    else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Gimnasio"]){
+        // Crea imagen para asignarla
+        UIImage *originalImage = [UIImage imageNamed:@"gimnasio.jpg"];
+        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
+        cell.imageView.image = resizedImage;
+    }
+    else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"CIAP"]){
+        // Crea imagen para asignarla
+        UIImage *originalImage = [UIImage imageNamed:@"ciap.jpg"];
+        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
+        cell.imageView.image = resizedImage;
+    }
+    else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"CETEC"]){
+        // Crea imagen para asignarla
+        UIImage *originalImage = [UIImage imageNamed:@"cetec.jpg"];
+        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
+        cell.imageView.image = resizedImage;
+    }
+    
+    // Nombre del aula
     if ([CellIdentifier isEqualToString:@"edificio"]) {
         NSDictionary *object = self.edificio;
         cell.textLabel.text = [[object valueForKey:@"nombre"] description];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.textLabel.textColor = [UIColor blackColor];
+        [cell setFont:[UIFont boldSystemFontOfSize:22]];
     }
+    // Cuenta con elevador
     if ([CellIdentifier isEqualToString:@"elevadores"]){
         // Crea imagen para asignarla
         UIImage *originalImage;
-        if([[self.edificio valueForKey:@"elevador"] boolValue])
-        {
+        if([[self.edificio valueForKey:@"elevador"] boolValue]){
             originalImage = [UIImage imageNamed:@"checked.png"];
         }
         else{
             originalImage = [UIImage imageNamed:@"unchecked.png"];
         }
-        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(30,30)];
+        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(25,25)];
         cell.imageView.image = resizedImage;
     }
     return cell;

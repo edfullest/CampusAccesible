@@ -26,7 +26,7 @@
 		<key>banos</key>
 		<array>
 			<string>A1-107 (Damas)</string>
-			<string>A1-107-1 (Caballero)</string>
+			<string>A1-107-1 (Caballeros)</string>
 		</array>
 	</dict>
 	<dict>
@@ -89,6 +89,19 @@
 	</dict>
 	<dict>
 		<key>nombre</key>
+		<string>Centrales</string>
+		<key>elevador</key>
+		<false/>
+		<key>salones</key>
+		<array/>
+		<key>banos</key>
+		<array>
+			<string>CC-104 (Damas)</string>
+			<string>CC-103 (Caballeros)</string>
+		</array>
+	</dict>
+	<dict>
+		<key>nombre</key>
 		<string>Centro de Biotecnología</string>
 		<key>elevador</key>
 		<true/>
@@ -109,11 +122,46 @@
 	</dict>
 	<dict>
 		<key>nombre</key>
+		<string>CETEC</string>
+		<key>elevador</key>
+		<true/>
+		<key>salones</key>
+		<array/>
+		<key>banos</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>nombre</key>
 		<string>CIAP</string>
 		<key>elevador</key>
 		<true/>
 		<key>salones</key>
 		<array/>
+		<key>banos</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>nombre</key>
+		<string>Gimnasio</string>
+		<key>elevador</key>
+		<false/>
+		<key>salones</key>
+		<array/>
+		<key>banos</key>
+		<array>
+			<string>GI-111 (Damas)</string>
+			<string>GI-109-1 (Caballeros)</string>
+		</array>
+	</dict>
+	<dict>
+		<key>nombre</key>
+		<string>Rectoría</string>
+		<key>elevador</key>
+		<true/>
+		<key>salones</key>
+		<array>
+			<string>CEDDIE</string>
+		</array>
 		<key>banos</key>
 		<array/>
 	</dict>

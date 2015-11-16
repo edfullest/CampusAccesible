@@ -37,7 +37,7 @@
 		A1CC79861BEEBB5900094037 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79851BEEBB5900094037 /* menu.png */; };
 		A1CC79881BEEBB5F00094037 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79871BEEBB5F00094037 /* menu@2x.png */; };
 		A1CC79981BEF809000094037 /* ListaEdificios.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79971BEF809000094037 /* ListaEdificios.plist */; };
-		A1CC799A1BEF8DE800094037 /* aulas1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79991BEF8DE800094037 /* aulas1.jpg */; };
+		A1CC799A1BEF8DE800094037 /* aulas11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1CC79991BEF8DE800094037 /* aulas11.jpg */; };
 		A1CC79A11BF1735A00094037 /* BanosAccesiblesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CC79A01BF1735A00094037 /* BanosAccesiblesTableViewController.m */; };
 		A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */; };
 		A1E842E81BE848EB00BBEF6D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E842E61BE848EB00BBEF6D /* libsqlite3.0.tbd */; };
@@ -46,6 +46,26 @@
 		A1EBE9D11BF8F56A0043E215 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9D01BF8F56A0043E215 /* checked.png */; };
 		A1EBE9D31BF913430043E215 /* InfoWindowPunto.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9D21BF913430043E215 /* InfoWindowPunto.xib */; };
 		A1EBE9D61BF913D20043E215 /* InfoWindowPunto.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EBE9D51BF913D20043E215 /* InfoWindowPunto.m */; };
+		A1EBE9D81BF93FB40043E215 /* aulas1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9D71BF93FB40043E215 /* aulas1.jpg */; };
+		A1EBE9DA1BF93FBA0043E215 /* aulas2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9D91BF93FBA0043E215 /* aulas2.jpg */; };
+		A1EBE9DC1BF943890043E215 /* aulas6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9DB1BF943890043E215 /* aulas6.jpg */; };
+		A1EBE9DE1BF943940043E215 /* centroBiotecnologia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9DD1BF943940043E215 /* centroBiotecnologia.jpg */; };
+		A1EBE9E01BF943A10043E215 /* centrales.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9DF1BF943A10043E215 /* centrales.jpg */; };
+		A1EBE9E21BF943A80043E215 /* gimnasio.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9E11BF943A80043E215 /* gimnasio.jpg */; };
+		A1EBE9E41BF943C60043E215 /* ciap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9E31BF943C60043E215 /* ciap.jpg */; };
+		A1EBE9E61BF943CF0043E215 /* cetec.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9E51BF943CF0043E215 /* cetec.jpg */; };
+		A1EBE9E81BF9482A0043E215 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9E71BF9482A0043E215 /* home.png */; };
+		A1EBE9EA1BF948300043E215 /* toilet.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9E91BF948300043E215 /* toilet.png */; };
+		A1EBE9EC1BF948380043E215 /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9EB1BF948380043E215 /* sports.png */; };
+		A1EBE9EE1BF9483E0043E215 /* library.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9ED1BF9483E0043E215 /* library.png */; };
+		A1EBE9F01BF948460043E215 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9EF1BF948460043E215 /* camera.png */; };
+		A1EBE9F21BF948D40043E215 /* diningRoom.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9F11BF948D40043E215 /* diningRoom.png */; };
+		A1EBE9F61BF94B050043E215 /* classroom2.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9F51BF94B050043E215 /* classroom2.png */; };
+		A1EBE9F81BF94E030043E215 /* statue.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9F71BF94E030043E215 /* statue.png */; };
+		A1EBE9FA1BF94F2E0043E215 /* workstation.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9F91BF94F2E0043E215 /* workstation.png */; };
+		A1EBE9FC1BF94F340043E215 /* biotech.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9FB1BF94F340043E215 /* biotech.png */; };
+		A1EBEA021BF956EC0043E215 /* accesibility32.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBEA011BF956EC0043E215 /* accesibility32.png */; };
+		A1EBEA041BF956F30043E215 /* walking32.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBEA031BF956F30043E215 /* walking32.png */; };
 		D8AE06B7EC06DA08C58111C4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 562EBE69777865429395770B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -98,7 +118,7 @@
 		A1CC79851BEEBB5900094037 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		A1CC79871BEEBB5F00094037 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		A1CC79971BEF809000094037 /* ListaEdificios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ListaEdificios.plist; sourceTree = "<group>"; };
-		A1CC79991BEF8DE800094037 /* aulas1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas1.jpg; sourceTree = "<group>"; };
+		A1CC79991BEF8DE800094037 /* aulas11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas11.jpg; sourceTree = "<group>"; };
 		A1CC799F1BF1735A00094037 /* BanosAccesiblesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BanosAccesiblesTableViewController.h; sourceTree = "<group>"; };
 		A1CC79A01BF1735A00094037 /* BanosAccesiblesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BanosAccesiblesTableViewController.m; sourceTree = "<group>"; };
 		A1E0E3681BEAEDA900196D5D /* ListaCaminos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ListaCaminos.plist; sourceTree = "<group>"; };
@@ -109,6 +129,26 @@
 		A1EBE9D21BF913430043E215 /* InfoWindowPunto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindowPunto.xib; sourceTree = "<group>"; };
 		A1EBE9D41BF913D20043E215 /* InfoWindowPunto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoWindowPunto.h; sourceTree = "<group>"; };
 		A1EBE9D51BF913D20043E215 /* InfoWindowPunto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoWindowPunto.m; sourceTree = "<group>"; };
+		A1EBE9D71BF93FB40043E215 /* aulas1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas1.jpg; sourceTree = "<group>"; };
+		A1EBE9D91BF93FBA0043E215 /* aulas2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas2.jpg; sourceTree = "<group>"; };
+		A1EBE9DB1BF943890043E215 /* aulas6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas6.jpg; sourceTree = "<group>"; };
+		A1EBE9DD1BF943940043E215 /* centroBiotecnologia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = centroBiotecnologia.jpg; sourceTree = "<group>"; };
+		A1EBE9DF1BF943A10043E215 /* centrales.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = centrales.jpg; sourceTree = "<group>"; };
+		A1EBE9E11BF943A80043E215 /* gimnasio.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gimnasio.jpg; sourceTree = "<group>"; };
+		A1EBE9E31BF943C60043E215 /* ciap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ciap.jpg; sourceTree = "<group>"; };
+		A1EBE9E51BF943CF0043E215 /* cetec.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cetec.jpg; sourceTree = "<group>"; };
+		A1EBE9E71BF9482A0043E215 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		A1EBE9E91BF948300043E215 /* toilet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toilet.png; sourceTree = "<group>"; };
+		A1EBE9EB1BF948380043E215 /* sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports.png; sourceTree = "<group>"; };
+		A1EBE9ED1BF9483E0043E215 /* library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = library.png; sourceTree = "<group>"; };
+		A1EBE9EF1BF948460043E215 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		A1EBE9F11BF948D40043E215 /* diningRoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diningRoom.png; sourceTree = "<group>"; };
+		A1EBE9F51BF94B050043E215 /* classroom2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classroom2.png; sourceTree = "<group>"; };
+		A1EBE9F71BF94E030043E215 /* statue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statue.png; sourceTree = "<group>"; };
+		A1EBE9F91BF94F2E0043E215 /* workstation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = workstation.png; sourceTree = "<group>"; };
+		A1EBE9FB1BF94F340043E215 /* biotech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = biotech.png; sourceTree = "<group>"; };
+		A1EBEA011BF956EC0043E215 /* accesibility32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accesibility32.png; sourceTree = "<group>"; };
+		A1EBEA031BF956F30043E215 /* walking32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walking32.png; sourceTree = "<group>"; };
 		BD66B4A3F1AF30D333570849 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "CampusAccesibleApp/Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -301,7 +341,27 @@
 		A1EBF5E41BF1964D00E8E95F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				A1CC79991BEF8DE800094037 /* aulas1.jpg */,
+				A1EBEA011BF956EC0043E215 /* accesibility32.png */,
+				A1EBEA031BF956F30043E215 /* walking32.png */,
+				A1EBE9FB1BF94F340043E215 /* biotech.png */,
+				A1EBE9F91BF94F2E0043E215 /* workstation.png */,
+				A1EBE9F71BF94E030043E215 /* statue.png */,
+				A1EBE9E71BF9482A0043E215 /* home.png */,
+				A1EBE9E91BF948300043E215 /* toilet.png */,
+				A1EBE9EB1BF948380043E215 /* sports.png */,
+				A1EBE9ED1BF9483E0043E215 /* library.png */,
+				A1EBE9F51BF94B050043E215 /* classroom2.png */,
+				A1EBE9EF1BF948460043E215 /* camera.png */,
+				A1EBE9F11BF948D40043E215 /* diningRoom.png */,
+				A1EBE9D71BF93FB40043E215 /* aulas1.jpg */,
+				A1EBE9D91BF93FBA0043E215 /* aulas2.jpg */,
+				A1EBE9DB1BF943890043E215 /* aulas6.jpg */,
+				A1EBE9DD1BF943940043E215 /* centroBiotecnologia.jpg */,
+				A1EBE9DF1BF943A10043E215 /* centrales.jpg */,
+				A1EBE9E11BF943A80043E215 /* gimnasio.jpg */,
+				A1EBE9E31BF943C60043E215 /* ciap.jpg */,
+				A1EBE9E51BF943CF0043E215 /* cetec.jpg */,
+				A1CC79991BEF8DE800094037 /* aulas11.jpg */,
 				A1CC79851BEEBB5900094037 /* menu.png */,
 				A1CC79871BEEBB5F00094037 /* menu@2x.png */,
 				A1EBE9CE1BF8F5640043E215 /* unchecked.png */,
@@ -391,18 +451,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0CA6E2C1BE88B47007E7497 /* Property List.plist in Resources */,
+				A1EBE9DA1BF93FBA0043E215 /* aulas2.jpg in Resources */,
+				A1EBE9E21BF943A80043E215 /* gimnasio.jpg in Resources */,
+				A1EBE9DE1BF943940043E215 /* centroBiotecnologia.jpg in Resources */,
 				A0D8A1DB1BD32ADB0016AE86 /* LaunchScreen.storyboard in Resources */,
+				A1EBE9D81BF93FB40043E215 /* aulas1.jpg in Resources */,
+				A1EBE9DC1BF943890043E215 /* aulas6.jpg in Resources */,
+				A1EBE9F21BF948D40043E215 /* diningRoom.png in Resources */,
 				A1EBE9D31BF913430043E215 /* InfoWindowPunto.xib in Resources */,
 				A0D8A1D81BD32ADB0016AE86 /* Assets.xcassets in Resources */,
+				A1EBE9EC1BF948380043E215 /* sports.png in Resources */,
+				A1EBE9FA1BF94F2E0043E215 /* workstation.png in Resources */,
 				A1EBE9D11BF8F56A0043E215 /* checked.png in Resources */,
+				A1EBE9E41BF943C60043E215 /* ciap.jpg in Resources */,
 				A1CC79981BEF809000094037 /* ListaEdificios.plist in Resources */,
+				A1EBE9EE1BF9483E0043E215 /* library.png in Resources */,
 				A1E0E3691BEAEDA900196D5D /* ListaCaminos.plist in Resources */,
+				A1EBE9E01BF943A10043E215 /* centrales.jpg in Resources */,
 				A1CC79861BEEBB5900094037 /* menu.png in Resources */,
 				A1CC79881BEEBB5F00094037 /* menu@2x.png in Resources */,
+				A1EBE9F81BF94E030043E215 /* statue.png in Resources */,
+				A1EBE9F61BF94B050043E215 /* classroom2.png in Resources */,
+				A1EBE9E61BF943CF0043E215 /* cetec.jpg in Resources */,
 				A0D8A1E31BD32BC80016AE86 /* Podfile in Resources */,
-				A1CC799A1BEF8DE800094037 /* aulas1.jpg in Resources */,
+				A1EBEA021BF956EC0043E215 /* accesibility32.png in Resources */,
+				A1CC799A1BEF8DE800094037 /* aulas11.jpg in Resources */,
+				A1EBEA041BF956F30043E215 /* walking32.png in Resources */,
+				A1EBE9E81BF9482A0043E215 /* home.png in Resources */,
+				A1EBE9F01BF948460043E215 /* camera.png in Resources */,
 				A085A4541BF566BF00F29D68 /* PuntosClave.plist in Resources */,
+				A1EBE9FC1BF94F340043E215 /* biotech.png in Resources */,
 				A1EBE9CF1BF8F5640043E215 /* unchecked.png in Resources */,
+				A1EBE9EA1BF948300043E215 /* toilet.png in Resources */,
 				A0D8A1D61BD32ADB0016AE86 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

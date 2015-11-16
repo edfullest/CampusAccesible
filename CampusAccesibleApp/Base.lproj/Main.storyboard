@@ -23,6 +23,9 @@
                                         <rect key="frame" x="286" y="524" width="51" height="30"/>
                                         <animations/>
                                         <state key="normal" title="Limpiar"/>
+                                        <connections>
+                                            <action selector="limpiarMapa:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fRb-HP-vId"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
@@ -83,22 +86,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NNo-3e-8bX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="551"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfn-3c-ODy">
-                                <rect key="frame" x="90" y="625" width="40" height="32"/>
-                                <state key="normal" title="Button" image="Walking-32"/>
-                                <connections>
-                                    <segue destination="wgt-6w-jq3" kind="unwind" unwindAction="unwindRuta:" id="ZYL-oy-U0L"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9F-2L-t4B">
-                                <rect key="frame" x="235" y="623" width="35" height="34"/>
-                                <state key="normal" title="Button" image="Accessibility 1-32"/>
+                                <rect key="frame" x="242" y="622" width="37" height="39"/>
+                                <state key="normal" title="Button" image="accesibility32.png"/>
                                 <connections>
                                     <segue destination="wgt-6w-jq3" kind="unwind" unwindAction="unwindRuta:" id="9H6-6Y-QuV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfn-3c-ODy">
+                                <rect key="frame" x="99" y="623" width="33" height="39"/>
+                                <state key="normal" title="Button" image="walking32.png"/>
+                                <connections>
+                                    <segue destination="wgt-6w-jq3" kind="unwind" unwindAction="unwindRuta:" id="ZYL-oy-U0L"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -219,7 +222,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="edificio" rowHeight="50" id="eEh-DT-i5P">
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="edificio" rowHeight="50" id="eEh-DT-i5P">
                                 <rect key="frame" x="0.0" y="92" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eEh-DT-i5P" id="Y08-v9-UjL">
@@ -229,7 +232,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edificio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZe-h7-R7u">
                                             <rect key="frame" x="8" y="14" width="359" height="21"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -238,7 +241,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imagen" rowHeight="389" id="JPl-0d-dhF">
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imagen" rowHeight="389" id="JPl-0d-dhF">
                                 <rect key="frame" x="0.0" y="142" width="375" height="389"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JPl-0d-dhF" id="OFv-1s-9nz">
@@ -262,14 +265,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Elevador" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4mb-Xd-0g8">
-                                            <rect key="frame" x="62" y="0.0" width="298" height="43"/>
+                                            <rect key="frame" x="54" y="0.0" width="306" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Walking-32" id="9On-f1-cBn">
-                                            <rect key="frame" x="15" y="5" width="32" height="32"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="checked.png" id="9On-f1-cBn">
+                                            <rect key="frame" x="15" y="9" width="24" height="24"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -277,20 +280,24 @@
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="salones" id="bQe-v3-OGj">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="salones" textLabel="m6d-NI-pye" imageView="cyj-Jh-fCo" style="IBUITableViewCellStyleDefault" id="bQe-v3-OGj">
                                 <rect key="frame" x="0.0" y="575" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQe-v3-OGj" id="CF8-ZC-hXD">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ver Salones Accesibles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsd-Zw-9jR">
-                                            <rect key="frame" x="18" y="11" width="178" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Ver Salones Accesibles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m6d-NI-pye">
+                                            <rect key="frame" x="55" y="0.0" width="305" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="classroom2.png" id="cyj-Jh-fCo">
+                                            <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -299,20 +306,24 @@
                                     <segue destination="id6-cH-d4V" kind="custom" identifier="salones" customClass="SWRevealViewControllerSeguePushController" id="38r-1Q-WRu"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="banos" rowHeight="50" id="Uj4-Fi-WbK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="banos" textLabel="JlZ-wX-MJ3" imageView="3yK-F8-Zhd" rowHeight="50" style="IBUITableViewCellStyleDefault" id="Uj4-Fi-WbK">
                                 <rect key="frame" x="0.0" y="619" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uj4-Fi-WbK" id="KyA-Uu-LXm">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ver Baños Accesibles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAk-aG-vYP">
-                                            <rect key="frame" x="18" y="14" width="165" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Ver Baños Accesibles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JlZ-wX-MJ3">
+                                            <rect key="frame" x="55" y="0.0" width="305" height="49"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="toilet.png" id="3yK-F8-Zhd">
+                                            <rect key="frame" x="15" y="12" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -408,7 +419,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Inicio" textLabel="sv6-od-zTv" style="IBUITableViewCellStyleDefault" id="0Oc-p2-liQ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Inicio" textLabel="sv6-od-zTv" imageView="1k9-JV-EpV" style="IBUITableViewCellStyleDefault" id="0Oc-p2-liQ">
                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Oc-p2-liQ" id="N4k-S5-Zd2">
@@ -416,19 +427,23 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Inicio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sv6-od-zTv">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                            <rect key="frame" x="55" y="0.0" width="305" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="home.png" id="1k9-JV-EpV">
+                                            <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="hM6-nZ-ZVm" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Aff-2f-PUu"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="JBm-yq-DDl" style="IBUITableViewCellStyleDefault" id="9qH-z4-9Fm">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="JBm-yq-DDl" imageView="jUY-3Z-CLt" style="IBUITableViewCellStyleDefault" id="9qH-z4-9Fm">
                                 <rect key="frame" x="0.0" y="66" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9qH-z4-9Fm" id="aJa-Sf-9qx">
@@ -436,13 +451,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JBm-yq-DDl">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                            <rect key="frame" x="55" y="0.0" width="305" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="library.png" id="jUY-3Z-CLt">
+                                            <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -509,9 +528,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Accessibility 1-32" width="32" height="32"/>
-        <image name="Walking-32" width="32" height="32"/>
+        <image name="accesibility32.png" width="32" height="32"/>
+        <image name="checked.png" width="24" height="24"/>
+        <image name="classroom2.png" width="25" height="25"/>
+        <image name="home.png" width="25" height="25"/>
+        <image name="library.png" width="25" height="25"/>
         <image name="menu.png" width="28" height="20"/>
+        <image name="toilet.png" width="25" height="25"/>
+        <image name="walking32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Aff-2f-PUu"/>
