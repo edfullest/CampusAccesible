@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
 
     _limpiaMapa = NO;
-    
+    self.btnLimpiar.hidden = YES;
     [super viewDidLoad];
     _numMarkerSelected = 0;
     //Se cargan los datos de los nodos
@@ -129,10 +129,12 @@
     [[segue destinationViewController] setGraphI:_graph];
     [[segue destinationViewController] setNodes:_nodes];
     [[segue destinationViewController] setPesNodes:_pesNodes];
+    [[segue destinationViewController] setDelegado:self];
 }
 
 - (IBAction)limpiarMapa:(id)sender {
     [self.mapView clear];
+    self.btnLimpiar.hidden = YES;
 }
 
 - (IBAction)unwindRuta:(UIStoryboardSegue *) segue {
@@ -352,6 +354,93 @@
     
     
     
+}
+
+- (void) conLinea :(GMSPolyline *)gmsLinea
+           conRuta: (GMSMutablePath *) ruta
+      conPrincipio: (GMSMarker *) mrkPrincipio
+          conFinal: (GMSMarker *) mrkFinal
+    conPuntosClave: (NSMutableArray *) puntosClave
+              tipoDeRuta:(BOOL)tipo{
+    [self.mapView clear];
+    _ruta=ruta;
+    _linea=gmsLinea;
+    _mrkPrincipio=mrkPrincipio;
+    _mrkFinal=mrkFinal;
+    _puntosClaveDeRuta=puntosClave;
+    _mrkFinal.map = _mapView;
+    _mrkPrincipio.map = _mapView;
+    if (tipo){
+        _linea.map = _mapView;
+    }
+    else{
+        // Dibujar ruta no accesible
+        
+        for (int i = 0; i < [_ruta count] - 1; i ++) {
+            CLLocationCoordinate2D co1 = [_ruta coordinateAtIndex:i];
+            CLLocationCoordinate2D co2 = [_ruta coordinateAtIndex:i+1];
+            
+            CLLocation *lo1 = [[CLLocation alloc] initWithLatitude:co1.latitude longitude:co1.longitude];
+            CLLocation *lo2 = [[CLLocation alloc] initWithLatitude:co2.latitude longitude:co2.longitude];
+            
+            [self drawDashedLineOnMapBetweenOrigin:lo1 destination:lo2];
+        }
+    }
+    
+    self.btnLimpiar.hidden = NO;
+    [self cargarPuntosClaveDeRuta];
+    
+}
+
+- (void)quitaVista
+{
+    NSLog(@"Quitar");
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)drawDashedLineOnMapBetweenOrigin:(CLLocation *)originLocation destination:(CLLocation *)destinationLocation {
+    //[self.mapView clear];
+    
+    CGFloat distance = [originLocation distanceFromLocation:destinationLocation];
+    if (distance < 5.0f) return;
+    
+    // works for segmentLength 22 at zoom level 16; to have different length,
+    // calculate the new lengthFactor as 1/(24^2 * newLength)
+    CGFloat lengthFactor = 4.7093020352450285e-09;
+    CGFloat zoomFactor = pow(2, self.mapView.camera.zoom + 8);
+    CGFloat segmentLength = 1.f / (lengthFactor * zoomFactor);
+    CGFloat dashes = floor(distance / segmentLength);
+    CGFloat dashLatitudeStep = (destinationLocation.coordinate.latitude - originLocation.coordinate.latitude) / dashes;
+    CGFloat dashLongitudeStep = (destinationLocation.coordinate.longitude - originLocation.coordinate.longitude) / dashes;
+    
+    CLLocationCoordinate2D (^offsetCoord)(CLLocationCoordinate2D coord, CGFloat latOffset, CGFloat lngOffset) =
+    ^CLLocationCoordinate2D(CLLocationCoordinate2D coord, CGFloat latOffset, CGFloat lngOffset) {
+        return (CLLocationCoordinate2D) { .latitude = coord.latitude + latOffset,
+            .longitude = coord.longitude + lngOffset };
+    };
+    
+    GMSMutablePath *path = GMSMutablePath.path;
+    NSMutableArray *spans = NSMutableArray.array;
+    CLLocation *currentLocation = originLocation;
+    [path addCoordinate:currentLocation.coordinate];
+    
+    while ([currentLocation distanceFromLocation:destinationLocation] > segmentLength) {
+        CLLocationCoordinate2D dashEnd = offsetCoord(currentLocation.coordinate, dashLatitudeStep, dashLongitudeStep);
+        [path addCoordinate:dashEnd];
+        [spans addObject:[GMSStyleSpan spanWithColor:UIColor.redColor]];
+        
+        CLLocationCoordinate2D newLocationCoord = offsetCoord(dashEnd, dashLatitudeStep / 2.f, dashLongitudeStep / 2.f);
+        [path addCoordinate:newLocationCoord];
+        [spans addObject:[GMSStyleSpan spanWithColor:UIColor.clearColor]];
+        
+        currentLocation = [[CLLocation alloc] initWithLatitude:newLocationCoord.latitude
+                                                     longitude:newLocationCoord.longitude];
+    }
+    
+    _lineaSegmentada = [GMSPolyline polylineWithPath:path];
+    _lineaSegmentada.map = self.mapView;
+    _lineaSegmentada.spans = spans;
+    _lineaSegmentada.strokeWidth = 4.f;
 }
 
 

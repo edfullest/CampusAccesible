@@ -45,6 +45,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="btnLimpiar" destination="NMP-kt-px7" id="byO-Wb-dW9"/>
                         <outlet property="sidebarButton" destination="78r-7o-RGg" id="YhL-VZ-xEz"/>
                         <outlet property="vwMap" destination="sJE-qV-jxO" id="Dqp-0z-Ug0"/>
                     </connections>
@@ -86,12 +87,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NNo-3e-8bX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9F-2L-t4B">
-                                <rect key="frame" x="242" y="622" width="37" height="39"/>
+                                <rect key="frame" x="181" y="25" width="37" height="39"/>
                                 <animations/>
                                 <state key="normal" title="Button" image="accesibility32.png"/>
                                 <connections>
@@ -99,13 +100,22 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfn-3c-ODy">
-                                <rect key="frame" x="99" y="623" width="33" height="39"/>
+                                <rect key="frame" x="120" y="17" width="33" height="39"/>
                                 <animations/>
                                 <state key="normal" title="Button" image="walking32.png"/>
                                 <connections>
                                     <segue destination="wgt-6w-jq3" kind="unwind" unwindAction="unwindRuta:" id="ZYL-oy-U0L"/>
                                 </connections>
                             </button>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sd8-ON-mbl">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Ruta Corta" image="walking32.png" id="DMP-LM-QUd"/>
+                                    <tabBarItem title="Ruta Accesible" image="Accessibility 1-32" id="phn-TW-sZD"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,6 +124,7 @@
                     <connections>
                         <outlet property="btnRutaAccesible" destination="S9F-2L-t4B" id="WrW-iw-jQp"/>
                         <outlet property="btnRutaNoAccesible" destination="Yfn-3c-ODy" id="Vgg-6C-TtE"/>
+                        <outlet property="tabBarController" destination="sd8-ON-mbl" id="x5q-Aw-phU"/>
                         <outlet property="vwMap" destination="NNo-3e-8bX" id="Vit-Pl-sCo"/>
                     </connections>
                 </viewController>
@@ -541,6 +552,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Accessibility 1-32" width="32" height="32"/>
         <image name="accesibility32.png" width="32" height="32"/>
         <image name="checked.png" width="24" height="24"/>
         <image name="classroom2.png" width="25" height="25"/>
