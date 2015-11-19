@@ -92,6 +92,9 @@
         
         float distancia = dist;
         
+//        float deltaLongitud = [[nodo1 objectForKey:@"longitud"] floatValue] - [[nodo2 objectForKey:@"longitud"] floatValue];
+//        float deltaLatitud = [[nodo1 objectForKey:@"latitud"] floatValue] - [[nodo2 objectForKey:@"latitud"] floatValue];
+//        float distancia = sqrtf( powf(deltaLatitud, 2.0) + powf(deltaLongitud, 2.0) );
         // Agregar edge al grafo
         [_graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:[NSString stringWithFormat:@"%ld<->%ld", (long)(posNodo1-1), (long)(posNodo2-1)] andWeight:[NSNumber numberWithFloat:distancia] andAccesible:esAccesible] fromNode:pgnNode1 toNode:pgnNode2];
     }

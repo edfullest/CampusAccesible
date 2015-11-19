@@ -4,6 +4,14 @@
 <array>
 	<dict>
 		<key>punto1</key>
+		<integer>112</integer>
+		<key>punto2</key>
+		<integer>113</integer>
+		<key>accesible</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>punto1</key>
 		<integer>1</integer>
 		<key>punto2</key>
 		<integer>2</integer>

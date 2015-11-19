@@ -120,7 +120,6 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="btnRutaAccesible" destination="S9F-2L-t4B" id="WrW-iw-jQp"/>
                         <outlet property="btnRutaNoAccesible" destination="Yfn-3c-ODy" id="Vgg-6C-TtE"/>
