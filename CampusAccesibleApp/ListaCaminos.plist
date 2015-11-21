@@ -664,7 +664,7 @@
 		<key>punto2</key>
 		<integer>54</integer>
 		<key>accesible</key>
-		<true/>
+		<false/>
 	</dict>
 	<dict>
 		<key>punto1</key>
@@ -672,7 +672,7 @@
 		<key>punto2</key>
 		<integer>55</integer>
 		<key>accesible</key>
-		<true/>
+		<false/>
 	</dict>
 	<dict>
 		<key>punto1</key>

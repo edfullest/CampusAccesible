@@ -29,6 +29,8 @@
 @property (nonatomic,strong) id <ProtocoloDibujarRuta> delegado;
 @property (weak, nonatomic) IBOutlet UIButton *btnRutaAccesible;
 @property (weak, nonatomic) IBOutlet UIButton *btnRutaNoAccesible;
+@property (weak, nonatomic) IBOutlet UIButton *btnLimpiar;
+
 
 @property (strong, nonatomic) NSArray *nodes;
 @property (strong, nonatomic) NSArray *edges;
@@ -43,5 +45,6 @@
 @property (weak, nonatomic) IBOutlet UITabBar *tabBarController;
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item;
+- (IBAction)limpiarInicioFin:(id)sender;
 
 @end

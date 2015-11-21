@@ -37,6 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _btnLimpiar.hidden = YES;
     _numMarkerSelected = 0;
     GMSCameraPosition *cameraPosition=[GMSCameraPosition cameraWithLatitude:25.651113
                                                                   longitude:-100.290028
@@ -75,7 +76,7 @@
     self.tabBarController.hidden = YES;
     [self.tabBarController sizeToFit];
     [self.vwMap sizeToFit];
-    [self.vwMap addSubview:_mapView];
+    [self.vwMap insertSubview:_mapView atIndex:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -225,6 +226,7 @@
 // http://www.g8production.com/post/60435653126/google-maps-sdk-for-ios-move-marker-and-info
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
 {
+    _btnLimpiar.hidden = NO;
     mapView.selectedMarker = marker;
     CGSize cgsTamano = CGSizeMake(28.0f, 28.0f);
     UIImage *imgGoal = [self image:[UIImage imageNamed:@"goal100.png"] scaledToSize:cgsTamano];
@@ -465,6 +467,28 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
         [self.delegado quitaVista];
     }
     //[self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (IBAction)limpiarInicioFin:(id)sender {
+    [self.mapView clear];
+    _numMarkerSelected = 0;
+    int i = 0;
+    CGSize cgsTamano = CGSizeMake(28.0f, 28.0f);
+    UIImage *imgPin = [self image:[UIImage imageNamed:@"pin100.png"] scaledToSize:cgsTamano];
+    for (NSDictionary* node in self.nodes) {
+        NSString *name = [[NSString alloc] initWithFormat:@"Nodo%d",i];
+        PESGraphNode *pgnNode = [PESGraphNode nodeWithIdentifier:name nodeWithDictionary:node];
+        [self.pesNodes addObject:pgnNode];
+        GMSMarker *mark=[[GMSMarker alloc]init];
+        mark.position=CLLocationCoordinate2DMake([[node objectForKey:@"longitud"] floatValue], [[node objectForKey:@"latitud"] floatValue]);
+        mark.groundAnchor=CGPointMake(0.5,0.5);
+        mark.icon = imgPin;
+        mark.map = _mapView;
+        mark.title = @"Inicio";
+        mark.userData  = @{@"Nodo":pgnNode};
+        i++;
+    }
+    _btnLimpiar.hidden = YES;
 }
 
 - (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size

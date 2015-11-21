@@ -291,10 +291,17 @@
         
         view.lblTitulo.text=marker.title;
         
+        // Seleccionar imagen dependiendo de tipo de punto clave
         
-        
-        view.imgImagen.image = [UIImage imageNamed:@"aulas1.jpg"];
-        
+        if ( [marker.title isEqualToString:@"Escaleras"] ) {
+            view.imgImagen.image = [UIImage imageNamed:@"escaleras100.png"];
+        } else if ( [marker.title isEqualToString:@"Elevador"] ) {
+            view.imgImagen.image = [UIImage imageNamed:@"elevador100.png"];
+        } else if ( [marker.title isEqualToString:@"Rampa"] ) {
+            view.imgImagen.image = [UIImage imageNamed:@"rampa100.png"];
+        } else if ( [marker.title isEqualToString:@"Acceso"] ) {
+            view.imgImagen.image = [UIImage imageNamed:@"acceso100.png"];
+        }
         
         /*CGRect frame = view.lblDescripcion.frame;
          frame.size.height = view.bounds.size.height;
