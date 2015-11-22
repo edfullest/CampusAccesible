@@ -18,6 +18,8 @@
 
 @implementation DetalleUbicacionTableViewController{
     NSArray *menuItems;
+    NSInteger ancho;
+    NSInteger altura;
 }
 
 #pragma mark - Managing the edificio
@@ -38,7 +40,7 @@
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-    menuItems = @[@"edificio", @"imagen", @"elevadores", @"salones", @"banos"];
+    menuItems = @[@"edificio", @"imagen", @"elevadores", @"banos", @"salones"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,53 +61,53 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier = [menuItems objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    // Variables para las imagenes de los edificios
+    UIImage *originalImage = [[UIImage alloc]init];
+    UIImage *resizedImage = [[UIImage alloc]init];
+    ancho = cell.contentView.bounds.size.width * 0.9;
+    altura = ancho * 1.15;
+    
     if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 1"]){
-        // Crea imagen para asignarla
-        UIImage *originalImage = [UIImage imageNamed:@"aulas1.jpg"];
-        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
-        cell.imageView.image = resizedImage;
+        // Asigna imagen
+        originalImage = [UIImage imageNamed:@"aulas1.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 2"]){
-        // Crea imagen para asignarla
-        UIImage *originalImage = [UIImage imageNamed:@"aulas2.jpg"];
-        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
-        cell.imageView.image = resizedImage;
+        // Asigna imagen
+        originalImage = [UIImage imageNamed:@"aulas2.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 6"]){
-        // Crea imagen para asignarla
-        UIImage *originalImage = [UIImage imageNamed:@"aulas6.jpg"];
-        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
-        cell.imageView.image = resizedImage;
+        // Asigna imagen
+        originalImage = [UIImage imageNamed:@"aulas6.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Centro de Biotecnología"]){
-        // Crea imagen para asignarla
-        UIImage *originalImage = [UIImage imageNamed:@"centroBiotecnologia.jpg"];
-        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
-        cell.imageView.image = resizedImage;
+        // Asigna imagen
+        originalImage = [UIImage imageNamed:@"centroBiotecnologia.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Centrales"]){
-        // Crea imagen para asignarla
-        UIImage *originalImage = [UIImage imageNamed:@"centrales.jpg"];
-        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
-        cell.imageView.image = resizedImage;
+        // Asigna imagen
+        originalImage = [UIImage imageNamed:@"centrales.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Gimnasio"]){
-        // Crea imagen para asignarla
-        UIImage *originalImage = [UIImage imageNamed:@"gimnasio.jpg"];
-        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
-        cell.imageView.image = resizedImage;
+        // Asigna imagen
+        originalImage = [UIImage imageNamed:@"gimnasio.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"CIAP"]){
-        // Crea imagen para asignarla
-        UIImage *originalImage = [UIImage imageNamed:@"ciap.jpg"];
-        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
-        cell.imageView.image = resizedImage;
+        // Asigna imagen
+        originalImage = [UIImage imageNamed:@"ciap.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"CETEC"]){
-        // Crea imagen para asignarla
-        UIImage *originalImage = [UIImage imageNamed:@"cetec.jpg"];
-        UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(425,500)];
-        cell.imageView.image = resizedImage;
+        // Asigna imagen
+        originalImage = [UIImage imageNamed:@"cetec.jpg"];
+    }
+    // Ajusta y centra imagen
+    if([CellIdentifier isEqualToString:@"imagen"]){
+        // Ajusta imagen
+        resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(ancho, altura)];
+        // Centra imagen
+        UIImageView * imgView = [[UIImageView alloc]initWithImage:resizedImage];
+        imgView.frame=CGRectMake((cell.contentView.bounds.size.width/2)-(resizedImage.size.width/2),0, resizedImage.size.width, resizedImage.size.height);
+        
+        [cell.contentView addSubview:imgView];
     }
     
     // Nombre del aula
@@ -129,13 +131,17 @@
         UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(25,25)];
         cell.imageView.image = resizedImage;
     }
+    // Desplegar salones accesibles
+    if ([CellIdentifier isEqualToString:@"salones"] && ([[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Centrales"] || [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Gimnasio"])){
+        cell.hidden = YES;
+    }
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.row == 1)
-        return 400;
+        return altura;
     else
         return 44;
 }

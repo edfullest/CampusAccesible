@@ -52,10 +52,6 @@
 		<false/>
 		<key>salones</key>
 		<array>
-			<string>A3-101</string>
-			<string>A3-102</string>
-			<string>A3-103</string>
-			<string>A3-104</string>
 			<string>A3-109</string>
 			<string>A3-110</string>
 			<string>A3-111</string>
@@ -161,6 +157,7 @@
 		<key>salones</key>
 		<array>
 			<string>CEDDIE</string>
+			<string>Sala Mayor</string>
 		</array>
 		<key>banos</key>
 		<array/>
