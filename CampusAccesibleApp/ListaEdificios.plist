@@ -122,9 +122,13 @@
 		<key>elevador</key>
 		<true/>
 		<key>salones</key>
-		<array/>
+		<array>
+			<string>Cuenta con elevador, son accesibles</string>
+		</array>
 		<key>banos</key>
-		<array/>
+		<array>
+			<string>Cuenta con elevador, son accesibles</string>
+		</array>
 	</dict>
 	<dict>
 		<key>nombre</key>
@@ -132,9 +136,13 @@
 		<key>elevador</key>
 		<true/>
 		<key>salones</key>
-		<array/>
+		<array>
+			<string>Cuenta con elevador, son accesibles</string>
+		</array>
 		<key>banos</key>
-		<array/>
+		<array>
+			<string>Cuenta con elevador, son accesibles</string>
+		</array>
 	</dict>
 	<dict>
 		<key>nombre</key>

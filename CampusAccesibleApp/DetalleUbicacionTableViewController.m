@@ -17,13 +17,14 @@
 @end
 
 @implementation DetalleUbicacionTableViewController{
-    NSArray *menuItems;
-    NSInteger ancho;
-    NSInteger altura;
+    NSArray *menuItems;     // Celdas
+    NSInteger ancho;        // Ancho de la imagen
+    NSInteger altura;       // Altura de la imagen
 }
 
 #pragma mark - Managing the edificio
 
+// Asigna valores a la variable edificio
 - (void)setEdificio:(id)newEdificio {
     if (_edificio != newEdificio) {
         _edificio = newEdificio;
@@ -32,14 +33,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Sidebar
+    // Sidebar Navigation Menu
     SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
+    if (revealViewController)
     {
         [self.sidebarButton setTarget: self.revealViewController];
-        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.sidebarButton setAction: @selector(revealToggle:)];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+    // Identificadores de la celda
     menuItems = @[@"edificio", @"imagen", @"elevadores", @"banos", @"salones"];
 }
 
@@ -64,41 +66,36 @@
     // Variables para las imagenes de los edificios
     UIImage *originalImage = [[UIImage alloc]init];
     UIImage *resizedImage = [[UIImage alloc]init];
+    // Obtiene el ancho del contentView
     ancho = cell.contentView.bounds.size.width * 0.9;
     altura = ancho * 1.15;
     
+    // Asigna imágenes
     if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 1"]){
-        // Asigna imagen
-        originalImage = [UIImage imageNamed:@"aulas1.jpg"];
+        originalImage = [UIImage imageNamed:@"aulas1V1.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 2"]){
-        // Asigna imagen
         originalImage = [UIImage imageNamed:@"aulas2.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 6"]){
-        // Asigna imagen
         originalImage = [UIImage imageNamed:@"aulas6.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Centro de Biotecnología"]){
-        // Asigna imagen
         originalImage = [UIImage imageNamed:@"centroBiotecnologia.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Centrales"]){
-        // Asigna imagen
         originalImage = [UIImage imageNamed:@"centrales.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Gimnasio"]){
-        // Asigna imagen
         originalImage = [UIImage imageNamed:@"gimnasio.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"CIAP"]){
-        // Asigna imagen
         originalImage = [UIImage imageNamed:@"ciap.jpg"];
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"CETEC"]){
-        // Asigna imagen
         originalImage = [UIImage imageNamed:@"cetec.jpg"];
     }
+    
     // Ajusta y centra imagen
     if([CellIdentifier isEqualToString:@"imagen"]){
         // Ajusta imagen
@@ -110,7 +107,7 @@
         [cell.contentView addSubview:imgView];
     }
     
-    // Nombre del aula
+    // Da estilo a nombre del aula
     if ([CellIdentifier isEqualToString:@"edificio"]) {
         NSDictionary *object = self.edificio;
         cell.textLabel.text = [[object valueForKey:@"nombre"] description];
@@ -118,7 +115,8 @@
         cell.textLabel.textColor = [UIColor blackColor];
         [cell setFont:[UIFont boldSystemFontOfSize:22]];
     }
-    // Cuenta con elevador
+    
+    // Asigna y ajusta la imagen del elevador
     if ([CellIdentifier isEqualToString:@"elevadores"]){
         // Crea imagen para asignarla
         UIImage *originalImage;
@@ -131,21 +129,25 @@
         UIImage *resizedImage = [self imageWithImage:originalImage scaledToSize:CGSizeMake(25,25)];
         cell.imageView.image = resizedImage;
     }
-    // Desplegar salones accesibles
+    
+    // Oculta la celda "Ver Salones Accesibles" si el edificio no tiene salones
     if ([CellIdentifier isEqualToString:@"salones"] && ([[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Centrales"] || [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Gimnasio"])){
         cell.hidden = YES;
     }
+    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Cambia la altura de la celda
     if(indexPath.row == 1)
         return altura;
     else
         return 44;
 }
 
+// Función utilizada para ajustar la imagen
 - (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
 {
     UIGraphicsBeginImageContext(newSize);
@@ -160,12 +162,14 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Segue para "Ver Salones Accesibles"
     if ([[segue identifier] isEqualToString:@"salones"]) {
         NSDictionary *object1 = self.edificio;
         UINavigationController *navController = segue.destinationViewController;
         SalonesAccesiblesTableViewController *detalleController = [navController childViewControllers].firstObject;
         detalleController.edificio1 = object1;
     }
+    // Segue para "Ver Banos Accesibles"
     else if ([[segue identifier] isEqualToString:@"banos"]) {
         NSDictionary *object1 = self.edificio;
         UINavigationController *navController = segue.destinationViewController;

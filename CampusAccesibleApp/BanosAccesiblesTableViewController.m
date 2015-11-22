@@ -17,6 +17,7 @@
 
 #pragma mark - Managing the edificio
 
+// Asigna valores a la variable edificio1
 - (void)setEdificio1:(id)newEdificio1 {
     if (_edificio1 != newEdificio1) {
         _edificio1 = newEdificio1;
@@ -41,11 +42,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Cuenta el número de elementos que se tienen en el diccionario
     return [[self.edificio1 valueForKey:@"banos"]count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Asigna el nombre a la celda
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.textLabel.text = [self.edificio1 valueForKey:@"banos"][indexPath.row];
     return cell;
@@ -62,6 +65,7 @@
 */
 
 - (IBAction)atras:(id)sender {
+    // Saca las vistas y lo redirige a la Pantalla "Detalle del aula"
     [self.navigationController popToRootViewControllerAnimated:YES];
     DetalleUbicacionTableViewController *detalleUbicacionTableViewController =
     [self.storyboard instantiateViewControllerWithIdentifier:@"detalleUbicacionTableViewController"];

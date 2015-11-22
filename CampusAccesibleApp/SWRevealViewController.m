@@ -1,3 +1,6 @@
+//  Utilizado para el sidebar, obtenido de:
+//  http://www.appcoda.com/ios-programming-sidebar-navigation-menu/
+
 /*
 
  Copyright (c) 2013 Joan Lluch <joan.lluch@sweetwilliamsl.com>
