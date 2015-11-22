@@ -372,6 +372,7 @@
           conFinal: (GMSMarker *) mrkFinal
     conPuntosClave: (NSMutableArray *) puntosClave
               tipoDeRuta:(BOOL)tipo{
+    [_puntosClaveDeRuta removeAllObjects];
     [self.mapView clear];
     _ruta=ruta;
     _linea=gmsLinea;

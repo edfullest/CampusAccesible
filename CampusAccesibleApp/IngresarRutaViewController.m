@@ -466,6 +466,8 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
         [self.delegado conLinea:_lineaCompleta conRuta:_rutaCortaAccesible conPrincipio:_mrkPrincipio conFinal:_mrkFinal conPuntosClave:_puntosClaveDeRutaCortaAccesible tipoDeRuta:YES];
         [self.delegado quitaVista];
     }
+    [_puntosClaveDeRutaCortaAccesible removeAllObjects];
+    [_puntosClaveDeRutaCorta removeAllObjects];
     //[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -489,6 +491,9 @@ didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
         i++;
     }
     _btnLimpiar.hidden = YES;
+    _tabBarController.hidden = YES;
+    [_puntosClaveDeRutaCortaAccesible removeAllObjects];
+    [_puntosClaveDeRutaCorta removeAllObjects];
 }
 
 - (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size
