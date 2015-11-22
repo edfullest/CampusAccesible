@@ -37,6 +37,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // cambiar Title
+    [self setTitle:@"Ingresar Ruta"];
     // Se oculta el boton de limpiado de mapa
     _btnLimpiar.hidden = YES;
     // Se inicializa el contador de marcadores seleccionados
