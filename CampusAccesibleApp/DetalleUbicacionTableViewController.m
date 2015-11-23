@@ -77,6 +77,9 @@
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 2"]){
         originalImage = [UIImage imageNamed:@"aulas2.jpg"];
     }
+    else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 3"]){
+        originalImage = [UIImage imageNamed:@"aulas3.jpg"];
+    }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Aulas 6"]){
         originalImage = [UIImage imageNamed:@"aulas6.jpg"];
     }
@@ -94,6 +97,9 @@
     }
     else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"CETEC"]){
         originalImage = [UIImage imageNamed:@"cetec.jpg"];
+    }
+    else if ([CellIdentifier isEqualToString:@"imagen"] && [[[self.edificio valueForKey:@"nombre"] description] isEqualToString:@"Rectoría"]){
+        originalImage = [UIImage imageNamed:@"rectoria.jpg"];
     }
     
     // Ajusta y centra imagen
