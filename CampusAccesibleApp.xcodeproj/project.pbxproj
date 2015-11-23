@@ -22,6 +22,9 @@
 		A067BCC71BFA6B1F0034132C /* ruta100.png in Resources */ = {isa = PBXBuildFile; fileRef = A067BCC11BFA6B1F0034132C /* ruta100.png */; };
 		A067BCC91BFA6CB90034132C /* pin100.png in Resources */ = {isa = PBXBuildFile; fileRef = A067BCC81BFA6CB90034132C /* pin100.png */; };
 		A067BCCB1BFA6F170034132C /* goal100.png in Resources */ = {isa = PBXBuildFile; fileRef = A067BCCA1BFA6F170034132C /* goal100.png */; };
+		A06C7F791C039152004644F7 /* aulas1V1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A06C7F761C039152004644F7 /* aulas1V1.jpg */; };
+		A06C7F7A1C039152004644F7 /* aulas3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A06C7F771C039152004644F7 /* aulas3.jpg */; };
+		A06C7F7B1C039152004644F7 /* rectoria.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A06C7F781C039152004644F7 /* rectoria.jpg */; };
 		A07B7BBD1BED3316009B00A3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A07B7BBB1BED3316009B00A3 /* Model.xcdatamodeld */; };
 		A085A44A1BF5642300F29D68 /* Camino.m in Sources */ = {isa = PBXBuildFile; fileRef = A085A43D1BF5642300F29D68 /* Camino.m */; };
 		A085A44B1BF5642300F29D68 /* Camino+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A085A43F1BF5642300F29D68 /* Camino+CoreDataProperties.m */; };
@@ -56,7 +59,6 @@
 		A1EBE9D11BF8F56A0043E215 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9D01BF8F56A0043E215 /* checked.png */; };
 		A1EBE9D31BF913430043E215 /* InfoWindowPunto.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9D21BF913430043E215 /* InfoWindowPunto.xib */; };
 		A1EBE9D61BF913D20043E215 /* InfoWindowPunto.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EBE9D51BF913D20043E215 /* InfoWindowPunto.m */; };
-		A1EBE9D81BF93FB40043E215 /* aulas1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9D71BF93FB40043E215 /* aulas1.jpg */; };
 		A1EBE9DA1BF93FBA0043E215 /* aulas2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9D91BF93FBA0043E215 /* aulas2.jpg */; };
 		A1EBE9DC1BF943890043E215 /* aulas6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9DB1BF943890043E215 /* aulas6.jpg */; };
 		A1EBE9DE1BF943940043E215 /* centroBiotecnologia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBE9DD1BF943940043E215 /* centroBiotecnologia.jpg */; };
@@ -97,6 +99,9 @@
 		A067BCC11BFA6B1F0034132C /* ruta100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ruta100.png; sourceTree = "<group>"; };
 		A067BCC81BFA6CB90034132C /* pin100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin100.png; sourceTree = "<group>"; };
 		A067BCCA1BFA6F170034132C /* goal100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goal100.png; sourceTree = "<group>"; };
+		A06C7F761C039152004644F7 /* aulas1V1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas1V1.jpg; sourceTree = "<group>"; };
+		A06C7F771C039152004644F7 /* aulas3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas3.jpg; sourceTree = "<group>"; };
+		A06C7F781C039152004644F7 /* rectoria.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rectoria.jpg; sourceTree = "<group>"; };
 		A07B7BBC1BED3316009B00A3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A085A43C1BF5642300F29D68 /* Camino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camino.h; sourceTree = "<group>"; };
 		A085A43D1BF5642300F29D68 /* Camino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camino.m; sourceTree = "<group>"; };
@@ -149,7 +154,6 @@
 		A1EBE9D21BF913430043E215 /* InfoWindowPunto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindowPunto.xib; sourceTree = "<group>"; };
 		A1EBE9D41BF913D20043E215 /* InfoWindowPunto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoWindowPunto.h; sourceTree = "<group>"; };
 		A1EBE9D51BF913D20043E215 /* InfoWindowPunto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoWindowPunto.m; sourceTree = "<group>"; };
-		A1EBE9D71BF93FB40043E215 /* aulas1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas1.jpg; sourceTree = "<group>"; };
 		A1EBE9D91BF93FBA0043E215 /* aulas2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas2.jpg; sourceTree = "<group>"; };
 		A1EBE9DB1BF943890043E215 /* aulas6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aulas6.jpg; sourceTree = "<group>"; };
 		A1EBE9DD1BF943940043E215 /* centroBiotecnologia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = centroBiotecnologia.jpg; sourceTree = "<group>"; };
@@ -377,6 +381,9 @@
 			isa = PBXGroup;
 			children = (
 				A067BCBB1BFA6B1F0034132C /* Icons */,
+				A06C7F761C039152004644F7 /* aulas1V1.jpg */,
+				A06C7F771C039152004644F7 /* aulas3.jpg */,
+				A06C7F781C039152004644F7 /* rectoria.jpg */,
 				A067BCB91BFA6A690034132C /* acceso100.png */,
 				A067BCB71BFA52AC0034132C /* limpiar100.png */,
 				A1EBEA011BF956EC0043E215 /* accesibility32.png */,
@@ -391,7 +398,6 @@
 				A1EBE9F51BF94B050043E215 /* classroom2.png */,
 				A1EBE9EF1BF948460043E215 /* camera.png */,
 				A1EBE9F11BF948D40043E215 /* diningRoom.png */,
-				A1EBE9D71BF93FB40043E215 /* aulas1.jpg */,
 				A1EBE9D91BF93FBA0043E215 /* aulas2.jpg */,
 				A1EBE9DB1BF943890043E215 /* aulas6.jpg */,
 				A1EBE9DD1BF943940043E215 /* centroBiotecnologia.jpg */,
@@ -497,15 +503,16 @@
 				A067BCC71BFA6B1F0034132C /* ruta100.png in Resources */,
 				A1EBE9DE1BF943940043E215 /* centroBiotecnologia.jpg in Resources */,
 				A0D8A1DB1BD32ADB0016AE86 /* LaunchScreen.storyboard in Resources */,
-				A1EBE9D81BF93FB40043E215 /* aulas1.jpg in Resources */,
 				A1EBE9DC1BF943890043E215 /* aulas6.jpg in Resources */,
 				A1EBE9F21BF948D40043E215 /* diningRoom.png in Resources */,
 				A1EBE9D31BF913430043E215 /* InfoWindowPunto.xib in Resources */,
 				A0D8A1D81BD32ADB0016AE86 /* Assets.xcassets in Resources */,
 				A1EBE9EC1BF948380043E215 /* sports.png in Resources */,
+				A06C7F7B1C039152004644F7 /* rectoria.jpg in Resources */,
 				A1EBE9FA1BF94F2E0043E215 /* workstation.png in Resources */,
 				A067BCC61BFA6B1F0034132C /* rampa100.png in Resources */,
 				A1EBE9D11BF8F56A0043E215 /* checked.png in Resources */,
+				A06C7F791C039152004644F7 /* aulas1V1.jpg in Resources */,
 				A1EBE9E41BF943C60043E215 /* ciap.jpg in Resources */,
 				A067BCC51BFA6B1F0034132C /* limpiar100.png in Resources */,
 				A1CC79981BEF809000094037 /* ListaEdificios.plist in Resources */,
@@ -515,6 +522,7 @@
 				A1EBE9E01BF943A10043E215 /* centrales.jpg in Resources */,
 				A1CC79861BEEBB5900094037 /* menu.png in Resources */,
 				A1CC79881BEEBB5F00094037 /* menu@2x.png in Resources */,
+				A06C7F7A1C039152004644F7 /* aulas3.jpg in Resources */,
 				A1EBE9F81BF94E030043E215 /* statue.png in Resources */,
 				A1EBE9F61BF94B050043E215 /* classroom2.png in Resources */,
 				A1EBE9E61BF943CF0043E215 /* cetec.jpg in Resources */,

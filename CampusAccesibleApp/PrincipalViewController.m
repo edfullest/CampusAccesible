@@ -26,7 +26,7 @@
 
 @property PESGraphNode *pgnPrincipio;
 @property PESGraphNode *pgnFinal;
-@property NSInteger numMarkerSelected;        // Max value 2
+@property NSInteger numMarkerSelected;
 
 @end
 
@@ -43,9 +43,11 @@
     self.nodes = [[NSArray alloc] initWithContentsOfFile: pathPlist];
     self.pesNodes = [[NSMutableArray alloc] init];
     
+    //Este plist tiene todos los caminos del Tec
     pathPlist = [ [NSBundle mainBundle] pathForResource: @"ListaCaminos" ofType: @"plist"];
     self.edges = [[NSArray alloc] initWithContentsOfFile: pathPlist];
-   
+    
+    //Se posiciona la camara al centro del tec
     GMSCameraPosition *cameraPosition=[GMSCameraPosition cameraWithLatitude:25.651113
                                                                                                   longitude:-100.290028
                                                                                                        zoom:17];
@@ -61,6 +63,8 @@
     _graph = [[PESGraph alloc] init];
     //Se inicializan los nodos dentro del grafo
     int i = 0;
+    
+    //Se añaden los nodos en el arreglo auxiliar pesNodes
     for (NSDictionary* node in self.nodes) {
         NSString *name = [[NSString alloc] initWithFormat:@"Nodo%d",i];
         PESGraphNode *pgnNode = [PESGraphNode nodeWithIdentifier:name nodeWithDictionary:node];
@@ -88,20 +92,15 @@
         CLLocation *loc1 = [[CLLocation alloc]initWithLatitude:[[nodo1 objectForKey:@"latitud"] floatValue] longitude:[[nodo1 objectForKey:@"longitud"] floatValue]];
         CLLocation *loc2 = [[CLLocation alloc]initWithLatitude:[[nodo2 objectForKey:@"latitud"] floatValue] longitude:[[nodo2 objectForKey:@"longitud"] floatValue]];
         
+        //Se obtiene la distancia entre los nodos
         CLLocationDistance dist = [loc1 distanceFromLocation:loc2];
         
         float distancia = dist;
-        
-//        float deltaLongitud = [[nodo1 objectForKey:@"longitud"] floatValue] - [[nodo2 objectForKey:@"longitud"] floatValue];
-//        float deltaLatitud = [[nodo1 objectForKey:@"latitud"] floatValue] - [[nodo2 objectForKey:@"latitud"] floatValue];
-//        float distancia = sqrtf( powf(deltaLatitud, 2.0) + powf(deltaLongitud, 2.0) );
         // Agregar edge al grafo
         [_graph addBiDirectionalEdge:[PESGraphEdge edgeWithName:[NSString stringWithFormat:@"%ld<->%ld", (long)(posNodo1-1), (long)(posNodo2-1)] andWeight:[NSNumber numberWithFloat:distancia] andAccesible:esAccesible] fromNode:pgnNode1 toNode:pgnNode2];
     }
     
     [self.vwMap insertSubview:_mapView atIndex:0];
-    
-
 
     // Sidebar Navigation Menu
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -111,8 +110,6 @@
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-    
-    //Dibuja puntos clave
     
     
 }
@@ -152,19 +149,26 @@
 }
 
 -(void)cargarPuntosClaveDeRuta{
+    //Se inicializan las imagenes de los puntos claves
     UIImage *imgSilla = [UIImage imageNamed:@"rampa100.png"];
     UIImage *imgElevador = [UIImage imageNamed:@"elevador100.png"];
     UIImage *imgEscaleras = [UIImage imageNamed:@"escaleras.png"];
     UIImage *imgAcceso = [UIImage imageNamed:@"acceso100.png"];
+    
+    //Se inicializa el tamaño de estas imagenes
     CGSize cgsTamano = CGSizeMake(32.0f, 32.0f);
+    //Aqui se pintan los puntos claves de la ruta
     for (PuntoClave * punto in _puntosClaveDeRuta){
         
+        //Este arreglo se utiliza para poner en negritas los letreros de los puntos clave
         NSMutableArray * arrRangosBold = [[NSMutableArray alloc] init];
         
+        //Marcador
         GMSMarker *mark=[[GMSMarker alloc]init];
         mark.position=CLLocationCoordinate2DMake([punto.latitud floatValue],[punto.longitud floatValue]);
         mark.groundAnchor=CGPointMake(0.5,0.5);
         
+        //La imagen del punto clave depende de que tipo sea
         if ([punto.tipo  isEqual: @"Elevador"]){
             mark.icon = [self image: imgElevador scaledToSize:cgsTamano];
         }
@@ -180,13 +184,16 @@
         
         mark.map = _mapView;
         mark.title = punto.tipo;
-        //mark.userData  = @{@"puntoClave":@YES};
+        
+        //Cada punto clave tiene muchos descriptores
         NSString * descriptores;
         
         int cont = 0;
         
+        //Se inicializa el arreglo de descriptores
         NSArray *arrDescriptores = punto.tieneMuchosDescriptores.allObjects;
         
+        //Como puede tener muchos descriptores, se hace un for que los cargue todos
         for (Descriptor * desc in arrDescriptores) {
             
             if (cont == 0) {
@@ -211,47 +218,6 @@
         
         mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores, @"rangosBold":arrRangosBold};
         
-        
-//        GMSMarker *mark=[[GMSMarker alloc]init];
-//        mark.position=CLLocationCoordinate2DMake([punto.latitud floatValue],[punto.longitud floatValue]);
-//        mark.groundAnchor=CGPointMake(0.5,0.5);
-//        
-//        mark.map = _mapView;
-//        mark.title = punto.tipo;
-//        
-//        if ([punto.tipo  isEqual: @"Elevador"]){
-//            mark.icon = [self image: imgElevador scaledToSize:cgsTamano];
-//        }
-//        else if ([punto.tipo  isEqual: @"Acceso"]){
-//            mark.icon = [self image: imgAcceso scaledToSize:cgsTamano];
-//        }
-//        else if ([punto.tipo  isEqual: @"Rampa"]){
-//            mark.icon = [self image: imgSilla scaledToSize:cgsTamano];
-//        }
-//        else if ([punto.tipo  isEqual: @"Escaleras"]){
-//            mark.icon = [self image: imgEscaleras scaledToSize:cgsTamano];
-//        }
-//        //mark.userData  = @{@"puntoClave":@YES};
-//        NSString * descriptores;
-//        
-//        int cont = 0;
-//        
-//        NSArray *arrDescriptores = punto.tieneMuchosDescriptores.allObjects;
-//        
-//        for (Descriptor * desc in arrDescriptores) {
-//            
-//            if (cont == 0) {
-//                descriptores = desc.nombre;
-//                descriptores = [descriptores stringByAppendingString:desc.valor];
-//            } else {
-//                descriptores = [descriptores stringByAppendingString:@"\n"];
-//                descriptores = [descriptores stringByAppendingString:desc.nombre];
-//                descriptores = [descriptores stringByAppendingString:desc.valor];
-//            }
-//            cont ++;
-//        }
-//        
-//        mark.userData  = @{@"puntoClave":@YES, @"descripcion":descriptores};
         
     }
     
@@ -281,18 +247,17 @@
 
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
     
+    //Aqui se hace un override del infowindow
     if ( marker.userData[@"puntoClave"] ) {
+        //Aqui cargamos la ventanita del punto clave
         InfoWindowPunto *view =  [[[NSBundle mainBundle] loadNibNamed:@"InfoWindowPunto" owner:self options:nil] objectAtIndex:0];
         
+        //Se pone la descripcion en esta ventanida
         view.lblDescripcion.lineBreakMode = NSLineBreakByWordWrapping;
         view.lblDescripcion.numberOfLines = 0;
-        
-        //view.lblDescripcion.text=marker.userData[@"descripcion"];
-        
         view.lblTitulo.text=marker.title;
         
-        // Seleccionar imagen dependiendo de tipo de punto clave
-        
+        //Se muestra una imagen diferente en esta ventanita dependiendo del tipo de punto clave
         if ( [marker.title isEqualToString:@"Escaleras"] ) {
             view.imgImagen.image = [UIImage imageNamed:@"escaleras100.png"];
         } else if ( [marker.title isEqualToString:@"Elevador"] ) {
@@ -303,25 +268,13 @@
             view.imgImagen.image = [UIImage imageNamed:@"acceso100.png"];
         }
         
-        /*CGRect frame = view.lblDescripcion.frame;
-         frame.size.height = view.bounds.size.height;
-         view.lblDescripcion.frame = frame;*/
         
-        //Calculate the expected size based on the font and linebreak mode of your label
-        // FLT_MAX here simply means no constraint in height
-        /*
-         CGSize maximumLabelSize = CGSizeMake(216, FLT_MAX);
-         
-         CGSize expectedLabelSize = [view.lblDescripcion.text sizeWithFont:view.lblDescripcion.font constrainedToSize:maximumLabelSize lineBreakMode:view.lblDescripcion.lineBreakMode];
-         
-         CGRect newFrame = view.lblDescripcion.frame;
-         newFrame.size.height = expectedLabelSize.height;
-         view.lblDescripcion.frame = newFrame;*/
-        
+        //Se obtiene de que tama;o es el string de descripcion
         NSInteger strLength = [marker.userData[@"descripcion"] length];
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
         [style setLineHeightMultiple:1.3];
         
+        //Este string nos hace el bold
         NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:marker.userData[@"descripcion"]];
         
         
@@ -338,15 +291,11 @@
             [attrString addAttribute:NSFontAttributeName value: [UIFont fontWithName:@"Helvetica-Bold" size:14.0f] range:rango];
         }
         
-        /*for (NSObject * ranAux in arrRangosBold) {
-         NSRange rango = [ranAux  rangeValue];
-         [attrString addAttribute:NSFontAttributeName value:[ [UIFont fontWithName:view.lblDescripcion.font.fontName size:view.lblDescripcion.font.pointSize] fontName] range:rango];
-         }*/
-        
         view.lblDescripcion.attributedText = attrString;
         
         [view.lblDescripcion sizeToFit];
         
+        //A continuacion se ajusta el tama;o del infowindow, y se estiliza
         CGFloat totalHeight = 0.0f;
         for (UIView *vi in view.subviews)
             if (totalHeight < vi.frame.origin.y + vi.frame.size.height) totalHeight = vi.frame.origin.y + vi.frame.size.height;
@@ -366,12 +315,15 @@
     
 }
 
+//Como PrincipalViewController es un delegado de IngresarRutaViewController, se tienen que implementar sus metodos
 - (void) conLinea :(GMSPolyline *)gmsLinea
            conRuta: (GMSMutablePath *) ruta
       conPrincipio: (GMSMarker *) mrkPrincipio
           conFinal: (GMSMarker *) mrkFinal
     conPuntosClave: (NSMutableArray *) puntosClave
               tipoDeRuta:(BOOL)tipo{
+    
+    //Cuando el protocolo llama este metodo, se pinta la ruta que el usuario selecciono en IngresarRutaVWC
     [_puntosClaveDeRuta removeAllObjects];
     [self.mapView clear];
     _ruta=ruta;
@@ -405,10 +357,10 @@
 
 - (void)quitaVista
 {
-    NSLog(@"Quitar");
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+//Este metodo es para pintar la linea punteada
 - (void)drawDashedLineOnMapBetweenOrigin:(CLLocation *)originLocation destination:(CLLocation *)destinationLocation {
     //[self.mapView clear];
     
