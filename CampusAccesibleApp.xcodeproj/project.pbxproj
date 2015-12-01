@@ -12,6 +12,8 @@
 		4921B0C01BE5723800444B1F /* PESGraphEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921B0BC1BE5723800444B1F /* PESGraphEdge.m */; };
 		4921B0C11BE5723800444B1F /* PESGraphRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921B0BD1BE5723800444B1F /* PESGraphRoute.m */; };
 		4921B0C21BE5723800444B1F /* PESGraphRouteStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921B0BE1BE5723800444B1F /* PESGraphRouteStep.m */; };
+		A04B93081C0D0391002C6623 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = A04B93071C0D0391002C6623 /* about.png */; };
+		A04B930B1C0D5C7F002C6623 /* CreditosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A04B930A1C0D5C7F002C6623 /* CreditosViewController.m */; };
 		A067BCB81BFA52AC0034132C /* limpiar100.png in Resources */ = {isa = PBXBuildFile; fileRef = A067BCB71BFA52AC0034132C /* limpiar100.png */; };
 		A067BCBA1BFA6A690034132C /* acceso100.png in Resources */ = {isa = PBXBuildFile; fileRef = A067BCB91BFA6A690034132C /* acceso100.png */; };
 		A067BCC21BFA6B1F0034132C /* acceso100.png in Resources */ = {isa = PBXBuildFile; fileRef = A067BCBC1BFA6B1F0034132C /* acceso100.png */; };
@@ -89,6 +91,9 @@
 		4921B0BE1BE5723800444B1F /* PESGraphRouteStep.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PESGraphRouteStep.m; path = CampusAccesibleApp/PESGraph/PESGraphRouteStep.m; sourceTree = "<group>"; };
 		4F55C2EA4CFB42E8B2152241 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "CampusAccesibleApp/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		562EBE69777865429395770B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A04B93071C0D0391002C6623 /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
+		A04B93091C0D5C7F002C6623 /* CreditosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditosViewController.h; sourceTree = "<group>"; };
+		A04B930A1C0D5C7F002C6623 /* CreditosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditosViewController.m; sourceTree = "<group>"; };
 		A067BCB71BFA52AC0034132C /* limpiar100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = limpiar100.png; path = Icons/limpiar100.png; sourceTree = "<group>"; };
 		A067BCB91BFA6A690034132C /* acceso100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = acceso100.png; path = Icons/acceso100.png; sourceTree = "<group>"; };
 		A067BCBC1BFA6B1F0034132C /* acceso100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = acceso100.png; sourceTree = "<group>"; };
@@ -190,6 +195,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A04B930D1C0D5C8E002C6623 /* CreditosVWC */ = {
+			isa = PBXGroup;
+			children = (
+				A04B93091C0D5C7F002C6623 /* CreditosViewController.h */,
+				A04B930A1C0D5C7F002C6623 /* CreditosViewController.m */,
+			);
+			name = CreditosVWC;
+			sourceTree = "<group>";
+		};
 		A04F89C31BE591B800B8436C /* PESGraph */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +219,7 @@
 		A067BCBB1BFA6B1F0034132C /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				A04B93071C0D0391002C6623 /* about.png */,
 				A067BCCA1BFA6F170034132C /* goal100.png */,
 				A067BCC81BFA6CB90034132C /* pin100.png */,
 				A067BCBC1BFA6B1F0034132C /* acceso100.png */,
@@ -345,6 +360,7 @@
 				A1EBE9D21BF913430043E215 /* InfoWindowPunto.xib */,
 				A1EBE9D41BF913D20043E215 /* InfoWindowPunto.h */,
 				A1EBE9D51BF913D20043E215 /* InfoWindowPunto.m */,
+				A04B930D1C0D5C8E002C6623 /* CreditosVWC */,
 			);
 			path = CampusAccesibleApp;
 			sourceTree = "<group>";
@@ -526,6 +542,7 @@
 				A1EBE9F81BF94E030043E215 /* statue.png in Resources */,
 				A1EBE9F61BF94B050043E215 /* classroom2.png in Resources */,
 				A1EBE9E61BF943CF0043E215 /* cetec.jpg in Resources */,
+				A04B93081C0D0391002C6623 /* about.png in Resources */,
 				A067BCC31BFA6B1F0034132C /* elevador100.png in Resources */,
 				A0D8A1E31BD32BC80016AE86 /* Podfile in Resources */,
 				A1EBEA021BF956EC0043E215 /* accesibility32.png in Resources */,
@@ -605,6 +622,7 @@
 				4921B0C21BE5723800444B1F /* PESGraphRouteStep.m in Sources */,
 				4921B0B91BE5711300444B1F /* PESGraphNode.m in Sources */,
 				A0D8A1D01BD32ADB0016AE86 /* AppDelegate.m in Sources */,
+				A04B930B1C0D5C7F002C6623 /* CreditosViewController.m in Sources */,
 				A1CC79811BEEB1B700094037 /* SWRevealViewController.m in Sources */,
 				A085A44F1BF5642300F29D68 /* PuntoClave.m in Sources */,
 				A0D8A1EF1BD33A130016AE86 /* IngresarRutaViewController.m in Sources */,
