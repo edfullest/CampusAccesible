@@ -240,9 +240,9 @@
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
 {
     // Se visibiliza el boton de limpiar mapa
-    _btnLimpiar.hidden = NO;
+    //_btnLimpiar.hidden = NO;
     // Se define el marcador actual como seleccionado
-    mapView.selectedMarker = marker;
+    //mapView.selectedMarker = marker;
 
     // Configuracion de imagenes para marcadores seleccionados
     CGSize cgsTamano = CGSizeMake(28.0f, 28.0f);
@@ -251,13 +251,25 @@
 
     // El marcador seleccionado es origen
     if(_numMarkerSelected == 0){
+        
+        // Se visibiliza el boton de limpiar mapa
+        _btnLimpiar.hidden = NO;
+        // Se define el marcador actual como seleccionado
+        mapView.selectedMarker = marker;
+        
         // Se actualiza el icono de marcador origen
         marker.icon = imgGoal;
         _numMarkerSelected++;
         // Nodo de inicio es igual al nodo asociado con el marcador seleccionado
         _pgnPrincipio = marker.userData[@"Nodo"];
     }
-    else if (_numMarkerSelected == 1){
+    else if (_numMarkerSelected == 1 && marker.userData[@"Nodo"] != _pgnPrincipio){
+        
+        // Se visibiliza el boton de limpiar mapa
+        _btnLimpiar.hidden = NO;
+        // Se define el marcador actual como seleccionado
+        mapView.selectedMarker = marker;
+        
         // Se visibiliza el tab bar de seleccion de tipo de ruta
         self.tabBarController.hidden = NO;
 

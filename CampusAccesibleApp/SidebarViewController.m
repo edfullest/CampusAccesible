@@ -126,7 +126,6 @@
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     // Si no es la celda "Inicio" se va a Detalle del aula
         if(indexPath.row != 0 && indexPath.row != 11){
-             NSLog(@"saaa");
             // Crea un objeto diccionario y se lo envía a la siguiente vista
             NSDictionary *object = self.objects[indexPath.row - 1];
             UINavigationController *navController = segue.destinationViewController;
@@ -142,11 +141,7 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Pop un view
-    if(indexPath.row == 0){
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    else if (indexPath.row == 11)
+    if (indexPath.row == 11)
     {
         CreditosViewController *rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CreditosViewController"];
         
